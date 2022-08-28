@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <!-- css -->
+    
+    <!-- js -->
+    <script lang="javascript" src="../js/redirecionaLogin.js"></script>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,16 +69,15 @@
 
 
                         <?php
-                            if(isset($_SESSION["#"])==false){
+                            if(isset($_SESSION["nome_usuario"])==false){
                                 echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #fecc68; color: white;' onclick='redirecionaLogin();'>Logar</button>";
                             }else{                        
-                                $a = $_SESSION["#"];
+                                $nome_usuario = $_SESSION["nome_usuario"];
                                 echo "<div class='dropdown'>";
-                                echo "<button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false' style='background-color: #fecc68;'>Olá, $nome</button>";
+                                echo "<button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false' style='background-color: #fecc68;'>Olá, $nome_usuario</button>";
                                 echo  "<ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>";
                                 echo "<li><a class='dropdown-item' href='#'>Meus dados</a></li>";
-                                echo "<li><a class='dropdown-item' href='#'>Meu carrinho</a></li>";
-                                echo "<li><a class='dropdown-item' href='#'>Sair</a></li>";
+                                echo "<li><a class='dropdown-item' href='sair.php'>Sair</a></li>";
                                 echo "</ul></div>";
                             }
                         ?>
