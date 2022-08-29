@@ -11,7 +11,8 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/pag_login.css">
+    <link rel="stylesheet" href="../css/pag_instituicao.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
     <script lang="javascript" src="../js/redirecionaLogin.js"></script>    <meta charset="UTF-8">
     

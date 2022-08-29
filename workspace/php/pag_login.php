@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/pag_login.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
     <script lang="javascript" src="../js/pag_login.js"></script>
-    <script lang="javascript" src="../js/redirecionaLogin.js"></script>    <meta charset="UTF-8">
+    <script lang="javascript" src="../js/redirecionaLogin.js"></script>    
     
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adot.org</title>

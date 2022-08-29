@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/pag_usuario.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
     <script lang="javascript" src="../js/redirecionaLogin.js"></script>    
 
@@ -105,7 +106,7 @@
 
                     <br>
 
-                    <button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="exluir();">Exluir Perfil</button> 
+                    <a href="pag_login.php?del="><button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="excluir();">Excluir Perfil</button></a> 
                 </div>
 
                 <!-- <div class="usuario_botoes">
@@ -140,6 +141,15 @@
                 </div>
 
             </div>
+            <?php
+              if(isset($_GET["del"])){
+                $id = $_GET['del'];
+                $con  = new mysqli("localhost", "root", "", "tcc");
+                mysqli_query($con, "DELETE FROM usuario WHERE id=$id");
+                echo "<script lang='javascript'>window.location.href='pag_inicial.php';</script>";
+                mysqli_close($con);
+              }
+            ?>
         </div>
 
     </body>

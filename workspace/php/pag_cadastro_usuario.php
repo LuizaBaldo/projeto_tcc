@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/pag_cadastro_usuario.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
     <script lang="javascript" src="../js/pag_cadastro_usuario.js"></script>
     <script lang="javascript" src="../js/redirecionaLogin.js"></script>
