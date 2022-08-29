@@ -1,4 +1,21 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+    if(isset($_SESSION["nome_usuario"])==false){
+        header("location: pag_login.php");
+    // }else{
+    // //   $id = $_SESSION["id"];
+    // //   $con    = new mysqli("localhost", "root", "", "tcc");
+    // //   $sql    = "select * from usuario where id='$id'";
+    // //   $retorno = mysqli_query($con, $sql);
+    // //   $reg = mysqli_fetch_array($retorno);
+    //   //print_r ($reg);
+    //   $nome_usuario = $_SESSION["nome_usuario"];
+    //   $endereco_usuario = $_SESSION["endereco_usuario"];      
+    //   $telefone_usuario = $_SESSION["telefone_usuario"];
+    //   $email_usuario  = $_SESSION["email_usuario"];
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +28,11 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/pag_login.css">
+    <link rel="stylesheet" href="../css/pag_usuario.css">
     <!-- js -->
-    <script lang="javascript" src="../js/redirecionaLogin.js"></script>    <meta charset="UTF-8">
-    
+    <script lang="javascript" src="../js/redirecionaLogin.js"></script>    
+
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adot.org</title>
@@ -42,9 +60,9 @@
 
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                         <div class="navbar-nav" id="itensMenu">
-                                            <a class="nav-link active" aria-current="page" href="pag_inicial">Página Inicial</a>
+                                            <a class="nav-link active" aria-current="page" href="pag_inicial.php">Página Inicial</a>
 
-                                            <a class="nav-link active" aria-current="page" href="pag_instituicao" name="#">Página Instituições</a>
+                                            <a class="nav-link active" aria-current="page" href="pag_instituicao.php" name="#">Página Instituições</a>
 
                                             <a class="nav-link active" aria-current="page" href="#">Página Animais</a>
 
@@ -71,5 +89,64 @@
             </nav>          
         </div>
         
+        <div class="usuario_container container">
+            <div class="usuario_content">
+                <div class="usuario_img">
+                    <img src="../img/fotoPerfil.png" alt="" id="usuario_foto">
+                    <a href="pag_alt_dados">
+                        <button type="button" class="btn" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
+                    </a>
+
+                    <br>
+
+                    <a href="pag_alt_senha">
+                        <button type="button" class="btn" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
+                    </a>
+
+                    <br>
+
+                    <button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="exluir();">Exluir Perfil</button> 
+                </div>
+
+                <!-- <div class="usuario_botoes">
+                    <a href="pag_alt_dados">
+                        <button type="button" class="btn" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
+                    </a>
+
+                    <br>
+
+                    <a href="pag_alt_senha">
+                        <button type="button" class="btn" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
+                    </a>
+
+                    <br>
+
+                    <button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="exluir();">Exluir Perfil</button>                        
+
+                </div> -->
+
+                <div class="usuario_info">
+                    <label>Nome</label> 
+                    <input type="text" class="form-control" id="txtNome" name="nome_usuario" value="<?php echo $_SESSION["nome_usuario"];?>"/>
+
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" id="txtEmail" name="email_usuario" value="<?php echo $_SESSION["email_usuario"];?>"/>
+
+                    <label>Endereço</label>
+                    <input type="text" class="form-control" id="txtEndereco" name="endereco_usuario" value="<?php echo $_SESSION["endereco_usuario"];?>"/>
+
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" id="nrTelefone" name="telefone_usuario" value="<?php echo $_SESSION["telefone_usuario"];?>"/>
+                </div>
+
+            </div>
+        </div>
+
     </body>
 </html>
+
+<script lang='javascript'>
+    function redirecionaLogin(){
+        window.location.href='pagina_login.php';
+    }
+</script>

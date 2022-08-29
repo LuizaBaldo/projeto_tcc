@@ -42,7 +42,7 @@
 
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                         <div class="navbar-nav" id="itensMenu">
-                                            <a class="nav-link active" aria-current="page" href="#">Página Inicial</a>
+                                            <a class="nav-link active" aria-current="page" href="">Página Inicial</a>
 
                                             <a class="nav-link active" aria-current="page" href="#" name="#">Página Instituições</a>
 
@@ -76,7 +76,7 @@
                                 echo "<div class='dropdown'>";
                                 echo "<button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false' style='background-color: #fecc68;'>Olá, $nome_usuario</button>";
                                 echo  "<ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>";
-                                echo "<li><a class='dropdown-item' href='#'>Meus dados</a></li>";
+                                echo "<li><a class='dropdown-item' href='pag_usuario.php'>Meus dados</a></li>";
                                 echo "<li><a class='dropdown-item' href='sair.php'>Sair</a></li>";
                                 echo "</ul></div>";
                             }
@@ -84,5 +84,7 @@
                 </div>                
             </nav>          
         </div>
+
+        
     </body>
 </html>
