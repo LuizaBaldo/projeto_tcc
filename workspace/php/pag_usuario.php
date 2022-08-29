@@ -106,7 +106,7 @@
 
                     <br>
 
-                    <a href="pag_login.php?del="><button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="excluir();">Excluir Perfil</button></a> 
+                    <a href="pag_login.php?pg=todos&func=deleta&id=<?php echo $id; ?>"><button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="">Excluir Perfil</button></a> 
                 </div>
 
                 <!-- <div class="usuario_botoes">
@@ -141,15 +141,6 @@
                 </div>
 
             </div>
-            <?php
-              if(isset($_GET["del"])){
-                $id = $_GET['del'];
-                $con  = new mysqli("localhost", "root", "", "tcc");
-                mysqli_query($con, "DELETE FROM usuario WHERE id=$id");
-                echo "<script lang='javascript'>window.location.href='pag_inicial.php';</script>";
-                mysqli_close($con);
-              }
-            ?>
         </div>
 
     </body>
@@ -160,3 +151,13 @@
         window.location.href='pagina_login.php';
     }
 </script>
+
+<?php
+    if(@$_GET['func'] == 'deleta'){
+
+        $id = $_GET['id'];
+
+        mysqli_query($con, "DELETE FROM usuario WHERE id=$id");
+        echo "<script lang='javascript'>window.location.href='pag_inicial.php';</script>";
+    }
+?>
