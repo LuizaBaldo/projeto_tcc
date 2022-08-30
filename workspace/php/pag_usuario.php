@@ -28,6 +28,7 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/pag_usuario.css">
     <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
@@ -42,14 +43,14 @@
 
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <div class="header">            
-            <nav class="navbar navbar-light m-3" style="background-color: #1a6f3a;">                
+            <nav class="navbar navbar-light m-3">                
                 <div class="container-fluid" id="header_conteainer">
                     <a href="#"><img src="img/" id="logo" /></a>
                     <div class="headerTitle"><h2>Adot.org</h2></div>
 
                         <!-- Barra de Consultas -->
                         <div class="menu">
-                            <nav class="navbar navbar-expand-lg navbar-dark m-3" style="background-color: #98112e;">
+                            <nav class="navbar navbar-expand-lg navbar-dark m-3">
                                 <div class="container-fluid text-xs-center">
                                     <!-- <a class="navbar-brand" href="#">Menu</a> -->
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
@@ -61,11 +62,11 @@
 
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                         <div class="navbar-nav" id="itensMenu">
-                                            <a class="nav-link active" aria-current="page" href="pag_inicial.php">Página Inicial</a>
+                                            <a class="nav-link active" aria-current="page" href="pag_inicial.php">Início</a>
 
-                                            <a class="nav-link active" aria-current="page" href="pag_instituicao.php" name="#">Página Instituições</a>
+                                            <a class="nav-link active" aria-current="page" href="#" name="#">Instituições</a>
 
-                                            <a class="nav-link active" aria-current="page" href="#">Página Animais</a>
+                                            <a class="nav-link active" aria-current="page" href="#">Animais</a>
 
                                         </div>
                                     </div>
@@ -106,7 +107,7 @@
 
                     <br>
 
-                    <a href="pag_login.php?pg=todos&func=deleta&id=<?php echo $id; ?>"><button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="">Excluir Perfil</button></a> 
+                    <a href="pag_usuario.php?deletar=<?php echo $_SESSION['id'];?>"><button type="button" class="btn" id="btnExcluir" name="btnExcluir" onclick="">Excluir Perfil</button></a> 
                 </div>
 
                 <!-- <div class="usuario_botoes">
@@ -141,6 +142,10 @@
                 </div>
 
             </div>
+            <?php
+              if(isset($_GET["deletar"])) excluir();{
+              }
+            ?>
         </div>
 
     </body>
@@ -152,12 +157,13 @@
     }
 </script>
 
-<?php
-    if(@$_GET['func'] == 'deleta'){
+<?php function excluir(){
+    $id = $_GET['deletar'];
+    $con  = new mysqli("localhost", "root", "", "tcc");
+    $sql = "delete from usuario where id = $id";
+    mysqli_query($con, $sql);
+    echo "<script lang='javascript'>window.location.href='pag_inicial.php';</script>";
+    mysqli_close($con);
+}
 
-        $id = $_GET['id'];
-
-        mysqli_query($con, "DELETE FROM usuario WHERE id=$id");
-        echo "<script lang='javascript'>window.location.href='pag_inicial.php';</script>";
-    }
 ?>

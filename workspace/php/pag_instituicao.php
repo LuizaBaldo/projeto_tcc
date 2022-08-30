@@ -13,6 +13,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/pag_instituicao.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- js -->
     <script lang="javascript" src="../js/redirecionaLogin.js"></script>    <meta charset="UTF-8">
     
@@ -24,14 +25,14 @@
 
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <div class="header">            
-            <nav class="navbar navbar-light m-3" style="background-color: #1a6f3a;">                
+            <nav class="navbar navbar-light m-3">                
                 <div class="container-fluid" id="header_conteainer">
                     <a href="#"><img src="img/" id="logo" /></a>
                     <div class="headerTitle"><h2>Adot.org</h2></div>
 
                         <!-- Barra de Consultas -->
                         <div class="menu">
-                            <nav class="navbar navbar-expand-lg navbar-dark m-3" style="background-color: #98112e;">
+                            <nav class="navbar navbar-expand-lg navbar-dark m-3">
                                 <div class="container-fluid text-xs-center">
                                     <!-- <a class="navbar-brand" href="#">Menu</a> -->
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
@@ -43,11 +44,11 @@
 
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                         <div class="navbar-nav" id="itensMenu">
-                                            <a class="nav-link active" aria-current="page" href="pag_inicial">Página Inicial</a>
+                                            <a class="nav-link active" aria-current="page" href="pag_inicial.php">Início</a>
 
-                                            <a class="nav-link active" aria-current="page" href="pag_instituicao" name="#">Página Instituições</a>
+                                            <a class="nav-link active" aria-current="page" href="#" name="#">Instituições</a>
 
-                                            <a class="nav-link active" aria-current="page" href="#">Página Animais</a>
+                                            <a class="nav-link active" aria-current="page" href="#">Animais</a>
 
                                         </div>
                                     </div>

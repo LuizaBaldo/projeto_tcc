@@ -13,6 +13,7 @@
     <!-- css -->
     <link rel="stylesheet" href="../css/pag_inicial.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- js -->
     <script lang="javascript" src="../js/redirecionaLogin.js"></script>
 
@@ -25,13 +26,14 @@
 
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <div class="header">            
-            <nav class="navbar navbar-light m-3" style="background-color: #1a6f3a;">                
+            <nav class="navbar navbar-light m-3">                
                 <div class="container-fluid" id="header_conteainer">
-                    <a href="#"><img src="img/" id="logo" /></a>
+                    <a href="#"><img src="" id="logo" /></a>
+                    <div class="headerTitle"><h2>Adot.org</h2></div>
 
                         <!-- Barra de Consultas -->
                         <div class="menu">
-                            <nav class="navbar navbar-expand-lg navbar-dark m-3" style="background-color: #98112e;">
+                            <nav class="navbar navbar-expand-lg navbar-dark">
                                 <div class="container-fluid text-xs-center">
                                     <!-- <a class="navbar-brand" href="#">Menu</a> -->
                                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
@@ -43,13 +45,11 @@
 
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                         <div class="navbar-nav" id="itensMenu">
-                                            <a class="nav-link active" aria-current="page" href="">Página Inicial</a>
+                                            <a class="nav-link active" aria-current="page" href="pag_inicial.php">Início</a>
 
-                                            <a class="nav-link active" aria-current="page" href="#" name="#">Página Instituições</a>
+                                            <a class="nav-link active" aria-current="page" href="#" name="#">Instituições</a>
 
-                                            <a class="nav-link active" aria-current="page" href="#">Página Animais</a>
-
-                                            <a class="nav-link active" aria-current="page" href="#">Meus Dados</a>
+                                            <a class="nav-link active" aria-current="page" href="#">Animais</a>
 
                                         </div>
                                     </div>
@@ -59,11 +59,11 @@
                         
                         <!-- Barra de Busca -->
                         <form class="d-flex" method="post" action="#">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="busca">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="busca" id="campoBusca">
 
                             <button class="btn" type="submit" id="btnBuscar" name="btnBuscar"> 
 
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search" style="background-color: white;"></i>
                             </button>
 
                         </form>
@@ -71,7 +71,7 @@
 
                         <?php
                             if(isset($_SESSION["nome_usuario"])==false){
-                                echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #fecc68; color: white;' onclick='redirecionaLogin();'>Logar</button>";
+                                echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #66C4A9; color: white;' onclick='redirecionaLogin();'>Logar</button>";
                             }else{                        
                                 $nome_usuario = $_SESSION["nome_usuario"];
                                 echo "<div class='dropdown'>";
