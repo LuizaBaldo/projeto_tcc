@@ -76,7 +76,7 @@
 
                         <?php
                             if(isset($_SESSION["nome_usuario"])==false){
-                                echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #fecc68; color: white;' onclick='redirecionaLogin();'>Logar</button>";
+                                echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #66C4A9; color: white;' onclick='redirecionaLogin();'>Logar</button>";
                             }else{                        
                                 $nome_usuario = $_SESSION["nome_usuario"];
                                 echo "<div class='dropdown'>";
@@ -95,13 +95,13 @@
             <div class="usuario_content">
                 <div class="usuario_img">
                     <img src="../img/fotoPerfil.png" alt="" id="usuario_foto">
-                    <a href="pag_alt_dados">
+                    <a href="pag_alt_dados.php">
                         <button type="button" class="btn" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
                     </a>
 
                     <br>
 
-                    <a href="pag_alt_senha">
+                    <a href="pag_alt_senha.php">
                         <button type="button" class="btn" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
                     </a>
 

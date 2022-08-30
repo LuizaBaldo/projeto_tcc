@@ -60,7 +60,7 @@
 
                         <?php
                             if(isset($_SESSION["nome_usuario"])==false){
-                                echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #fecc68; color: white;' onclick='redirecionaLogin();'>Logar</button>";
+                                echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #66C4A9; color: white;' onclick='redirecionaLogin();'>Logar</button>";
                             }else{                        
                                 $nome_usuario = $_SESSION["nome_usuario"];
                                 echo "<div class='dropdown'>";
