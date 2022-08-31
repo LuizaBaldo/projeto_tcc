@@ -9,7 +9,7 @@ input{
     width: 80%;
     height: 4vh;
     color: #4C79D5;
-    margin-left: 8%;
+
 }
 
 input:focus{
@@ -18,7 +18,7 @@ input:focus{
 
 label{
     font-size: 20px;
-    margin-left: 8%;
+
 }
 
 .navbar{

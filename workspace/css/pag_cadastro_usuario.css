@@ -1,42 +1,16 @@
-#btnLogin{
-    width: 50%;
-    height: 30px;
-    margin-left: 25%;
-    margin-top: 15px;
-    border-radius: 5px;
-    border: none;
-    background-color: #4C79D5;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-}
+@media only screen and (max-width: 660px) {
+    #jaCadastro, #naoCadastro{
+        margin-top: 5%;
+    }
+    
+    #jaCadastroDiv, #naoCadastroDiv{
+        width: 100%;
+    }
 
-i{
-    color: white;
-}
-#btnCadastrar{
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background-color: #1a6f3a;
-    color: white;
-}
-#logoCadastro:hover{
-    opacity: 0.8;
-}
-#btnCadastrar:hover{
-    background-color: #98112e;
-}
-
-#logoCadastro{
-    width: 50px;
-    height: 50px;
-}
-
-@media only screen and (max-width: 480px){
-  
-    input, select{
-        width: 90%;
+    #btnNovoCadastro{
+        width: 70%;
+        margin-top: 5%;
+        margin-bottom: 5%;
     }
 
     #usuario{

@@ -1,16 +1,3 @@
-#btnLogin{
-    width: 50%;
-    height: 30px;
-    margin-left: 25%;
-    margin-top: 15px;
-    border-radius: 5px;
-    border: none;
-    background-color: #4C79D5;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-}
-
 #btnCadInst, #btnCadUsu{
     width: 65%;
     height: 50px;
@@ -20,7 +7,6 @@
     border: none;
     background-color: #4C79D5;
     color: white;
-    font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
 }
 
@@ -88,16 +74,7 @@
     text-decoration: underline;
 }
 
-#topoContainer{
-    background-color: #1a6f3a;
-}
 
-#btnBuscar{
-    background-color: #fecc68;
-}
-#btnBuscar:hover{
-    background-color: #98112e;
-}
 i{
     color: white;
 }
@@ -106,15 +83,7 @@ i{
     opacity: 0.8;
 }
 
-#btnLogar{
-    width: 30%;
-    margin-left: 35%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    transition-duration: 0.3s;
-    background-color: #1a6f3a;
-    color: white;
-}
+#btnLo
 
 #btnLogar:hover{
     background-color: #98112e;
