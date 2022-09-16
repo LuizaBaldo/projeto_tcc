@@ -30,54 +30,46 @@
 
         <div class="container row" id="jaCadastroDiv">
           <p class="display-6" id="jaCadastro">Já tenho cadastro</p>
-            <form method="post" action="pag_login.php?logar=1" class="needs-validation" id="formLogin">
+            <form method="post" action="pag_login_inst.php?logar=1" class="needs-validation" id="formLogin">
                 <div class="mb-3" id="divEmail">
                     <label class="form-label" for=txtEmailLogin>E-mail</label>
-                    <input type="email" class="form-control" id="txtEmailLogin" name="email_usuario" required />
+                    <input type="email" class="form-control" id="txtEmailLogin" name="email_inst" required />
                 </div>
 
                 <div class="mb-3" id="divSenha">
                     <label class="form-label" for="txtSenhaLogin">Senha</label>
-                    <input type="password" class="form-control" id="txtSenhaLogin" name="senha" required />
+                    <input type="password" class="form-control" id="txtSenhaLogin" name="senha_inst" required />
                 </div>
                 <div class="d-grid gap-2 col-4 mx-auto" id="divBotaoLogar">
-                    <button type="button" class="btn mt-3" id="btnLogar" onclick="validaLogin();" style="background-color: #66C4A9; color: white;">Logar</button>
-                    <button type="button" class="btn mt-1 mb-2" id="btnLogar" style="background-color: #66C4A9; color: white;"><a href="pag_login_inst.php">Logar Instituição</a></button>
+                    <button type="button" class="btn mt-1 mb-2" id="btnLogar" onclick="validaLogin();" style="background-color: #66C4A9; color: white;">Logar Instituição</button>
                 </div>
             </form>
 
             <?php
-              if(isset($_GET["logar"])) logarUsuario();
+              if(isset($_GET["logar"])) logarInstiuicao();
             ?>
             <div class="d-grid gap-2 col-4 mx-auto">
                 <a href="Pag_Esq_Senha.html" id="esqueciSenha" class="btn btn-link" style="color: #4C79D5;">Esqueci a senha</a>
             </div>
-        </div>
-
-        <div class="container row" id="cadastro">
-            <div class="d-grid gap-2">
-                <a href="pag_cadastro_instituicao.php" class="btn btn-lg" id="btnCadInst" style="background-color: #66C4A9; color: white;">Cadastrar Instituição</a>
-                <a href="pag_cadastro_usuario.php" class="btn btn-lg" id="btnCadUsu" style="background-color: #66C4A9; color: white;">Cadastrar Usuário</a>
-            </div>
-        </div>
-        
+        </div>        
 
     </body>
 </html>
 
 <?php
-  function logarUsuario(){
-    $email_usuario = $_POST["email_usuario"];
-    $senha = $_POST["senha"];
+  function logarInstiuicao(){
+    $email_inst = $_POST["email_inst"];
+    $senha_inst = $_POST["senha_inst"];
     $con = new mysqli("localhost", "root", "", "tcc");
-    $sql = "select * from usuario where email_usuario='$email_usuario' and senha='$senha'";
+    $sql = "select * from instituicao where email_inst='$email_inst' and senha_inst='$senha_inst'";
     $retorno = mysqli_query($con, $sql);
     if($reg = mysqli_fetch_array($retorno)){
       $_SESSION["id"] = $reg["id"];
-      $_SESSION["nome_usuario"] = $reg["nome_usuario"];
-      $_SESSION["endereco_usuario"] = $reg["endereco_usuario"];
-      $_SESSION["telefone_usuario"] = $reg["telefone_usuario"];
-      $_SESSION["email_usuario"] = $reg["email_usuario"];
+      $_SESSION["nome_inst"] = $reg["nome_inst"];
+      $_SESSION["endereco_inst"] = $reg["endereco_inst"];
+      $_SESSION["telefone_inst"] = $reg["telefone_inst"];
+      $_SESSION["cnpj"] = $reg["cnpj"];
+      $_SESSION["email_inst"] = $reg["email_inst"];
       $id = session_id();
       echo "<script lang='javascript'>window.location.href='pag_inicial.php?';</script>";
     } else {

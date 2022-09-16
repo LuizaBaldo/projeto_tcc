@@ -1,4 +1,21 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+    if(isset($_SESSION["nome_inst"])==false){
+        header("location: pag_login.php");
+    // }else{
+      // $id = $_SESSION["id"];
+      //  $con    = new mysqli("localhost", "root", "", "tcc");
+      // $sql    = "select * from usuario where id='$id'";
+      // $retorno = mysqli_query($con, $sql);
+    //   $reg = mysqli_fetch_array($retorno);
+       //print_r ($reg);
+      // $nome_usuario = $_SESSION["nome_usuario"];
+      // $endereco_usuario = $_SESSION["endereco_usuario"];      
+     //  $telefone_usuario = $_SESSION["telefone_usuario"];
+     //  $email_usuario  = $_SESSION["email_usuario"];
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +28,11 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/pag_instituicao.css">
+    <!-- <link rel="stylesheet" href="../css/pag_usuario.css"> -->
     <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
-    
+
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adot.org</title>
@@ -26,5 +44,64 @@
             require_once './partials/common.php';
         ?>
         
+        <div class="usuario_container container">
+            <div class="usuario_content">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="usuario_img">
+                            <img src="../img/fotoPerfil.png" alt="" id="usuario_foto" style="width: 100%;">
+                            
+                            <a href="pag_alt_dados.php">
+                                <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
+                            </a>
+                            <br>
+                            <a href="pag_alt_senha.php">
+                                <button type="button" class="btn btn-primary mb-1" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
+                            </a>                 
+                            <br>
+                            <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $_SESSION['id'];?>">
+                                <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-8">                            
+                        <div class="usuario_info" style="padding: 0 15px 0 15px;width: 70%">
+                            <label>Nome</label> 
+                            <input  type="text" class="form-control" id="txtNome" name="nome_inst" disabled="true" value="<?php echo $_SESSION["nome_inst"];?>"/>
+
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" id="txtEmail" name="email_inst" disabled="true" value="<?php echo $_SESSION["email_inst"];?>"/>
+
+                            <label>CNPJ</label>
+                            <input type="text" class="form-control" id="txtCNPJ" name="cnpj" disabled="true" value="<?php echo $_SESSION["cnpj"];?>"/>
+
+                            <label>Endereço</label>
+                            <input type="text" class="form-control" id="txtEndereco" name="endereco_inst" disabled="true" value="<?php echo $_SESSION["endereco_inst"];?>"/>
+
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" id="nrTelefone" name="telefone_inst" disabled="true" value="<?php echo $_SESSION["telefone_inst"];?>"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            
+              if(isset($_GET["deletar"])) excluir();{
+                
+              }
+            ?>
+        </div>
+
     </body>
 </html>
+
+<?php 
+    function excluir(){
+        $id = $_GET['deletar'];
+        $con  = new mysqli("localhost", "root", "", "tcc");
+        $sql = "delete from instituicao where id = $id";
+        mysqli_query($con, $sql);
+        echo "<script lang='javascript'>window.location.href='sair.php';</script>";
+        mysqli_close($con);
+    }
+?>
