@@ -44,19 +44,6 @@
                     }
                 ?>
 
-                <?php
-                    if(isset($_SESSION["nome_inst"])==false){
-                        echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #66C4A9; color: white;' onclick='redirecionaLogin();'>Logar</button>";
-                    }else{                       
-                        $nome_usuario = explode(" ", $_SESSION["nome_inst"])[0];
-                        echo "<div class='dropdown'>";
-                        echo "<button class='btn text-white dropdown-toggle' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false' style='background-color:  #66C4A9;'>Bem Vindo, $nome_inst</button>";
-                        echo  "<ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>";
-                        echo "<li><a class='dropdown-item' href='pag_instituicao.php'>Meus dados</a></li>";
-                        echo "<li><a class='dropdown-item' href='sair.php'>Sair</a></li>";
-                        echo "</ul></div>";
-                    }
-                ?>
         </div>                
     </nav>          
 </div>

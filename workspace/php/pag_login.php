@@ -23,7 +23,6 @@
 </head>
     <body>
 
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
@@ -41,10 +40,15 @@
                     <input type="password" class="form-control" id="txtSenhaLogin" name="senha" required />
                 </div>
                 <div class="d-grid gap-2 col-4 mx-auto" id="divBotaoLogar">
+                  
                     <button type="button" class="btn mt-3" id="btnLogar" onclick="validaLogin();" style="background-color: #66C4A9; color: white;">Logar</button>
-                    <button type="button" class="btn mt-1 mb-2" id="btnLogar" style="background-color: #66C4A9; color: white;"><a href="pag_login_inst.php">Logar Instituição</a></button>
+
                 </div>
             </form>
+
+            <?php
+              if(isset($_GET["logar"])) logarInstiuicao();
+            ?>
 
             <?php
               if(isset($_GET["logar"])) logarUsuario();
@@ -78,6 +82,29 @@
       $_SESSION["endereco_usuario"] = $reg["endereco_usuario"];
       $_SESSION["telefone_usuario"] = $reg["telefone_usuario"];
       $_SESSION["email_usuario"] = $reg["email_usuario"];
+      $id = session_id();
+      echo "<script lang='javascript'>window.location.href='pag_inicial.php?';</script>";
+    } else {
+      echo "<h3>E-mail ou senha inválidos!</h3>";
+    }
+    mysqli_close($con);    
+  }
+?>
+
+<?php
+  function logarInstiuicao(){
+    $email_inst = $_POST["email_usuario"];
+    $senha_inst = $_POST["senha"];
+    $con = new mysqli("localhost", "root", "", "tcc");
+    $sql = "select * from instituicao where email_inst='$email_inst' and senha_inst='$senha_inst'";
+    $retorno = mysqli_query($con, $sql);
+    if($reg = mysqli_fetch_array($retorno)){
+      $_SESSION["id"] = $reg["id"];
+      $_SESSION["nome_inst"] = $reg["nome_inst"];
+      $_SESSION["endereco_inst"] = $reg["endereco_inst"];
+      $_SESSION["telefone_inst"] = $reg["telefone_inst"];
+      $_SESSION["cnpj"] = $reg["cnpj"];
+      $_SESSION["email_inst"] = $reg["email_inst"];
       $id = session_id();
       echo "<script lang='javascript'>window.location.href='pag_inicial.php?';</script>";
     } else {

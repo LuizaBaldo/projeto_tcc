@@ -2,17 +2,6 @@
     session_start();
     if(isset($_SESSION["nome_usuario"])==false){
         header("location: pag_login.php");
-    // }else{
-      // $id = $_SESSION["id"];
-      //  $con    = new mysqli("localhost", "root", "", "tcc");
-      // $sql    = "select * from usuario where id='$id'";
-      // $retorno = mysqli_query($con, $sql);
-    //   $reg = mysqli_fetch_array($retorno);
-       //print_r ($reg);
-      // $nome_usuario = $_SESSION["nome_usuario"];
-      // $endereco_usuario = $_SESSION["endereco_usuario"];      
-     //  $telefone_usuario = $_SESSION["telefone_usuario"];
-     //  $email_usuario  = $_SESSION["email_usuario"];
     }
 
 ?>
@@ -39,7 +28,6 @@
 </head>
     <body>
 
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
