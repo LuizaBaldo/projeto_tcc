@@ -98,8 +98,7 @@
         $sql  = "UPDATE usuario SET nome='$nome', email='$email', endereco='$endereco', telefone='$telefone' WHERE id='$id'";
         mysqli_query($con, $sql);
         mysqli_close($con);
-    
-        setNomeUsuarioSession();
+
         echo "<script lang='javascript'>window.location.href='pag_usuario.php';</script>";
     }
 ?>

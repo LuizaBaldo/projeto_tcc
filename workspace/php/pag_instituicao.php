@@ -3,8 +3,7 @@
     require_once './functions.php';
 
     if(isset($_SESSION["id"])==false){
-        var_dump($_SESSION);
-        #header("location: pag_login.php");
+        header("location: pag_login.php");
         exit();
     }
     $user = getUserLogged($_SESSION['id']);
@@ -82,7 +81,7 @@
                                 <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
                             </a>
 
-                            <a href="pag_animal.php">
+                            <a href="pag_animais_instituicao.php">
                                 <button type="submit" class="btn btn-primary mt-3 mx-3">Visualizar Animais</button>
                             </a>
                             
