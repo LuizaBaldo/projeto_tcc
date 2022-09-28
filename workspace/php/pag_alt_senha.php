@@ -96,6 +96,7 @@
             echo "<script lang='javascript'>window.location.href='pag_alt_senha.php';</script>";
             
         }
+        mysqli_close($con);
         
     }
 

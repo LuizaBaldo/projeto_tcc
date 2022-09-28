@@ -31,7 +31,7 @@
                                 <div class="navbar-nav" id="itensMenu">
                                     <a class="nav-link active" aria-current="page" href="pag_inicial.php">Início</a>
 
-                                    <a class="nav-link active" aria-current="page" href="pag_instituicao.php" name="#">Instituições</a>
+                                    <a class="nav-link active" aria-current="page" href="pag_instituicoes.php" name="#">Instituições</a>
 
                                     <a class="nav-link active" aria-current="page" href="pag_exibicao_animais.php">Animais</a>
 

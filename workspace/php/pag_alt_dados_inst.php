@@ -1,4 +1,5 @@
 <?php
+    require_once './functions.php';
     if(isset($_SESSION["id"])==false){
         header("location: pag_login.php");
         exit();
@@ -103,8 +104,7 @@
         $sql  = "UPDATE usuario SET nome='$nome', email='$email', cnpj='$cnpj',endereco='$endereco', telefone='$telefone' WHERE id='$id'";
         mysqli_query($con, $sql);
         mysqli_close($con);
-    
-        setNomeUsuarioSession();
+
         echo "<script lang='javascript'>window.location.href='pag_instituicao.php';</script>";
     }
 ?>
