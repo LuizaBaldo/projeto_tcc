@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    function getInstiuicoes() {
+    function getInstituicoes() {
         $con = new mysqli("localhost", "root", "", "tcc");
         $sql = "select * from usuario where tipo = 'INSTITUICAO'";
         $retorno = mysqli_query($con, $sql);
@@ -13,7 +13,7 @@
         }
         return $rows;
     }
-    $instituicoes = getInstiuicoes()
+    $instituicoes = getInstituicoes()
 ?>
 
 <!DOCTYPE html>
