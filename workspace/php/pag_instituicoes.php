@@ -46,18 +46,22 @@
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
                 <?php foreach ($instituicoes as $instituicao){
-                    echo "<div class='col-4 text-center'> ";
-                    echo 'Nome da instituicao: '.$instituicao['nome'];
-                    echo '<br>';
-                    echo 'endereco da instituicao: '.$instituicao['endereco'];
-                    echo '<br>';
-                    echo 'telefone da instituicao: '.$instituicao['telefone'];
-                    echo '<br>';
-                    echo 'email da instituicao: '.$instituicao['email']; 
-                    echo '<br>';
-                    echo 'cnpj da instituicao: '.$instituicao['cnpj'];
-                    echo '</div>';
-                }?>
+                echo "<div class='col-6 text-center p-3 '>";
+                    echo '<a href="pag_animal.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit; ">';
+                        echo "<div class='border'>";
+                            echo 'Nome da instituicao: '.$instituicao['nome'];
+                            echo '<br>';
+                            echo 'endereco da instituicao: '.$instituicao['endereco'];
+                            echo '<br>';
+                            echo 'telefone da instituicao: '.$instituicao['telefone'];
+                            echo '<br>';
+                            echo 'email da instituicao: '.$instituicao['email']; 
+                            echo '<br>';
+                            echo 'cnpj da instituicao: '.$instituicao['cnpj'];
+                        echo '</div>';  
+                    echo '</a>';    
+                echo '</div>';
+            }?>
 
             </div>
         </div>

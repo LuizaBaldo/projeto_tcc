@@ -3,9 +3,12 @@
 ?>
 
 <?php
-    function getAnimais(){
+    function getAnimais($filtro){
         $con = new mysqli("localhost", "root", "", "tcc");
         $sql = "select * from animal ";
+        if(!empty($filtro)){
+            $sql = $sql.'where nome_animal like "%'.$filtro.'%"';
+        }
         $retorno = mysqli_query($con, $sql);
         $rows = array();
         while($row = mysqli_fetch_array($retorno)) {
@@ -13,7 +16,7 @@
         }
         return $rows;
     }
-    $animais = getAnimais();
+    $animais = getAnimais($_GET['filtro'] ?? null);
 ?>
 
 <!DOCTYPE html>
@@ -44,28 +47,30 @@
             require_once './partials/common.php';
         ?>
         
-        <div class="container"> 
-            <div class="d-flex flex-wrap align-content-center">
-                <?php foreach ($animais as $animal){
-                    echo "<div class='col-4 text-center'> ";
-                    echo 'tipo do animal: '.$animal['tipo_animal'];
-                    echo '<br>';
-                    echo 'nome do animal: '.$animal['nome_animal'];
-                    echo '<br>';
-                    echo 'idade do animal: '.$animal['idade'];
-                    echo '<br>';
-                    echo 'sexo do animal: '.$animal['sexo']; 
-                    echo '<br>';
-                    echo 'raça do animal: '.$animal['raca'];
-                    echo '<br>';
-                    echo 'descrição do animal: '.$animal['descricao'];
-                    echo '</div>';
-                }?>
-
+        
+            <div class="container"> 
+                <div class="d-flex flex-wrap align-content-center">
+                    <?php foreach ($animais as $animal){
+                        echo "<div class='col-6 text-center p-3 '>";
+                            echo '<a href="pag_animal.php?id='.$animal['id'].'" ; style="text-decoration: none; color:inherit; ">';
+                                echo "<div class='border'>";
+                                    echo 'tipo do animal: '.$animal['tipo_animal'];
+                                    echo '<br>';
+                                    echo 'nome do animal: '.$animal['nome_animal'];
+                                    echo '<br>';
+                                    echo 'idade do animal: '.$animal['idade'];
+                                    echo '<br>';
+                                    echo 'sexo do animal: '.$animal['sexo']; 
+                                    echo '<br>';
+                                    echo 'raça do animal: '.$animal['raca'];
+                                    echo '<br>';
+                                    echo 'descrição do animal: '.$animal['descricao'];
+                                echo '</div>';
+                            echo '</a>';
+                        echo '</div>';
+                    }?>
+                </div>
             </div>
-        </div>
-
-
-
+        </a>
     </body>
 </html>

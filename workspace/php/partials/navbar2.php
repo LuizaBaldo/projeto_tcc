@@ -16,10 +16,14 @@
             <div class="headerTitle"><h2>Adot.org</h2></div>
 
                 <!-- Barra de Consultas -->
+                <form action="pag_exibicao_animais.php" method="GET">
+                                <input id="search" type="text" placeholder="Pesquise um animal" name="filtro" style="height:30px; width:100%">
+                                <input id="submit" type="submit" value="Search" style="display: none; width: 0%;">
+                </form>
+
                 <div class="menu">
                     <nav class="navbar navbar-expand-lg navbar-dark m-3" style="background-color: #4C79D5;">
                         <div class="container-fluid text-xs-center">
-                            <!-- <a class="navbar-brand" href="#">Menu</a> -->
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +41,9 @@
 
                                 </div>
                             </div>
+
+                            
+                            
                         </div>
                     </nav>
                 </div>
