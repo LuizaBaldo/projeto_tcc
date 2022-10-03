@@ -3,17 +3,14 @@
 ?>
 
 <?php
-    function getInstituicoes() {
+    function buscaInstituicaoId($id){
         $con = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from usuario where tipo = 'INSTITUICAO'";
+        $sql = "select * from usuario where id = $id ";
         $retorno = mysqli_query($con, $sql);
-        $rows = array();
-        while($row = mysqli_fetch_array($retorno)) {
-            $rows[] = $row;
-        }
-        return $rows;
+        $instituicao = mysqli_fetch_array($retorno);
+        return $instituicao;
     }
-    $instituicoes = getInstituicoes()
+    $instituicao = buscaInstituicaoId($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +24,7 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="../css/pag.css"> -->
+    <link rel="stylesheet" href="../css/pag_animal.css">
     <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
 
@@ -38,38 +35,31 @@
 </head>
     <body>
 
+
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
-        
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
-                <?php foreach ($instituicoes as $instituicao){
-                echo "<div class='col-6 text-center p-3 '>";
-                    echo '<a href="pag_exibir_instituicao.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit; ">';
+                <?php 
+                    echo "<div class='col-6 text-center p-3 '>";
                         echo "<div class='border'>";
-                            echo 'Nome da instituicao: '.$instituicao['nome'];
+                            echo '<h2>';
+                            echo 'nome da instituicao: '.$instituicao['nome'];
                             echo '<br>';
-                            echo 'endereco da instituicao: '.$instituicao['endereco'];
+                            echo 'nome da instituicao: '.$instituicao['endereco'];
                             echo '<br>';
                             echo 'telefone da instituicao: '.$instituicao['telefone'];
                             echo '<br>';
                             echo 'email da instituicao: '.$instituicao['email']; 
                             echo '<br>';
                             echo 'cnpj da instituicao: '.$instituicao['cnpj'];
-                        echo '</div>';  
-                    echo '</a>';    
-                echo '</div>';
-            }?>
-
+                        echo '</div>';
+                    echo '</div>';
+                ?>
             </div>
         </div>
-
-  
-       
-
     </body>
 </html>
 
-?>
