@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+    require_once './functions.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +25,7 @@
 </head>
     <body>
 
+        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
@@ -35,11 +38,11 @@
                     <div class="row">
                         <div class="mb-3">
                             <label class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="txtNome" placeholder="Digite um nome" name="nome_usuario"/>
+                            <input type="text" class="form-control" id="txtNome" placeholder="Digite um nome" name="nome"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="txtEmail" placeholder="Digite um e-mail" name="email_usuario"/>
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Digite um e-mail" name="email"/>
                         </div>
                     
 
@@ -55,12 +58,12 @@
 
                         <div class="mb-3">
                             <label class="form-label">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Digite um endereço com numero" id="txtEndereco" name="endereco_usuario"/>
+                            <input type="text" class="form-control" placeholder="Digite um endereço com numero" id="txtEndereco" name="endereco"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Telefone</label>
-                            <input type="text" class="form-control" placeholder="Digite um telefone" id="nrTelefone" name="telefone_usuario"/>
+                            <input type="text" class="form-control" placeholder="Digite um telefone" id="nrTelefone" name="telefone"/>
                         </div>
                     </div>
 
@@ -86,16 +89,23 @@
 
 <?php
   function cadastrarUsuario(){
-    $nome_usuario   = $_POST["nome_usuario"];
-    $endereco_usuario = $_POST["endereco_usuario"];
-    $telefone_usuario = $_POST["telefone_usuario"];
-    $email_usuario  = $_POST["email_usuario"];
+    $nome   = $_POST["nome"];
+    $endereco = $_POST["endereco"];
+    $telefone = $_POST["telefone"];
+    $email  = $_POST["email"];
     $senha  = $_POST["senha"];
-    
-    $con    = new mysqli("localhost", "root", "", "tcc");
-    $sql    = "insert into usuario(nome_usuario, endereco_usuario, telefone_usuario, email_usuario, senha) values ('$nome_usuario', '$endereco_usuario', '$telefone_usuario', '$email_usuario', '$senha')";
+    $emailexistente = "select count(*) as count from usuario where email = '$email'";
+    $con  = new mysqli("localhost", "root", "", "tcc");
+    $retorno = mysqli_query($con, $emailexistente);
+    $resultado = mysqli_fetch_array($retorno);
+    if($resultado['count'] > 0){
+        echo "<script lang='javascript'>alert('email já cadastrado no sistema');</script>";
+        return;
+    }   
+    $sql    = "insert into usuario(nome, endereco, telefone, email, senha) values ('$nome', '$endereco', '$telefone', '$email', '$senha')";
     mysqli_query($con, $sql);
     echo "<script lang='javascript'>window.location.href='pag_login.php';</script>";
     mysqli_close($con);
   }
 ?>
+

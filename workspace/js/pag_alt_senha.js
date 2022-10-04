@@ -1,6 +1,6 @@
 function validar(){
     
-    if(txtSenhaNova.value == '' || txtSenhaNova.value.length<8 || isNaN(txtSenhaNova.value)){
+    if(txtSenhaNova.value == '' || txtSenhaNova.value.length<8){
         alert("Preencha uma senha alfanumérica com ao menos 8 caracteres!");
         txtSenhaNova.focus();
         txtSenhaNova.value = "";

@@ -1,6 +1,10 @@
 <?php
-    session_start();
-    if(isset($_SESSION["nome_usuario"])==false) header("location: pag_login.php");
+    require_once './functions.php';
+    if(isset($_SESSION["id"])==false){
+        header("location: pag_login.php");
+        exit();
+    }
+    $user = getUserLogged($_SESSION["id"]);
 
 ?>
 
@@ -75,12 +79,12 @@
 
     if(isset($_GET['alterarSenha'])){
         $senhaAntiga = $_POST['txtSenhaAntiga'];
-        $id = $_SESSION['id'];
-        $email = $_SESSION['email_usuario'];
+        $id = $user['id'];
+        $email = $user['email'];
         $senhaNova = $_POST['txtSenhaNova'];
         $confirmaSenhaNova = $_POST['txtConfirmeSenha'];
         $con = new mysqli("localhost", "root", "", "tcc");
-        $query = mysqli_query($con,"SELECT email_usuario,senha FROM usuario WHERE id='$id' AND email_usuario='$email' AND senha='$senhaAntiga'");
+        $query = mysqli_query($con,"SELECT email,senha FROM usuario WHERE id='$id' AND email='$email' AND senha='$senhaAntiga'");
         $num = mysqli_fetch_array($query);
      
         if($num>0){
@@ -92,6 +96,7 @@
             echo "<script lang='javascript'>window.location.href='pag_alt_senha.php';</script>";
             
         }
+        mysqli_close($con);
         
     }
 

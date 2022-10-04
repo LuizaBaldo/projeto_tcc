@@ -17,6 +17,12 @@ function alterarInfoCadastro(){
         txtEndereco.value = "";
         return false;
     }
+    if(txtCNPJ == '' || txtCNPJ.value.length!=14){
+        alert("Preencha com CNPJ valido");
+        txtCNPJ.focus();
+        txtCNPJ.value = "";
+        return false;
+    }
     if(nrTelefone.value == ''
     || nrTelefone.value.length < 11){
         alert("Preencha com um número de celular válido!");

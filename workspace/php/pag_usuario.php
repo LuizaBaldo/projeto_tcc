@@ -1,9 +1,17 @@
 <?php
-    session_start();
-    if(isset($_SESSION["nome_usuario"])==false){
-        header("location: pag_login.php");
-    }
 
+    require_once './functions.php';
+
+    if(isset($_SESSION["id"])==false){
+        header("location: pag_login.php");
+        exit();
+
+    }
+    $user = getUserLogged($_SESSION["id"]);
+    if($user["tipo"] =='INSTITUICAO'){
+        header("location: pag_inicial.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +25,7 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="../css/pag_usuario.css"> -->
+    <!-- <link rel="stylesheet" href="../css/pag.css"> -->
     <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
 
@@ -28,6 +36,7 @@
 </head>
     <body>
 
+        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
@@ -47,7 +56,7 @@
                                 <button type="button" class="btn btn-primary mb-1" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
                             </a>                 
                             <br>
-                            <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_usuario.php?deletar=<?php echo $_SESSION['id'];?>">
+                            <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_usuario.php?deletar=<?php echo $user['id'];?>">
                                 <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
                             </form>
                         </div>
@@ -55,16 +64,17 @@
                     <div class="col-8">                            
                         <div class="usuario_info" style="padding: 0 15px 0 15px;width: 70%">
                             <label>Nome</label> 
-                            <input  type="text" class="form-control" id="txtNome" name="nome_usuario" disabled="true" value="<?php echo $_SESSION["nome_usuario"];?>"/>
+                            <input  type="text" class="form-control" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
 
                             <label>E-mail</label>
-                            <input type="email" class="form-control" id="txtEmail" name="email_usuario" disabled="true" value="<?php echo $_SESSION["email_usuario"];?>"/>
+                            <input type="email" class="form-control" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
 
                             <label>Endereço</label>
-                            <input type="text" class="form-control" id="txtEndereco" name="endereco_usuario" disabled="true" value="<?php echo $_SESSION["endereco_usuario"];?>"/>
+                            <input type="text" class="form-control" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
 
                             <label>Telefone</label>
-                            <input type="text" class="form-control" id="nrTelefone" name="telefone_usuario" disabled="true" value="<?php echo $_SESSION["telefone_usuario"];?>"/>
+                            <input type="text" class="form-control" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
+                            
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+    require_once './functions.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">

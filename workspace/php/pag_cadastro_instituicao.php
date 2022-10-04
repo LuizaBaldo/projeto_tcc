@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+    require_once './functions.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,32 +37,32 @@
                     <div class="row">
                         <div class="mb-3">
                             <label class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="txtNome" placeholder="Digite o nome da instituição" name="nome_inst"/>
+                            <input type="text" class="form-control" id="txtNome" placeholder="Digite o nome da instituição" name="nome"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" id="txtEmail" placeholder="Digite o email da instituição" name="email_inst"/>
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Digite o email da instituição" name="email"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">CNPJ</label>
-                            <input type="text" class="form-control" id="txtCNJP" placeholder="Digite o CNPJ da instituição" name="cnpj"/>
+                            <input type="text" class="form-control" id="txtCNPJ" placeholder="Digite o CNPJ da instituição" name="cnpj"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Digite o endereço da instituição" id="txtEndereco" name="endereco_inst"/>
+                            <input type="text" class="form-control" placeholder="Digite o endereço da instituição" id="txtEndereco" name="endereco"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Telefone</label>
-                            <input type="text" class="form-control" placeholder="Digite o telefone da instituição" id="nrTelefone" name="telefone_inst"/>
+                            <input type="text" class="form-control" placeholder="Digite o telefone da instituição" id="nrTelefone" name="telefone"/>
                         </div> 
 
                         <div class="mb-3">
                             <label class="form-label">Senha</label>
-                            <input type="password" class="form-control" placeholder="Digite uma senha" id="txtSenha" name="senha_inst"/>
+                            <input type="password" class="form-control" placeholder="Digite uma senha" id="txtSenha" name="senha"/>
                         </div>
 
                         <div class="mb-3">
@@ -90,17 +92,25 @@
     </body>
 </html>
 
+
 <?php
   function cadastrarInstituicao(){
-    $nome_inst  = $_POST["nome_inst"];
-    $endereco_inst = $_POST["endereco_inst"];
-    $telefone_inst = $_POST["telefone_inst"];
+    $nome   = $_POST["nome"];
+    $endereco = $_POST["endereco"];
+    $telefone = $_POST["telefone"];
+    $email  = $_POST["email"];
+    $senha  = $_POST["senha"];
     $cnpj = $_POST["cnpj"];
-    $email_inst  = $_POST["email_inst"];
-    $senha_inst  = $_POST["senha_inst"];
-    
-    $con    = new mysqli("localhost", "root", "", "tcc");
-    $sql    = "insert into instituicao(nome_inst, endereco_inst, telefone_inst, cnpj, email_inst, senha_inst) values ('$nome_inst', '$endereco_inst', '$telefone_inst', '$cnpj', '$email_inst', '$senha_inst')";
+    $emailexistente = "select count(*) as count from usuario where email = '$email'";
+    $tipo = 'INSTITUICAO';
+    $con  = new mysqli("localhost", "root", "", "tcc");
+    $retorno = mysqli_query($con, $emailexistente);
+    $resultado = mysqli_fetch_array($retorno);
+    if($resultado['count'] > 0){
+        echo "<script lang='javascript'>alert('email já cadastrado no sistema');</script>";
+        return;
+    }   
+    $sql = "insert into usuario(nome, endereco, telefone, cnpj, email, senha, tipo) values ('$nome', '$endereco', '$telefone', '$cnpj', '$email', '$senha', '$tipo')";
     mysqli_query($con, $sql);
     echo "<script lang='javascript'>window.location.href='pag_login.php';</script>";
     mysqli_close($con);

@@ -4,7 +4,7 @@
         header("location: pag_login.php");
         exit();
     }
-    
+
     $user = getUserLogged($_SESSION['id']);
 ?>
 
@@ -22,7 +22,7 @@
     <!-- <link rel="stylesheet" href="../css/pag.css"> -->
     <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
-    <script lang="javascript" src="../js/pag_alterar_dados.js"></script>
+    <script lang="javascript" src="../js/pag_alterar_dados_inst.js"></script>
  
 
     <meta charset="UTF-8">
@@ -43,14 +43,14 @@
                     <div class="col-4">
                         <div class="usuario_img">
                             <img src="../img/fotoPerfil.png" alt="" id="usuario_foto" style="width: 100%;">
-                            <a href="pag_alt_dados.php">
+                            <a href="pag_alt_dados_inst.php">
                                 <button type="button" class="btn btn-primary mt-3" id="btnAltFoto" name="btnAltFoto">Alterar Foto</button>  
                             </a>
                         </div>
                     </div>
                     <div class="col-8">
                         <div id="formulario">
-                            <form method="post" action="pag_alt_dados.php?alterar=<?php echo $user["id"];?>" id="formAlterarInfo" style="padding: 0 15px 0 15px; width: 70% ">
+                            <form method="post" action="pag_alt_dados_inst.php?alterar=<?php echo $user["id"];?>" id="formAlterarInfo" style="padding: 0 15px 0 15px; width: 70% ">
                                 <div class="form row">
                                     <div class="form-group">
                                         <label>Nome</label>
@@ -60,6 +60,11 @@
                                     <div class="form-group">
                                     <label>E-mail</label>
                                     <input type="email" class="form-control" id="txtEmail" name="email" value="<?php echo $user["email"];?>"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label>CNPJ</label>
+                                    <input type="email" class="form-control" id="txtCNPJ" name="cnpj" value="<?php echo $user["cnpj"];?>"/>
                                     </div>
 
                                     <div class="form-group">
@@ -74,7 +79,7 @@
 
                                     <div class="form-group">
                                         <button type="button" class="btn btn-success mt-3" id="btnSalvarCadastro" name="btnSalvarCadastro" onclick="alterarInfoCadastro();">Salvar cadastro </button>
-                                        <a href="pag_usuario.php">
+                                        <a href="pag_instituicao.php">
                                             <button type="button" class="btn btn-secondary mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
                                         </a>
                                     </div>
@@ -93,18 +98,19 @@
         $nome   = $_POST["nome"];
         $email  = $_POST["email"];
         $endereco = $_POST["endereco"];
+        $cnpj = $_POST["cnpj"];
         $telefone = $_POST["telefone"];
         $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql  = "UPDATE usuario SET nome='$nome', email='$email', endereco='$endereco', telefone='$telefone' WHERE id='$id'";
+        $sql  = "UPDATE usuario SET nome='$nome', email='$email', cnpj='$cnpj',endereco='$endereco', telefone='$telefone' WHERE id='$id'";
         mysqli_query($con, $sql);
         mysqli_close($con);
 
-        echo "<script lang='javascript'>window.location.href='pag_usuario.php';</script>";
+        echo "<script lang='javascript'>window.location.href='pag_instituicao.php';</script>";
     }
 ?>
 
 <script lang='javascript'>
     function voltar(){
-        window.location.href='pag_usuario.php';
+        window.location.href='pag_instituicao.php';
     }
 </script>

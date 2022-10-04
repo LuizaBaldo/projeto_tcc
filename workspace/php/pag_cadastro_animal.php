@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+    require_once './functions.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +13,10 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/pag_cadastro_usuario.css">
+    <link rel="stylesheet" href="../css/pag_cadastro_animal.css">
     <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
-    <script lang="javascript" src="../js/pag_cadastro_animal.js"></script>
+
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +25,7 @@
 </head>
     <body>
 
+        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
@@ -31,68 +34,82 @@
             <div id="formulario">
                 <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastro">
 
-                <div class="form" style="width:70%;margin:auto;">
+                <div class="form mt-5" style="width:70%;margin:auto;">
                     <div class="row">
+
                         <div class="mb-3">
-                            <label class="form-label">Nome do Animal</label>
-                            <input type="text" class="form-control" id="txtNome" placeholder="Digite o nome do animal" name="nome_animal"/>
+                            <label for="tipo">Selecione o tipo de animal:</label>
+                            <select name="tipoAnimal" id="tipoAnimal">
+                                <option value="cachorro">cachorro</option>
+                                <option value="gato">Gato</option>
+                                <option value="ave">Ave</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Idade do Animal</label>
-                            <input type="text" class="form-control" id="txtIdade" placeholder="Digite a idade do animal" name="idade"/>
+                                <label for="sexo">Selecione o sexo do animal:</label>
+                                <select name="sexoAnimal" id="sexoAnimal">
+                                    <option value="Femea">Fêmea</option>
+                                    <option value="Macho">Macho</option>
+                                </select>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Sexo do Animal</label>
-                            <input type="text" class="form-control" placeholder="Digite o sexo do animal" id="txtSexo" name="sexo"/>
+                            <label class="form-label">Nome do animal</label>
+                            <input type="text" class="form-control" id="txtNomeAnimal" placeholder="Digite nome do animal" name="nomeAnimal"/>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Raça do Animal</label>
-                            <input type="text" class="form-control" placeholder="Digite a raça do animal" id="txtRaca" name="raca"/>
+                            <label class="form-label">Idade do animal em anos ou meses</label>
+                            <input type="text" class="form-control" id="txtIdadeAnimal" placeholder="Digite a idade do animal em anos" name="idadeAnimal"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Raça do animal</label>
+                            <input type="text" class="form-control" placeholder="Digite a raça do animal" id="txtRacaAnimal" name="racaAnimal"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descrição do animal</label>
+                            <input type="text" class="form-control" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal"/>
                         </div> 
-
-                        <div class="mb-3">
-                            <label class="form-label">Descrição do Animal</label>
-                            <input type="text" class="form-control" placeholder="Digite uma breve descrição do animal" id="txtDescricao" name="descricao"/>
-                        </div>
-
                     </div>
 
                     <br/>
 
                     <div class="mb-3">
                         <div class="d-grid gap-2 col-6 mx-auto" style="background-color: #66C4A9;">
-                            <button type="button" class="btn text-white" id="btnCadastrar" name="btnCadastrar" onclick="validar();">Cadastrar</button>
+                            <button type="submit" class="btn text-white" id="btnCadastrar" name="btnCadastrar">Cadastrar</button>
                         </div>
                     </div>
 
                 </div>
                 </form>
-                
+
                 <?php
                 if(isset($_GET["salvar"])) cadastrarAnimal();
                 ?>
             </div>
         </div>
-        
+
     </body>
 </html>
 
 <?php
   function cadastrarAnimal(){
-    $nome_animal  = $_POST["nome_animal"];
-    $idade = $_POST["idade"];
-    $sexo = $_POST["sexo"];
-    $raca = $_POST["raca"];
-    $descricao = $_POST["descricao"];
-    
-    $con    = new mysqli("localhost", "root", "", "tcc");
-    $sql    = "insert into animal(nome_animal, idade, sexo, raca, descricao) values ('$nome_animal', '$idade', '$sexo', '$raca', '$descricao')";
-    mysqli_query($con, $sql);
+    $nomeAnimal   = $_POST["nomeAnimal"];
+    $idadeAnimal = $_POST["idadeAnimal"];
+    $sexoAnimal = $_POST["sexoAnimal"];
+    $racaAnimal  = $_POST["racaAnimal"];
+    $descAnimal  = $_POST["descAnimal"];
+    $tipoAnimal = $_POST["tipoAnimal"];
+    $id = $_SESSION["id"];
+    $con  = new mysqli("localhost", "root", "", "tcc");
+    $sql = "insert into animal(id_usuario, tipo_animal, nome_animal, idade, sexo, raca, descricao) values ( ?, ?, ?, ?, ?, ?, ?)";
+    $statement = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($statement, 'ississs', $id, $tipoAnimal, $nomeAnimal, $idadeAnimal, $sexoAnimal, $racaAnimal, $descAnimal);
+    mysqli_stmt_execute($statement);
     echo "<script lang='javascript'>window.location.href='pag_instituicao.php';</script>";
     mysqli_close($con);
   }
 ?>
-

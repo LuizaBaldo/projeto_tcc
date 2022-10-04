@@ -1,20 +1,16 @@
 <?php
-    session_start();
-    if(isset($_SESSION["nome_inst"])==false){
-        header("location: pag_login.php");
-    // }else{
-      // $id = $_SESSION["id"];
-      //  $con    = new mysqli("localhost", "root", "", "tcc");
-      // $sql    = "select * from usuario where id='$id'";
-      // $retorno = mysqli_query($con, $sql);
-    //   $reg = mysqli_fetch_array($retorno);
-       //print_r ($reg);
-      // $nome_usuario = $_SESSION["nome_usuario"];
-      // $endereco_usuario = $_SESSION["endereco_usuario"];      
-     //  $telefone_usuario = $_SESSION["telefone_usuario"];
-     //  $email_usuario  = $_SESSION["email_usuario"];
-    }
+    
+    require_once './functions.php';
 
+    if(isset($_SESSION["id"])==false){
+        header("location: pag_login.php");
+        exit();
+    }
+    $user = getUserLogged($_SESSION['id']);
+    if($user["tipo"] == 'USUARIO'){
+        header("location: pag_inicial.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +24,7 @@
     <!-- icons font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="../css/pag_usuario.css"> -->
+    <!-- <link rel="stylesheet" href="../css/pag.css"> -->
     <link rel="stylesheet" href="../css/styles.css">
     <!-- js -->
 
@@ -39,59 +35,57 @@
 </head>
     <body>
 
+        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
         
-        <div class="usuario_container container">
-            <div class="usuario_content">
+        <div class="instituicao_container container">
+            <div class="instituicao_content">
                 <div class="row">
                     <div class="col-4">
-                        <div class="usuario_img">
-                            <img src="../img/fotoPerfil.png" alt="" id="usuario_foto" style="width: 100%;">
+                        <div class="instituicao_img">
+                            <img src="../img/fotoPerfil.png" alt="" id="instituicao_foto" style="width: 100%;">
                             
-                            <a href="pag_alt_dados.php">
+                            <a href="pag_alt_dados_inst.php">
                                 <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
                             </a>
                             <br>
-
                             <a href="pag_alt_senha.php">
                                 <button type="button" class="btn btn-primary mb-1" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
-                            </a>
+                            </a>                 
                             <br>
-
-                            <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $_SESSION['id'];?>">
+                            <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $user['id'];?>">
                                 <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
                             </form>
                         </div>
                     </div>
                     <div class="col-8">                            
-                        <div class="usuario_info" style="padding: 0 15px 0 15px;width: 70%">
+                        <div class="instituicao_info" style="padding: 0 15px 0 15px;width: 70%">
                             <label>Nome</label> 
-                            <input  type="text" class="form-control" id="txtNome" name="nome_inst" disabled="true" value="<?php echo $_SESSION["nome_inst"];?>"/>
+                            <input  type="text" class="form-control" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
 
                             <label>E-mail</label>
-                            <input type="email" class="form-control" id="txtEmail" name="email_inst" disabled="true" value="<?php echo $_SESSION["email_inst"];?>"/>
+                            <input type="email" class="form-control" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
 
                             <label>CNPJ</label>
-                            <input type="text" class="form-control" id="txtCNPJ" name="cnpj" disabled="true" value="<?php echo $_SESSION["cnpj"];?>"/>
+                            <input type="text" class="form-control" id="txtCNPJ" name="cnpj" disabled="true" value="<?php echo $user["cnpj"];?>"/>
 
                             <label>Endereço</label>
-                            <input type="text" class="form-control" id="txtEndereco" name="endereco_inst" disabled="true" value="<?php echo $_SESSION["endereco_inst"];?>"/>
+                            <input type="text" class="form-control" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
 
                             <label>Telefone</label>
-                            <input type="text" class="form-control" id="nrTelefone" name="telefone_inst" disabled="true" value="<?php echo $_SESSION["telefone_inst"];?>"/>
+                            <input type="text" class="form-control" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
+                            
+                            <a href="pag_cadastro_animal.php">
+                                <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
+                            </a>
+
+                            <a href="pag_animais_instituicao.php">
+                                <button type="submit" class="btn btn-primary mt-3 mx-3">Visualizar Animais</button>
+                            </a>
+                            
                         </div>
-                        
-
-                        <a href="pag_cadastro_animal.php">
-                            <button type="button" class="btn btn-primary mt-3 mb-1 me-4" id="btnCadastrarAnimal" name="btnCadastrarAnimal">Cadastrar Animal</button>  
-                        </a>
-
-                        <a href="pag_visualizar_animal.php">
-                            <button type="button" class="btn btn-primary mt-3 mb-1" id="btnVisualizarAnimal" name="btnVisualizarAnimal">Visualizar Animal</button>                        
-                        </a>
-
                     </div>
                 </div>
             </div>
@@ -99,7 +93,7 @@
             
               if(isset($_GET["deletar"])) excluir();{
                 
-              }
+            }
             ?>
         </div>
 
@@ -110,7 +104,7 @@
     function excluir(){
         $id = $_GET['deletar'];
         $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql = "delete from instituicao where id = $id";
+        $sql = "delete from usuario where id = $id";
         mysqli_query($con, $sql);
         echo "<script lang='javascript'>window.location.href='sair.php';</script>";
         mysqli_close($con);
