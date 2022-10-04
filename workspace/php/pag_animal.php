@@ -83,7 +83,7 @@
                         <br>
                         <textarea id="comentario" name="comentario" rows="5" cols="33" placeholder="Digite seu comentario"></textarea>
                         <br>
-                        <input id="submit" type="submit" value="Comentar" style=" width: 10%;">
+                        <input id="submit" type="submit" value="Comentar" style=" width: 15%;">
                         <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
                     </form>
                 </div>
