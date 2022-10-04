@@ -49,64 +49,56 @@
     <title>Adot.org</title>
 </head>
     <body>
-
-
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
-        <div class="container"> 
-            <div class="d-flex flex-wrap align-content-center">
-                <?php 
-                    echo "<div class='col-6 text-center p-3 '>";
-                        echo "<div class='border'>";
-                            echo '<h2>';
-                            echo 'tipo do animal: '.$animal['tipo_animal'];
-                            echo '<br>';
-                            echo 'nome do animal: '.$animal['nome_animal'];
-                            echo '<br>';
-                            echo 'idade do animal: '.$animal['idade'];
-                            echo '<br>';
-                            echo 'sexo do animal: '.$animal['sexo']; 
-                            echo '<br>';
-                            echo 'raça do animal: '.$animal['raca'];
-                            echo '<br>';
-                            echo 'descrição do animal: '.$animal['descricao'];
-                        echo '</div>';
+        <div class="d-flex flex-column align-items-center">
+            <?php 
+                echo "<div class='col-6 text-center p-3 '>";
+                    echo "<div class='border'>";
+                        echo '<h2>';
+                        echo 'tipo do animal: '.$animal['tipo_animal'];
+                        echo '<br>';
+                        echo 'nome do animal: '.$animal['nome_animal'];
+                        echo '<br>';
+                        echo 'idade do animal: '.$animal['idade'];
+                        echo '<br>';
+                        echo 'sexo do animal: '.$animal['sexo']; 
+                        echo '<br>';
+                        echo 'raça do animal: '.$animal['raca'];
+                        echo '<br>';
+                        echo 'descrição do animal: '.$animal['descricao'];
                     echo '</div>';
-                ?>
-            </div>
-        </div>
-        <div class="container">
-            <form method="post" action="guardar_comentario.php" style="display: flexbox ">
-                <input type="text" name="nome" placeholder="nome" style="width: 22%">
-                <br>
-                <input type="text" name="email" placeholder="email" style="width: 22%">
-                <br>
-                <textarea id="comentario" name="comentario" rows="5" cols="33" placeholder="Digite seu comentario"></textarea>
-                <br>
-                <input id="submit" type="submit" value="Comentar" style=" width: 10%;">
-                <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
-            </form>
-        </div>
-
-        <div class="container">
+                echo '</div>';
+            ?>
             
-                <?php
-                    foreach ($comentarios as $comentario){
-                    echo '<div class="row" style="background-color:;">';     
-                    echo $comentario['nome'];
-                    echo '<br>';
-                    echo $comentario['conteudo'];
-                    echo '</div>';
-                    }
-                ?>
-
-            </div>
-
         </div>
-    
-        
+        <div class="container d-flex align-items-center">
+                <div class="container">
+                    <form method="post" action="guardar_comentario.php" style="display: flexbox ">
+                        <input type="text" name="nome" placeholder="nome" style="width: 42%">
+                        <br>
+                        <input type="text" name="email" placeholder="email" style="width: 42%">
+                        <br>
+                        <textarea id="comentario" name="comentario" rows="5" cols="33" placeholder="Digite seu comentario"></textarea>
+                        <br>
+                        <input id="submit" type="submit" value="Comentar" style=" width: 10%;">
+                        <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
+                    </form>
+                </div>
+                <div class="container" style="flex-grow:3;">
+                    <?php
+                        foreach ($comentarios as $comentario){
+                        echo '<div class="row" style="padding: 10px">';     
+                        echo "<b>".$comentario['nome']."</b>";
+                        echo '<br>';
+                        echo "<p style='margin-top:10px'>".$comentario['conteudo']."</p>";
+                        echo '</div>';
+                        }
+                    ?>
+                </div>
+            </div>
     </body>
 </html>
 

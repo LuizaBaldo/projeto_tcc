@@ -102,8 +102,10 @@
         echo "<script lang='javascript'>alert('email já cadastrado no sistema');</script>";
         return;
     }   
-    $sql    = "insert into usuario(nome, endereco, telefone, email, senha) values ('$nome', '$endereco', '$telefone', '$email', '$senha')";
-    mysqli_query($con, $sql);
+    $sql = "insert into usuario(nome, endereco, telefone, email, senha) values (?, ?, ?, ?, ?)";
+    $statement = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($statement, 'sssss', $nome, $endereco, $telefone, $email, $senha);
+    mysqli_stmt_execute($statement);
     echo "<script lang='javascript'>window.location.href='pag_login.php';</script>";
     mysqli_close($con);
   }
