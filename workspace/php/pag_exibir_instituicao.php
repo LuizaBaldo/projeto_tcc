@@ -41,7 +41,7 @@
             require_once './partials/common.php';
         ?>
         <div class="container"> 
-            <div class="d-flex flex-wrap align-content-center">
+            <div class="d-flex flex-column align-items-center   ">
                 <?php 
                     echo "<div class='col-6 text-center p-3 '>";
                         echo "<div class='border'>";
