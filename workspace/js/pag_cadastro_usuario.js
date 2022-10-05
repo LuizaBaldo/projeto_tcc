@@ -36,5 +36,5 @@ function validar(){
     nrTelefone.value = "";
     return false;
   }
-  formCadastro.submit();
+  formCadastroUsuario.submit();
 }

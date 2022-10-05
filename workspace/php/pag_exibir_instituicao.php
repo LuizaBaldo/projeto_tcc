@@ -39,6 +39,7 @@
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
+            
         ?>
         <div class="container"> 
             <div class="d-flex flex-column align-items-center   ">
@@ -60,6 +61,9 @@
                 ?>
             </div>
         </div>
+
+
+
     </body>
 </html>
 

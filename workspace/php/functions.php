@@ -5,3 +5,5 @@
         $retorno = mysqli_query($con, "select * from usuario where id='$id'");
         return mysqli_fetch_array($retorno);
     }
+
+

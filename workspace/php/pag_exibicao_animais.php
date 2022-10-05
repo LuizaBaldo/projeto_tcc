@@ -7,7 +7,7 @@
         $con = new mysqli("localhost", "root", "", "tcc");
         $sql = "select * from animal ";
         if(!empty($filtro)){
-            $sql = $sql.'where nome_animal like "%'.$filtro.'%" or tipo_animal = "'.$filtro.'" or raca like "%'.$filtro.'%"';
+            $sql = $sql.'where nome_animal like "%'.$filtro.'%" or tipo_animal = "'.$filtro.'" or raca like "%'.$filtro.'%" or sexo = "'.$filtro.'"';
         }
         $retorno = mysqli_query($con, $sql);
         $rows = array();

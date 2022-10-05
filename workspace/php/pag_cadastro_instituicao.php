@@ -31,7 +31,7 @@
         <div class="container">
             <h1 class="text-center">Cadastrar Instituição</h1>
             <div id="formulario">
-                <form method="post" action="pag_cadastro_instituicao.php?salvar=1" id="formCadastro">
+                <form method="post" action="pag_cadastro_instituicao.php?salvar=1" id="formCadastroInst">
 
                 <div class="form" style="width:70%;margin:auto;">
                     <div class="row">
