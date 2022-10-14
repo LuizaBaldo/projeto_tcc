@@ -29,8 +29,6 @@
         <?php
             require_once './partials/common.php';
         ?>
-<<<<<<< HEAD
-
 
         <div class="container_main">
             <div class="row justify-content-center">
@@ -89,60 +87,6 @@
                         ?>
                     </div>                
                 </div>
-=======
-        <div class="container">
-            <h1 class="text-center">Cadastrar usuário</h1>
-            <div id="formulario">
-                <form method="post" action="pag_cadastro_usuario.php?salvar=1" id="formCadastroUsuario">
-
-                <div class="form" style="width:70%;margin:auto;">
-                    <div class="row">
-                        <div class="mb-3">
-                            <label class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="txtNome" placeholder="Digite um nome" name="nome"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="txtEmail" placeholder="Digite um e-mail" name="email"/>
-                        </div>
-                    
-
-                        <div class="mb-3">
-                            <label class="form-label">Senha</label>
-                            <input type="password" class="form-control" placeholder="Digite uma senha" id="txtSenha" name="senha"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Confirme a senha</label>
-                            <input type="password" class="form-control" placeholder="Confirme a senha" id="txtConfirSenha" name="confirmaSenha"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Digite um endereço com numero" id="txtEndereco" name="endereco"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Telefone</label>
-                            <input type="text" class="form-control" placeholder="Digite um telefone" id="nrTelefone" name="telefone"/>
-                        </div>
-                    </div>
-
-                    <br/>
-
-                    <div class="mb-3">
-                        <div class="d-grid gap-2 col-6 mx-auto" style="background-color: #66C4A9;">
-                            <button type="button" class="btn text-white" id="btnCadastrar" name="btnCadastrar" onclick="validar();">Cadastrar</button>
-                        </div>
-                    </div>
-
-                </div>
-                </form>
-
-                <?php
-                if(isset($_GET["salvar"])) cadastrarUsuario();
-                ?>
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
             </div>
         </div>
         
@@ -164,15 +108,10 @@
         echo "<script lang='javascript'>alert('email já cadastrado no sistema');</script>";
         return;
     }   
-<<<<<<< HEAD
-    $sql    = "insert into usuario(nome, endereco, telefone, email, senha) values ('$nome', '$endereco', '$telefone', '$email', '$senha')";
-    mysqli_query($con, $sql);
-=======
     $sql = "insert into usuario(nome, endereco, telefone, email, senha) values (?, ?, ?, ?, ?)";
     $statement = mysqli_prepare($con, $sql);
     mysqli_stmt_bind_param($statement, 'sssss', $nome, $endereco, $telefone, $email, $senha);
     mysqli_stmt_execute($statement);
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
     echo "<script lang='javascript'>window.location.href='pag_login.php';</script>";
     mysqli_close($con);
   }

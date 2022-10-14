@@ -46,22 +46,21 @@
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
                 <?php foreach ($instituicoes as $instituicao){
-                echo "<div class='col-6 text-center p-3 '>";
-                    echo '<a href="pag_exibir_instituicao.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit; ">';
-                        echo "<div class='border'>";
-                            echo 'Nome da instituicao: '.$instituicao['nome'];
-                            echo '<br>';
-                            echo 'endereco da instituicao: '.$instituicao['endereco'];
-                            echo '<br>';
-                            echo 'telefone da instituicao: '.$instituicao['telefone'];
-                            echo '<br>';
-                            echo 'email da instituicao: '.$instituicao['email']; 
-                            echo '<br>';
-                            echo 'cnpj da instituicao: '.$instituicao['cnpj'];
-                        echo '</div>';  
-                    echo '</a>';    
-                echo '</div>';
-<<<<<<< HEAD
+                    echo "<div class='col-6 text-center p-3 '>";
+                        echo '<a href="pag_exibir_instituicao.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit; ">';
+                            echo "<div class='border'>";
+                                echo 'Nome da instituicao: '.$instituicao['nome'];
+                                echo '<br>';
+                                echo 'endereco da instituicao: '.$instituicao['endereco'];
+                                echo '<br>';
+                                echo 'telefone da instituicao: '.$instituicao['telefone'];
+                                echo '<br>';
+                                echo 'email da instituicao: '.$instituicao['email']; 
+                                echo '<br>';
+                                echo 'cnpj da instituicao: '.$instituicao['cnpj'];
+                            echo '</div>';  
+                        echo '</a>';    
+                    echo '</div>';
                 // TESTE CARD 
                 // echo '<div class="container_exibir">';
                 //     echo '<div class="row justify-content-around">';
@@ -76,26 +75,10 @@
                 //     echo '</div>';
                 // echo '</div>';
 
-
-=======
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
-            }?>
+                }?>
 
             </div>
         </div>
 
-<<<<<<< HEAD
-
-
-
     </body>
 </html>
-=======
-  
-       
-
-    </body>
-</html>
-
-?>
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
