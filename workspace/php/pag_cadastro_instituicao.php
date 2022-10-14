@@ -28,14 +28,13 @@
         <?php
             require_once './partials/common.php';
         ?>
-<<<<<<< HEAD
         <div class="container_main">
             <div class="row justify-content-center">
                 <div class="card w-75" style="background-color: #66C4A9;">
                     <h1 class="text-center" style="color: white;">Cadastrar Instituição</h1>
 
                     <div class="card-header" id="formulario">
-                        <form method="post" action="pag_cadastro_instituicao.php?salvar=1" id="formCadastro">
+                        <form method="post" action="pag_cadastro_instituicao.php?salvar=1" id="formCadastroInst">
 
                         <div class="form" style="width:70%;margin:auto;">
                             <div class="row">
@@ -92,66 +91,6 @@
                         ?>
                     </div>                
                 </div>                
-=======
-        <div class="container">
-            <h1 class="text-center">Cadastrar Instituição</h1>
-            <div id="formulario">
-                <form method="post" action="pag_cadastro_instituicao.php?salvar=1" id="formCadastroInst">
-
-                <div class="form" style="width:70%;margin:auto;">
-                    <div class="row">
-                        <div class="mb-3">
-                            <label class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="txtNome" placeholder="Digite o nome da instituição" name="nome"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" id="txtEmail" placeholder="Digite o email da instituição" name="email"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">CNPJ</label>
-                            <input type="text" class="form-control" id="txtCNPJ" placeholder="Digite o CNPJ da instituição" name="cnpj"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Endereço</label>
-                            <input type="text" class="form-control" placeholder="Digite o endereço da instituição" id="txtEndereco" name="endereco"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Telefone</label>
-                            <input type="text" class="form-control" placeholder="Digite o telefone da instituição" id="nrTelefone" name="telefone"/>
-                        </div> 
-
-                        <div class="mb-3">
-                            <label class="form-label">Senha</label>
-                            <input type="password" class="form-control" placeholder="Digite uma senha" id="txtSenha" name="senha"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Confirme a senha</label>
-                            <input type="password" class="form-control" placeholder="Confirme a senha" id="txtConfirSenha" name="confirmaSenha"/>
-                        </div>
-
-                    </div>
-
-                    <br/>
-
-                    <div class="mb-3">
-                        <div class="d-grid gap-2 col-6 mx-auto" style="background-color: #66C4A9;">
-                            <button type="button" class="btn text-white" id="btnCadastrar" name="btnCadastrar" onclick="validar();">Cadastrar</button>
-                        </div>
-                    </div>
-
-                </div>
-                </form>
-
-                <?php
-                if(isset($_GET["salvar"])) cadastrarInstituicao();
-                ?>
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
             </div>
         </div>
         
@@ -165,7 +104,7 @@
     $endereco = $_POST["endereco"];
     $telefone = $_POST["telefone"];
     $email  = $_POST["email"];
-    $senha  = $_POST["senha"];
+    $senha  = password_hash($_POST["senha"], PASSWORD_BCRYPT);
     $cnpj = $_POST["cnpj"];
     $emailexistente = "select count(*) as count from usuario where email = '$email'";
     $tipo = 'INSTITUICAO';

@@ -36,9 +36,5 @@ function validar(){
     nrTelefone.value = "";
     return false;
   }
-<<<<<<< HEAD
-  formCadastro.submit();
-=======
   formCadastroUsuario.submit();
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
 }

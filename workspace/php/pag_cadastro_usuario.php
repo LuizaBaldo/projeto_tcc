@@ -36,7 +36,7 @@
                     <h1 class="text-center" style="color: white;">Cadastrar usuário</h1>
                     
                     <div id="formulario">
-                        <form method="post" action="pag_cadastro_usuario.php?salvar=1" id="formCadastro">
+                        <form method="post" action="pag_cadastro_usuario.php?salvar=1" id="formCadastroUsuario">
 
                         <div class="form" style="width:70%;margin:auto;">
                             <div class="row">
@@ -99,7 +99,7 @@
     $endereco = $_POST["endereco"];
     $telefone = $_POST["telefone"];
     $email  = $_POST["email"];
-    $senha  = $_POST["senha"];
+    $senha  = password_hash($_POST["senha"], PASSWORD_BCRYPT);
     $emailexistente = "select count(*) as count from usuario where email = '$email'";
     $con  = new mysqli("localhost", "root", "", "tcc");
     $retorno = mysqli_query($con, $emailexistente);

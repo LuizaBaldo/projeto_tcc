@@ -32,11 +32,7 @@
         <div class="container">
             <h1 class="text-center">Cadastrar Animal</h1>
             <div id="formulario">
-<<<<<<< HEAD
-                <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastro">
-=======
                 <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastroAnimal">
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
 
                 <div class="form mt-5" style="width:70%;margin:auto;">
                     <div class="row">
@@ -64,13 +60,8 @@
                         </div>
 
                         <div class="mb-3">
-<<<<<<< HEAD
                             <label class="form-label">Idade do animal em anos ou meses</label>
                             <input type="text" class="form-control" id="txtIdadeAnimal" placeholder="Digite a idade do animal em anos" name="idadeAnimal"/>
-=======
-                            <label class="form-label">Idade estimada do animal em anos</label>
-                            <input type="text" class="form-control" id="txtIdadeAnimal" placeholder="Digite a idade estimada do animal em anos" name="idadeAnimal"/>
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
                         </div>
 
                         <div class="mb-3">
@@ -80,11 +71,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Descrição do animal</label>
-<<<<<<< HEAD
                             <input type="text" class="form-control" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal"/>
-=======
-                            <textarea type="text" class="form-control" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal"></textarea>
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
                         </div> 
                     </div>
 

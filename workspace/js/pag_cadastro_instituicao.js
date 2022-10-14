@@ -42,10 +42,6 @@ function validar(){
     txtConfirSenha.value = "";
     return false;
   }
-<<<<<<< HEAD
-  formCadastro.submit();
-=======
   formCadastroInst.submit();
->>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
 }
 
