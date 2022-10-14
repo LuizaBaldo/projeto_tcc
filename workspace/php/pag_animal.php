@@ -55,9 +55,9 @@
         <?php
             require_once './partials/common.php';
         ?>
-        <div class="container"> 
+        <!-- <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
-                <?php 
+                 
                     echo "<div class='col-6 text-center p-3 '>";
                         echo "<div class='border'>";
                             echo '<h2>';
@@ -76,37 +76,77 @@
                     echo '</div>';
                 ?>
             </div>
-        </div>
-        <div class="container">
-            <form method="post" action="guardar_comentario.php" style="display: flexbox ">
-                <input type="text" name="nome" placeholder="nome" style="width: 22%">
-                <br>
-                <input type="text" name="email" placeholder="email" style="width: 22%">
-                <br>
-                <textarea id="comentario" name="comentario" rows="5" cols="33" placeholder="Digite seu comentario"></textarea>
-                <br>
-                <input id="submit" type="submit" value="Comentar" style=" width: 10%;">
-                <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
-            </form>
-        </div>
+        </div> -->
+        <div class="container_main">
+            <div class="row">
 
-        <div class="container">
-            
-                <?php
-                    foreach ($comentarios as $comentario){
-                    echo '<div class="row" style="background-color:;">';     
-                    echo $comentario['nome'];
-                    echo '<br>';
-                    echo $comentario['conteudo'];
-                    echo '</div>';
-                    }
-                ?>
+                <!-- CONTAINER IMG + INFO -->
+                <div class="container_body">
+                    <div class="row justify-content-around">
+                        <div class="container_img col-3" style="background-color: #66C4A9;">
+                            <img src="../img/Novo_Projeto.jpg" style="width: 100px;">
+                        </div>
+
+                        <div class="container_about col-6" style="background-color: #66C4A9;">                           
+                            <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
+                                <label>Tipo do Animal</label> 
+                                <input  type="text" class="form-control" id="txtTipoAnimal" name="tipoAnimal" disabled="true" value="<?php echo $animal["tipo_animal"];?>"/>
+
+                                <label>Nome</label>
+                                <input type="email" class="form-control" id="txtNomeAnimal" name="nomeAnimal" disabled="true" value="<?php echo $animal["nome_animal"];?>"/>
+
+                                <label>Idade</label>
+                                <input type="text" class="form-control" id="txtIdade" name="idade" disabled="true" value="<?php echo $animal["idade"];?>"/>
+
+                                <label>Sexo</label>
+                                <input type="text" class="form-control" id="txtSexo" name="sexo" disabled="true" value="<?php echo $animal["sexo"];?>"/>
+
+                                <label>Raça</label>
+                                <input type="text" class="form-control" id="txtRaca" name="raca" disabled="true" value="<?php echo $animal["raca"];?>"/>
+
+                                <label>Descrição</label>
+                                <input type="text" class="form-control" id="txtDescricao" name="descricao" disabled="true" value="<?php echo $animal["descricao"];?>"/>
+                                
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                <!-- CONTIANER REALIZAR COMENTARIO + COMENTARIO -->
+                <div class="container_footer">
+                    <div class="row justify-content-around">
+                        <div class="container_comentar col-3" style="background-color: #66C4A9;">
+                            <form method="post" action="guardar_comentario.php" style="display: flexbox ">
+                                <input type="text" name="nome" placeholder="nome" style="width: 22%">
+                                <br>
+                                <input type="text" name="email" placeholder="email" style="width: 22%">
+                                <br>
+                                <textarea id="comentario" name="comentario" rows="5" cols="33" placeholder="Digite seu comentario"></textarea>
+                                <br>
+                                <input id="submit" type="submit" value="Comentar" style=" width: 10%;">
+                                <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
+                            </form>
+                        </div>
+
+                        <div class="container_coment col-5" style="background-color: #66C4A9;">
+                            
+                                <?php
+                                    foreach ($comentarios as $comentario){
+                                    echo '<div class="row" style="background-color:;">';     
+                                    echo $comentario['nome'];
+                                    echo '<br>';
+                                    echo $comentario['conteudo'];
+                                    echo '</div>';
+                                    }
+                                ?>
+
+                        </div>              
+                    </div>
+                </div>    
 
             </div>
-
         </div>
-    
-        
+
     </body>
 </html>
 

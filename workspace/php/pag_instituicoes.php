@@ -61,10 +61,28 @@
                         echo '</div>';  
                     echo '</a>';    
                 echo '</div>';
+                // TESTE CARD 
+                // echo '<div class="container_exibir">';
+                //     echo '<div class="row justify-content-around">';
+                //         echo '<div class="card col-3" style="width:400px">';
+                //             echo '<img class="card-img-top" src="../img/img_avatar1.png" alt="Card image">';
+                //             echo '<div class="card-body">';
+                //                 echo '<h4 class="card-title">' ".$instituicao['nome']"; '</h4>';
+                //                 echo '<p class="card-text">' ".$instituicao['endereco']" '</p>';
+                //                 echo '<a href="pag_exibir_instituicao.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit;">Veja Mais</a>';
+                //             echo '</div>';
+                //         echo '</div>';
+                //     echo '</div>';
+                // echo '</div>';
+
+
             }?>
 
             </div>
         </div>
+
+
+
 
     </body>
 </html>

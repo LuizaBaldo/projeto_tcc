@@ -12,8 +12,8 @@
 <div class="header">  
     <nav class="navbar navbar-light mb-3" style="background-color: #4C79D5;">                
         <div class="container-fluid" id="header_conteainer">
-            <a href="#"><img src="" id="logo" /></a>
-            <div class="headerTitle"><h2>Adot.org</h2></div>
+            <a href="pag_inicial.php"><img src="../img/Novo_Projeto.png" id="logo" style="width: 100px;"/></a>
+            <div class="headerTitle"></div>
 
                 <!-- Barra de Consultas -->
                 <form action="pag_exibicao_animais.php" method="GET">
