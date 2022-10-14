@@ -7,7 +7,11 @@
         $con = new mysqli("localhost", "root", "", "tcc");
         $sql = "select * from animal ";
         if(!empty($filtro)){
+<<<<<<< HEAD
             $sql = $sql.'where nome_animal like "%'.$filtro.'%" or tipo_animal = "'.$filtro.'" or raca like "%'.$filtro.'%"';
+=======
+            $sql = $sql.'where nome_animal like "%'.$filtro.'%" or tipo_animal = "'.$filtro.'" or raca like "%'.$filtro.'%" or sexo = "'.$filtro.'"';
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
         }
         $retorno = mysqli_query($con, $sql);
         $rows = array();

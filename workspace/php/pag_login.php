@@ -29,6 +29,7 @@
         <?php
             require_once './partials/common.php';
         ?>
+<<<<<<< HEAD
         <div class="container_main">
           <div class="row justify-content-around">
             <!-- CONTAINER LOGIN -->
@@ -68,6 +69,40 @@
           </div>
         </div>
 
+=======
+
+        <div class="container row" id="jaCadastroDiv">
+          <p class="display-6" id="jaCadastro">Já tenho cadastro</p>
+            <form method="post" action="pag_login.php?logar=1" class="needs-validation" id="formLogin">
+                <div class="mb-3" id="divEmail">
+                  <label class="form-label" for=txtEmailLogin>E-mail</label>
+                  <input type="email" class="form-control" id="txtEmailLogin" name="email" required />
+                </div>
+
+                <div class="mb-3" id="divSenha">
+                  <label class="form-label" for="txtSenhaLogin">Senha</label>
+                  <input type="password" class="form-control" id="txtSenhaLogin" name="senha" required />
+                </div>
+                <div class="d-grid gap-2 col-4 mx-auto" id="divBotaoLogar">
+                  <button type="button" class="btn mt-3" id="btnLogar" onclick="validaLogin();" style="background-color: #66C4A9; color: white;">Logar</button>
+                </div>
+            </form>
+
+            <?php
+              if(isset($_GET["logar"])) logarUsuario();
+            ?>
+            <div class="d-grid gap-2 col-4 mx-auto">
+                <a href="Pag_Esq_Senha.html" id="esqueciSenha" class="btn btn-link" style="color: #4C79D5;">Esqueci a senha</a>
+            </div>
+        </div>
+
+        <div class="container row" id="cadastro">
+            <div class="d-grid gap-2">
+                <a href="pag_cadastro_instituicao.php" class="btn btn-lg" id="btnCadInst" style="background-color: #66C4A9; color: white;">Cadastrar Instituição</a>
+                <a href="pag_cadastro_usuario.php" class="btn btn-lg" id="btnCadUsu" style="background-color: #66C4A9; color: white;">Cadastrar Usuário</a>
+            </div>
+        </div>
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
         
 
     </body>

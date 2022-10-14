@@ -39,9 +39,16 @@
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
+<<<<<<< HEAD
         ?>
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
+=======
+            
+        ?>
+        <div class="container"> 
+            <div class="d-flex flex-column align-items-center   ">
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
                 <?php 
                     echo "<div class='col-6 text-center p-3 '>";
                         echo "<div class='border'>";
@@ -60,6 +67,12 @@
                 ?>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
     </body>
 </html>
 

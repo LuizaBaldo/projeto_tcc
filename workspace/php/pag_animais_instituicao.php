@@ -22,12 +22,17 @@
             $rows[] = $row;
         }
         return $rows;
+<<<<<<< HEAD
         
 
     }
     $animais = getAnimal($user);
 
     
+=======
+    }
+    $animais = getAnimal($user);
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +62,7 @@
         <?php
             require_once './partials/common.php';
         ?>
+<<<<<<< HEAD
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
                 <?php foreach ($animais as $animal){
@@ -73,11 +79,37 @@
                     echo '</div>';
                 }?>
 
+=======
+
+        <div class="container"> 
+            <div class="d-flex flex-wrap align-content-center">
+                <?php foreach ($animais as $animal){
+                    echo "<div class='col-6 text-center p-3 '>";
+                        echo '<a href="pag_animal.php?id='.$animal['id'].'" ; style="text-decoration: none; color:inherit; ">';
+                            echo "<div class='border'>";
+                                echo 'tipo do animal: '.$animal['tipo_animal'];
+                                echo '<br>';
+                                echo 'nome do animal: '.$animal['nome_animal'];
+                                echo '<br>';
+                                echo 'idade do animal: '.$animal['idade'];
+                                echo '<br>';
+                                echo 'sexo do animal: '.$animal['sexo']; 
+                                echo '<br>';
+                                echo 'raça do animal: '.$animal['raca'];
+                                echo '<br>';
+                            echo '</div>';
+                        echo '</a>';
+                    echo '</div>';
+                }?>
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
             </div>
         </div>
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
     </body>
 </html>

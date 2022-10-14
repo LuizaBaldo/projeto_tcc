@@ -78,13 +78,25 @@
                             <input type="text" class="form-control" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
                             
                             <a href="pag_cadastro_animal.php">
+<<<<<<< HEAD
                                 <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
                             </a>
 
+=======
+                                <button type="submit" class="btn btn-primary mt-3 mx-3">Cadastrar Animal</button>
+                            </a>
+                            
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
                             <a href="pag_animais_instituicao.php">
                                 <button type="submit" class="btn btn-primary mt-3 mx-3">Visualizar Animais</button>
                             </a>
                             
+<<<<<<< HEAD
+=======
+                            <a href="pag_alt_dados_animal.php">
+                                <button type="submit" class="btn btn-primary mt-3 mx-3">Alterar Animais</button>
+                            </a>
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
                         </div>
                     </div>
                 </div>

@@ -61,6 +61,7 @@
                         echo '</div>';  
                     echo '</a>';    
                 echo '</div>';
+<<<<<<< HEAD
                 // TESTE CARD 
                 // echo '<div class="container_exibir">';
                 //     echo '<div class="row justify-content-around">';
@@ -76,13 +77,25 @@
                 // echo '</div>';
 
 
+=======
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
             }?>
 
             </div>
         </div>
 
+<<<<<<< HEAD
 
 
 
     </body>
 </html>
+=======
+  
+       
+
+    </body>
+</html>
+
+?>
+>>>>>>> d0c92b6b452468fcc630a1a6c5ff66a84bd36b57
