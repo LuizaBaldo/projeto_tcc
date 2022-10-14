@@ -9,7 +9,7 @@
     
 ?>
 
-<div class="header">            
+<div class="header">  
     <nav class="navbar navbar-light mb-3" style="background-color: #4C79D5;">                
         <div class="container-fluid" id="header_conteainer">
             <a href="#"><img src="" id="logo" /></a>
