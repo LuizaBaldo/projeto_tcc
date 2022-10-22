@@ -3,14 +3,21 @@
 ?>
 
 <?php
-    function buscaInstituicaoId($id){
-        $con = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from usuario where id = $id ";
-        $retorno = mysqli_query($con, $sql);
-        $instituicao = mysqli_fetch_array($retorno);
-        return $instituicao;
-    }
     $instituicao = buscaInstituicaoId($_GET['id']);
+?>
+
+<?php
+    function getAnimal($id){
+        $con = new mysqli("localhost", "root", "", "tcc");
+        $sql = "select * from animal where id_usuario = '$id'";
+        $retorno = mysqli_query($con, $sql);
+        $rows = array();
+        while($row = mysqli_fetch_array($retorno)) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+    $animais = getAnimal($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +65,9 @@
                         echo '</div>';
                     echo '</div>';
                 ?>
+            </div>
+            <div class="">
+                <?php imprimirAnimais($animais)?>
             </div>
         </div>
     </body>

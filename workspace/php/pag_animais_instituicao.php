@@ -26,7 +26,7 @@
 
     }
     $animais = getAnimal($user);
-
+    
     
 ?>
 
@@ -60,24 +60,8 @@
 
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
-                <?php foreach ($animais as $animal){
-                    echo "<div class='col-6 text-center p-3 '>";
-                        echo '<a href="pag_animal.php?id='.$animal['id'].'" ; style="text-decoration: none; color:inherit; ">';
-                            echo "<div class='border'>";
-                                echo 'tipo do animal: '.$animal['tipo_animal'];
-                                echo '<br>';
-                                echo 'nome do animal: '.$animal['nome_animal'];
-                                echo '<br>';
-                                echo 'idade do animal: '.$animal['idade'];
-                                echo '<br>';
-                                echo 'sexo do animal: '.$animal['sexo']; 
-                                echo '<br>';
-                                echo 'raça do animal: '.$animal['raca'];
-                                echo '<br>';
-                            echo '</div>';
-                        echo '</a>';
-                    echo '</div>';
-                }?>
+            <?php imprimirAnimais($animais)
+            ?>
 
             </div>
         </div>

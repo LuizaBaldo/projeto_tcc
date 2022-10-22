@@ -3,14 +3,11 @@
 ?>
 
 <?php
-    function buscaAnimalId($id){
-        $con = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from animal where id = $id ";
-        $retorno = mysqli_query($con, $sql);
-        $animal = mysqli_fetch_array($retorno);
-        return $animal;
-    }
-    $animal = buscaAnimalId($_GET['id']);
+    $animal = buscaAnimalPorId($_GET['id']);
+?>
+
+<?php 
+    $instituicao = buscaInstituicaoId($animal['id_usuario']);
 ?>
 
 <?php
@@ -55,28 +52,6 @@
         <?php
             require_once './partials/common.php';
         ?>
-        <!-- <div class="container"> 
-            <div class="d-flex flex-wrap align-content-center">
-                 
-                    echo "<div class='col-6 text-center p-3 '>";
-                        echo "<div class='border'>";
-                            echo '<h2>';
-                            echo 'tipo do animal: '.$animal['tipo_animal'];
-                            echo '<br>';
-                            echo 'nome do animal: '.$animal['nome_animal'];
-                            echo '<br>';
-                            echo 'idade do animal: '.$animal['idade'];
-                            echo '<br>';
-                            echo 'sexo do animal: '.$animal['sexo']; 
-                            echo '<br>';
-                            echo 'raça do animal: '.$animal['raca'];
-                            echo '<br>';
-                            echo 'descrição do animal: '.$animal['descricao'];
-                        echo '</div>';
-                    echo '</div>';
-                ?>
-            </div>
-        </div> -->
         <div class="container_main">
             <div class="row">
 
@@ -85,6 +60,7 @@
                     <div class="row justify-content-around">
                         <div class="container_img col-3" style="background-color: #66C4A9;">
                             <img src="../img/Novo_Projeto.jpg" style="width: 100px;">
+                            <h1><a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a></h1> <!-- MOSTRA A INSTIUICAO DO ANIMAL -->
                         </div>
 
                         <div class="container_about col-6" style="background-color: #66C4A9;">                           
@@ -111,7 +87,7 @@
                         </div>                
                     </div>
                 </div>
-
+                <div></div>
                 <!-- CONTIANER REALIZAR COMENTARIO + COMENTARIO -->
                 <div class="container_footer">
                     <div class="row justify-content-around">
