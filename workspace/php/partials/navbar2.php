@@ -3,7 +3,7 @@
     $user = null;
     if(isset($_SESSION["id"]) == true){
         $has_session = true;
-        $user = getUserLogged($_SESSION["id"]);
+        $user = getUserLogged();
     }
     
     

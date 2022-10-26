@@ -5,7 +5,64 @@
         exit();
     }
     
-    $user = getUserLogged($_SESSION['id']);
+    $user = getUserLogged();
+?>
+
+<?php 
+    $id = $_SESSION['id'];
+    if (isset($_FILES["arquivo"])) {
+        $arquivo = $_FILES['arquivo'];
+        // Validar se o arquivo não esta vazio
+        if (!empty($arquivo["name"])) {
+            $nomeDoArquivo = $arquivo["name"];
+    
+            $arquivoValido = true;
+    
+            // Validar se o arquivo já existe
+            if (file_exists($nomeDoArquivo)) {
+                echo "<script lang='javascript'>alert('Arquivo ja existe.')</script>";
+                $arquivoValido = false;
+            }
+    
+            // validar extensao do arquivo
+            $tipoDoArquivo = array(
+                'jpg',
+                'jpeg',
+                'png'
+            );
+            $nomeDoArquivo = $arquivo['name'];
+            $novoNomeDoArquivo = uniqid();
+            $pasta = '../img/';
+            $extensaoDoArquivo = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+            if (! in_array($extensaoDoArquivo, $tipoDoArquivo)) {
+                echo "<script lang='javascript'>alert('Arquivo não suportado. formatos aceitos: " . implode(", ", $tipoDoArquivo) . "');</script>";
+                $arquivoValido = false;
+            }
+    
+            // Validate file size
+            if ($_FILES["arquivo"]["size"] > 200000) {
+                echo "<span>File is too large to upload.</span>";
+                $arquivoValido = 0;
+            }
+            
+            $path = $pasta . $novoNomeDoArquivo . "." . $extensaoDoArquivo;
+
+            if ($arquivoValido) {
+                move_uploaded_file($arquivo["tmp_name"], $path);
+                $con  = new mysqli("localhost", "root", "", "tcc");
+                $sql = "update usuario set pathImagem = ? where id = $id";
+                $statement = mysqli_prepare($con, $sql);
+                mysqli_stmt_bind_param($statement, 's', $path);
+                mysqli_stmt_execute($statement);
+                mysqli_close($con);
+                //echo "<p> arquivo enviado com sucesso <a href='img/$novoNomeDoArquivo.$extensaoDoArquivo'> clique aqui </a></p>";
+            }
+            else{
+                echo "falha ao enviar arquivo";
+            }
+        } else 
+            echo "No files have been chosen.";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +99,13 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="usuario_img">
-                            <img src="../img/fotoPerfil.png" alt="" id="usuario_foto" style="width: 100%;">
-                            <a href="pag_alt_dados.php">
-                                <button type="button" class="btn btn-primary mt-3" id="btnAltFoto" name="btnAltFoto">Alterar Foto</button>  
-                            </a>
+                            <img class="card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;">
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                <p><label>Selecione o arquivo:</label></p>
+                                <input name="arquivo" type="file"></p>
+                                <button name="upload" type="submit"> Enviar arquivo</button>
+                            </form>
+
                         </div>
                     </div>
                     <div class="col-8">

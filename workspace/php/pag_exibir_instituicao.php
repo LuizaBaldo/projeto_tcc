@@ -53,6 +53,9 @@
                     echo "<div class='col-6 text-center p-3 '>";
                         echo "<div class='border'>";
                             echo '<h2>';
+                            echo '<img src="'.$instituicao['pathImagem'].'"';
+                            echo '<br>';
+                            echo '<br>';
                             echo 'nome da instituicao: '.$instituicao['nome'];
                             echo '<br>';
                             echo 'nome da instituicao: '.$instituicao['endereco'];

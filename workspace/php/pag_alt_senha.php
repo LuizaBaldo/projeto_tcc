@@ -4,7 +4,7 @@
         header("location: pag_login.php");
         exit();
     }
-    $user = getUserLogged($_SESSION["id"]);
+    $user = getUserLogged();
 
 ?>
 

@@ -1,12 +1,11 @@
 <?php
-    
     require_once './functions.php';
 
     if(isset($_SESSION["id"])==false){
         header("location: pag_login.php");
         exit();
     }
-    $user = getUserLogged($_SESSION['id']);
+    $user = getUserLogged();
     if($user["tipo"] == 'USUARIO'){
         header("location: pag_inicial.php");
         exit();
@@ -34,7 +33,7 @@
     <title>Adot.org</title>
 </head>
     <body>
-
+    
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
@@ -45,8 +44,8 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="instituicao_img">
-                            <img src="../img/fotoPerfil.png" alt="" id="instituicao_foto" style="width: 100%;">
-                            
+                            <img height="500" src="<?php echo $user['pathImagem']?>" id="instituicao_foto" width="100%">    
+                            <br>
                             <a href="pag_alt_dados_inst.php">
                                 <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
                             </a>
@@ -93,13 +92,10 @@
                 </div>
             </div>
             <?php
-            
               if(isset($_GET["deletar"])) excluir();{
-                
             }
             ?>
         </div>
-
     </body>
 </html>
 

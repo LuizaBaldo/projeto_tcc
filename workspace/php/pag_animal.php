@@ -4,9 +4,6 @@
 
 <?php
     $animal = buscaAnimalPorId($_GET['id']);
-?>
-
-<?php 
     $instituicao = buscaInstituicaoId($animal['id_usuario']);
 ?>
 
@@ -24,6 +21,77 @@
     $comentarios = listaComentarioDoAnimal($_GET['id']);
 ?>
 
+<?php
+    function UsuarioEhinstituicaoDoAnimal(){
+        global $animal;
+        $usuarioLogado = getUserLogged();
+        if(!$usuarioLogado){
+            return false;
+        }
+        if($usuarioLogado['id'] == $animal['id_usuario']){
+            return true;
+        }
+        return false;
+    }
+
+?>
+
+
+<?php 
+    if (isset($_FILES["arquivo"])) {
+        $arquivo = $_FILES['arquivo'];
+        // Validar se o arquivo não esta vazio
+        if (!empty($arquivo["name"])) {
+            $nomeDoArquivo = $arquivo["name"];
+    
+            $arquivoValido = true;
+    
+            // Validar se o arquivo já existe
+            if (file_exists($nomeDoArquivo)) {
+                echo "<script lang='javascript'>alert('Arquivo ja existe.')</script>";
+                $arquivoValido = false;
+            }
+    
+            // validar extensao do arquivo
+            $tipoDoArquivo = array(
+                'jpg',
+                'jpeg',
+                'png'
+            );
+            $nomeDoArquivo = $arquivo['name'];
+            $novoNomeDoArquivo = uniqid();
+            $pasta = '../img/';
+            $extensaoDoArquivo = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+            if (! in_array($extensaoDoArquivo, $tipoDoArquivo)) {
+                echo "<span>Formato de arquivo não suportado. somente upload<b>" . implode(", ", $tipoDoArquivo) . "</b> arquivos .</span>";
+                $arquivoValido = false;
+            }
+    
+            // Validate file size
+            if ($_FILES["arquivo"]["size"] > 200000) {
+                echo "<span>Arquivo muito grande Max:2MB.</span>";
+                $arquivoValido = 0;
+            }
+            
+            $path = $pasta . $novoNomeDoArquivo . "." . $extensaoDoArquivo;
+    
+            if ($arquivoValido) {
+                move_uploaded_file($arquivo["tmp_name"], $path);
+                $con  = new mysqli("localhost", "root", "", "tcc");
+                $sql = "update animal set pathImagem = ? where id = {$animal['id']}";
+                $statement = mysqli_prepare($con, $sql);
+                mysqli_stmt_bind_param($statement, 's', $path);
+                mysqli_stmt_execute($statement);
+                mysqli_close($con);
+                echo "<script lang='javascript'>window.location.href='pag_animal.php?id=".$animal['id']."';</script>";
+            }
+            else{
+                echo "falha ao enviar arquivo";
+            }
+        } else 
+            echo "No files have been chosen.";
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,24 +114,29 @@
     <title>Adot.org</title>
 </head>
     <body>
-
-
         <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
         <div class="container_main">
             <div class="row">
-
                 <!-- CONTAINER IMG + INFO -->
                 <div class="container_body">
                     <div class="row justify-content-around">
                         <div class="container_img col-3" style="background-color: #66C4A9;">
-                            <img src="../img/Novo_Projeto.jpg" style="width: 100px;">
+                            <img src="<?php echo $animal['pathImagem']?>" style="width:100%">  
+                            <?php if(UsuarioEhinstituicaoDoAnimal()){?>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    <p><label>Selecione o arquivo:</label></p>
+                                    <input name="arquivo" type="file"></p>
+                                    <button name="upload" type="submit"> Enviar arquivo</button>
+                                </form>
+                            <?php }?>
                             <h1><a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a></h1> <!-- MOSTRA A INSTIUICAO DO ANIMAL -->
                         </div>
-
-                        <div class="container_about col-6" style="background-color: #66C4A9;">                           
+                        
+                        <div class="container_about col-6" style="background-color: #66C4A9;">  
+                                                 
                             <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
                                 <label>Tipo do Animal</label> 
                                 <input  type="text" class="form-control" id="txtTipoAnimal" name="tipoAnimal" disabled="true" value="<?php echo $animal["tipo_animal"];?>"/>
@@ -105,7 +178,6 @@
                         </div>
 
                         <div class="container_coment col-5" style="background-color: #66C4A9;">
-                            
                                 <?php
                                     foreach ($comentarios as $comentario){
                                     echo '<div class="row" style="background-color:;">';     
@@ -115,14 +187,11 @@
                                     echo '</div>';
                                     }
                                 ?>
-
                         </div>              
                     </div>
                 </div>    
-
             </div>
         </div>
-
     </body>
 </html>
 

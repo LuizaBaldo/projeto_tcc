@@ -1,5 +1,4 @@
 <?php
-
     require_once './functions.php';
 
     if(isset($_SESSION["id"])==false){
@@ -7,12 +6,13 @@
         exit();
 
     }
-    $user = getUserLogged($_SESSION["id"]);
+    $user = getUserLogged();
     if($user["tipo"] =='INSTITUICAO'){
         header("location: pag_inicial.php");
         exit();
     }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="container_img" style="text-align: center; padding-left: 3rem;">
-                            <img class="card-img-left" src="../img/img_avatar1.png" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;">
+                            <img class="card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;">
                         </div>
                         
                         <div class="container_buttoms" style="text-align: center; padding-left: 6rem;">

@@ -67,7 +67,7 @@
                 echo '<div class="container_exibir p-5">';
                     echo '<div class="row">';
                         echo '<div class="card" style="width:300px">';
-                            echo '<img class="card-img-top" src="../img/img_avatar1.png" alt="Card image">';
+                            echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';
                             echo '<div class="card-body">';
                                 echo '<h4 class="card-title">' .$nome_inst; '</h4>';
                                 echo '<p class="card-text">' .$endereco_inst; '</p>';
