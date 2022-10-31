@@ -21,6 +21,8 @@
     $comentarios = listaComentarioDoAnimal($_GET['id']);
 ?>
 
+
+
 <?php
     function UsuarioEhinstituicaoDoAnimal(){
         global $animal;
@@ -45,12 +47,6 @@
             $nomeDoArquivo = $arquivo["name"];
     
             $arquivoValido = true;
-    
-            // Validar se o arquivo já existe
-            if (file_exists($nomeDoArquivo)) {
-                echo "<script lang='javascript'>alert('Arquivo ja existe.')</script>";
-                $arquivoValido = false;
-            }
     
             // validar extensao do arquivo
             $tipoDoArquivo = array(
@@ -184,7 +180,23 @@
                                     echo $comentario['nome'];
                                     echo '<br>';
                                     echo $comentario['conteudo'];
+                                    if ($comentario['resposta'] != null){
+                                        echo "<br>";
+                                        echo $instituicao['nome'];
+                                        echo "<br>";
+                                        echo $comentario['resposta'];
+                                    }
+                                    if (UsuarioEhinstituicaoDoAnimal()){
+                                        ?>
+                                        <form method="post" action="guardar_resposta.php?id=<?= $comentario['id']?>" style="display: flexbox ">
+                                            <input type='text' name='resposta' placeholder='resposta' style='width: 22%'>
+                                            <input id="" type='submit' value="Comentar">
+                                            <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
+                                        </form>
+                                    <?php
+                                    }
                                     echo '</div>';
+                                    
                                     }
                                 ?>
                         </div>              
