@@ -25,24 +25,24 @@
 </head>
     <body>
 
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
+        
         <div class="container_main">
           <div class="row justify-content-around">
             <!-- CONTAINER LOGIN -->
-            <div class="container_login col-4" id="jaCadastroDiv" style="background-color: #66C4A9;">
+            <div class="container_login col-4 rounded" id="jaCadastroDiv" style="background-color: #66C4A9;">
               <p class="display-6" id="jaCadastro" style="color: white;">Login</p>
                 <form method="post" action="pag_login.php?logar=1" class="needs-validation" id="formLogin">
                     <div class="mb-3" id="divEmail">
                       <label class="form-label" for=txtEmailLogin style="color: white;">E-mail</label>
-                      <input type="email" class="form-control" id="txtEmailLogin" name="email" required />
+                      <input type="email" class="form-control form-control-sm" id="txtEmailLogin" name="email" required />
                     </div>
 
                     <div class="mb-3" id="divSenha">
                       <label class="form-label" for="txtSenhaLogin" style="color: white;">Senha</label>
-                      <input type="password" class="form-control" id="txtSenhaLogin" name="senha" required />
+                      <input type="password" class="form-control form-control-sm" id="txtSenhaLogin" name="senha" required />
                     </div>
                     <div class="d-grid gap-2 col-4 mx-auto" id="divBotaoLogar">
                       <button type="button" class="btn mt-3" id="btnLogar" onclick="validaLogin();" style="background-color: #4C79D5; color: white;">Logar</button>

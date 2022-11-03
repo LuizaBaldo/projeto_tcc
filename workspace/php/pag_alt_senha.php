@@ -35,7 +35,7 @@
             require_once './partials/common.php';
         ?>
 
-        <div class="container">
+        <div class="container rounded mt-5 p-3" style="background-color: #66C4A9; width: 60%;">
             <h1 class="text-center">Alterar Senha</h1>
             <div id="formulario">
                 <form method="post" action="pag_alt_senha.php?alterarSenha=1" id="formAlterarSenha">
@@ -45,23 +45,23 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Senha Antiga</label>
-                                <input type="password" class="form-control" placeholder="Digite sua senha antiga" id="txtSenhaAntiga" name="txtSenhaAntiga"/>
+                                <input type="password" class="form-control form-control-sm" placeholder="Digite sua senha antiga" id="txtSenhaAntiga" name="txtSenhaAntiga"/>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Nova Senha</label>
-                                <input type="password" class="form-control" placeholder="Digite uma senha" id="txtSenhaNova" name="txtSenhaNova"/>
+                                <input type="password" class="form-control form-control-sm" placeholder="Digite uma senha" id="txtSenhaNova" name="txtSenhaNova"/>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Confirme a nova senha</label>
-                                <input type="password" class="form-control" placeholder="Confirme a senha" id="txtConfirmeSenha" name="txtConfirmeSenha"/>
+                                <input type="password" class="form-control form-control-sm" placeholder="Confirme a senha" id="txtConfirmeSenha" name="txtConfirmeSenha"/>
                             </div>
 
                         <br/>
 
-                            <div class="mb-3">
-                                <div class="d-grid gap-2 col-6 mx-auto" style="background-color: #66C4A9;">
+                            <div class="mt-3">
+                                <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
                                     <button type="button" class="btn text-white" id="btnAlterar" name="btnAlterar" onclick="validar();">Alterar</button>
                                 </div>
                             </div>

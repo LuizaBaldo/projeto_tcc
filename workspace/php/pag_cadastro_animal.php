@@ -29,57 +29,58 @@
         <?php
             require_once './partials/common.php';
         ?>
-        <div class="container">
+        <div class="container rounded py-2" style="background-color: #66C4A9;">
             <h1 class="text-center">Cadastrar Animal</h1>
             <div id="formulario">
                 <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastroAnimal">
 
-                <div class="form mt-5" style="width:70%;margin:auto;">
-                    <div class="row">
-
-                        <div class="mb-3">
-                            <label for="tipo">Selecione o tipo de animal:</label>
-                            <select name="tipoAnimal" id="tipoAnimal">
-                                <option value="cachorro">cachorro</option>
-                                <option value="gato">Gato</option>
-                                <option value="ave">Ave</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                                <label for="sexo">Selecione o sexo do animal:</label>
-                                <select name="sexoAnimal" id="sexoAnimal">
-                                    <option value="Femea">Fêmea</option>
-                                    <option value="Macho">Macho</option>
+                <div class="form form-group mt-3" style="width:70%;margin:auto;">
+                    <div class="form-row">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="tipo">Selecione o tipo de animal</label>
+                                <select name="tipoAnimal" id="tipoAnimal" class="form-select form-select-sm">
+                                    <option value="cachorro">Cachorro</option>
+                                    <option value="gato">Gato</option>
+                                    <option value="ave">Ave</option>
                                 </select>
-                        </div>
+                            </div>
 
+                            <div class="col-md-6 mb-3">
+                                    <label for="sexo">Selecione o sexo do animal</label>
+                                    <select name="sexoAnimal" id="sexoAnimal" class="form-select form-select-sm">
+                                        <option value="Femea">Fêmea</option>
+                                        <option value="Macho">Macho</option>
+                                    </select>
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Nome do animal</label>
-                            <input type="text" class="form-control" id="txtNomeAnimal" placeholder="Digite nome do animal" name="nomeAnimal"/>
+                            <input type="text" class="form-control form-control-sm" id="txtNomeAnimal" placeholder="Digite nome do animal" name="nomeAnimal"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Idade do animal em anos ou meses</label>
+                                <input type="text" class="form-control form-control-sm" id="txtIdadeAnimal" placeholder="Digite a idade do animal em anos" name="idadeAnimal"/>
+                            </div>
+    
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Raça do animal</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Digite a raça do animal" id="txtRacaAnimal" name="racaAnimal"/>
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Idade do animal em anos ou meses</label>
-                            <input type="text" class="form-control" id="txtIdadeAnimal" placeholder="Digite a idade do animal em anos" name="idadeAnimal"/>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Raça do animal</label>
-                            <input type="text" class="form-control" placeholder="Digite a raça do animal" id="txtRacaAnimal" name="racaAnimal"/>
-                        </div>
-
-                        <div class="mb-3">
+                        <div>
                             <label class="form-label">Descrição do animal</label>
-                            <input type="text" class="form-control" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal"/>
+                            <textarea type="text" class="form-control form-control-sm" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal"></textarea>
                         </div> 
                     </div>
 
                     <br/>
 
                     <div class="mb-3">
-                        <div class="d-grid gap-2 col-6 mx-auto" style="background-color: #66C4A9;">
-                            <button type="submit" class="btn text-white" id="btnCadastrar" name="btnCadastrar">Cadastrar</button>
+                        <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
+                            <button type="submit" class="btn text-white" id="btnCadastrar" name="btnCadastrar" style="background-color: #4C79D5;">Cadastrar</button>
                         </div>
                     </div>
 

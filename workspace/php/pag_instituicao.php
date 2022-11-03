@@ -34,14 +34,13 @@
 </head>
     <body>
     
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
         
         <div class="instituicao_container container">
             <div class="instituicao_content">
-                <div class="row">
+                <div class="row rounded py-2" style="background-color: #66C4A9;">
                     <div class="col-4">
                         <div class="instituicao_img">
                             <img height="500" src="<?php echo $user['pathImagem']?>" id="instituicao_foto" width="100%">    
@@ -60,41 +59,47 @@
                         </div>
                     </div>
                     <div class="col-8">                            
-                        <div class="instituicao_info" style="padding: 0 15px 0 15px;width: 70%">
+                        <div class="instituicao_info" style="padding: 0 15px 0 15px;">
                             <label>Nome</label> 
-                            <input  type="text" class="form-control" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
+                            <input  type="text" class="form-control form-control-sm" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
 
                             <label>E-mail</label>
-                            <input type="email" class="form-control" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
+                            <input type="email" class="form-control form-control-sm" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
 
                             <label>CNPJ</label>
-                            <input type="text" class="form-control" id="txtCNPJ" name="cnpj" disabled="true" value="<?php echo $user["cnpj"];?>"/>
+                            <input type="text" class="form-control form-control-sm" id="txtCNPJ" name="cnpj" disabled="true" value="<?php echo $user["cnpj"];?>"/>
 
                             <label>Endereço</label>
-                            <input type="text" class="form-control" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
+                            <input type="text" class="form-control form-control-sm" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
 
                             <label>Telefone</label>
-                            <input type="text" class="form-control" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
+                            <input type="text" class="form-control form-control-sm" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
                             
-                            <a href="pag_cadastro_animal.php">
-                                <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
-                            </a>
+                            <div class="d-flex justify-content-between">
 
-                            <a href="pag_animais_instituicao.php">
-                                <button type="submit" class="btn btn-primary mt-3 mx-3">Visualizar Animais</button>
-                            </a>
-                            
-                            <a href="pag_alt_dados_animal.php">
-                                <button type="submit" class="btn btn-primary mt-3 mx-3">Alterar Animais</button>
-                            </a>
+                                <a href="pag_cadastro_animal.php">
+                                    <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
+                                </a>
+
+                                <a href="pag_animais_instituicao.php">
+                                    <button type="submit" class="btn btn-primary mt-3 mx-3">Visualizar Animais</button>
+                                </a>
+                                
+                                <a href="pag_alt_dados_animal.php">
+                                    <button type="submit" class="btn btn-primary mt-3 mx-3">Alterar Animais</button>
+                                </a> 
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <?php
               if(isset($_GET["deletar"])) excluir();{
             }
             ?>
+            
         </div>
     </body>
 </html>

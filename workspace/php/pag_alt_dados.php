@@ -89,16 +89,17 @@
 </head>
     <body>
 
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
         
-        <div class="usuario_container container">
+        <div class="usuario_container container rounded p-3" style="background-color: #66C4A9;">
             <div class="usuario_content">
                 <div class="row">
+
                     <div class="col-4">
                         <div class="usuario_img">
+
                             <img class="card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;">
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <p><label>Selecione o arquivo:</label></p>
@@ -108,34 +109,35 @@
 
                         </div>
                     </div>
+
                     <div class="col-8">
                         <div id="formulario">
                             <form method="post" action="pag_alt_dados.php?alterar=<?php echo $user["id"];?>" id="formAlterarInfo" style="padding: 0 15px 0 15px; width: 70% ">
                                 <div class="form row">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="txtNome" name="nome" value="<?php echo $user["nome"];?>"/>
+                                        <input type="text" class="form-control form-control-sm" id="txtNome" name="nome" value="<?php echo $user["nome"];?>"/>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                     <label>E-mail</label>
-                                    <input type="email" class="form-control" id="txtEmail" name="email" value="<?php echo $user["email"];?>"/>
+                                    <input type="email" class="form-control form-control-sm" id="txtEmail" name="email" value="<?php echo $user["email"];?>"/>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label>Endereço</label>
-                                        <input type="text" class="form-control" id="txtEndereco" name="endereco"  value="<?php echo $user["endereco"];?>"/>
+                                        <input type="text" class="form-control form-control-sm" id="txtEndereco" name="endereco"  value="<?php echo $user["endereco"];?>"/>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label>Telefone</label>
-                                        <input type="text" class="form-control" id="nrTelefone" name="telefone"  value="<?php echo $user["telefone"];?>"/>
+                                        <input type="text" class="form-control form-control-sm" id="nrTelefone" name="telefone"  value="<?php echo $user["telefone"];?>"/>
                                     </div>
 
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-success mt-3" id="btnSalvarCadastro" name="btnSalvarCadastro" onclick="alterarInfoCadastro();">Salvar cadastro </button>
+                                    <div class="form-group mb-3">
+                                        <button type="button" class="btn btn-success mt-2" id="btnSalvarCadastro" name="btnSalvarCadastro" onclick="alterarInfoCadastro();">Salvar cadastro </button>
                                         <a href="pag_usuario.php">
-                                            <button type="button" class="btn btn-secondary mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
+                                            <button type="button" class="btn btn-danger mt-2" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
                                         </a>
                                     </div>
                                 </div>
