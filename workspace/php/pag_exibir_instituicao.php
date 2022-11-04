@@ -42,13 +42,13 @@
 </head>
     <body>
 
-
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
+        
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
+
                 <?php 
                     echo "<div class='col-6 text-center p-3 '>";
                         echo "<div class='border'>";
@@ -68,10 +68,13 @@
                         echo '</div>';
                     echo '</div>';
                 ?>
+
             </div>
+
             <div class="">
                 <?php imprimirAnimais($animais)?>
             </div>
+
         </div>
     </body>
 </html>

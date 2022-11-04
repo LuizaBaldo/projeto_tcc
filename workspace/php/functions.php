@@ -31,7 +31,7 @@
             echo "<div class='col-6 text-center p-3 '>";
                 echo '<a href="pag_animal.php?id='.$animal['id'].'" ; style="text-decoration: none; color:inherit; ">';
                     echo "<div class='border'>";
-                        echo "<img height='100' src= ".$animal['pathImagem'].">";
+                        echo "<img height='100' src= ".$animal['pathImagem_animal'].">";
                         echo '<br>';
                         echo 'tipo do animal: '.$animal['tipo_animal'];
                         echo '<br>';

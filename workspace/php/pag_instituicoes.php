@@ -38,7 +38,6 @@
 </head>
     <body>
 
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>

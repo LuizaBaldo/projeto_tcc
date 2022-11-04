@@ -25,10 +25,10 @@
 </head>
     <body>
 
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
+        
         <div class="container rounded py-2" style="background-color: #66C4A9;">
             <h1 class="text-center">Cadastrar Animal</h1>
             <div id="formulario">

@@ -74,7 +74,7 @@
             if ($arquivoValido) {
                 move_uploaded_file($arquivo["tmp_name"], $path);
                 $con  = new mysqli("localhost", "root", "", "tcc");
-                $sql = "update animal set pathImagem = ? where id = {$animal['id']}";
+                $sql = "update animal set pathImagem_animal = ? where id = {$animal['id']}";
                 $statement = mysqli_prepare($con, $sql);
                 mysqli_stmt_bind_param($statement, 's', $path);
                 mysqli_stmt_execute($statement);
@@ -110,17 +110,18 @@
     <title>Adot.org</title>
 </head>
     <body>
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
+
         <?php
             require_once './partials/common.php';
         ?>
+        
         <div class="container_main">
-            <div class="row">
+            <div class="row" style="margin-right: 0;">
                 <!-- CONTAINER IMG + INFO -->
                 <div class="container_body">
-                    <div class="row justify-content-around">
-                        <div class="container_img col-3" style="background-color: #66C4A9;">
-                            <img src="<?php echo $animal['pathImagem']?>" style="width:100%">  
+                    <div class="row justify-content-center col-sm-12">
+                        <div class="container_img col-3" style="background-color: #66C4A9; margin-left: 65px; margin-right: 10px;">
+                            <img src="<?php echo $animal['pathImagem_animal']?>" style="width:100%">  
                             <?php if(UsuarioEhinstituicaoDoAnimal()){?>
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <p><label>Selecione o arquivo:</label></p>
@@ -156,11 +157,10 @@
                         </div>                
                     </div>
                 </div>
-                <div></div>
                 <!-- CONTIANER REALIZAR COMENTARIO + COMENTARIO -->
                 <div class="container_footer">
-                    <div class="row justify-content-around">
-                        <div class="container_comentar col-3" style="background-color: #66C4A9;">
+                    <div class="row justify-content-center col-sm-12"> 
+                        <div class="container_comentar col-3" style="background-color: #66C4A9; margin-right: 72px;">
                             <form method="post" action="guardar_comentario.php" style="display: flexbox ">
                                 <input type="text" name="nome" placeholder="nome" style="width: 22%">
                                 <br>
@@ -201,7 +201,8 @@
                                 ?>
                         </div>              
                     </div>
-                </div>    
+                </div><!-- FIMCONTIANER REALIZAR COMENTARIO + COMENTARIO -->    
+                
             </div>
         </div>
     </body>
