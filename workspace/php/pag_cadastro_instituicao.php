@@ -30,7 +30,7 @@
             require_once './partials/common.php';
         ?>
         <div class="container_main">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center me-0">
                 <div class="card w-75" style="background-color: #66C4A9;">
                     <h1 class="text-center">Cadastrar Instituição</h1>
 

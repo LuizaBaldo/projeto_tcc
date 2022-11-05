@@ -21,6 +21,12 @@ label{
 
 }
 
+* {
+    box-sizing: border-box;
+    /* linha abaixo está sendo usada para debuggar o css, favor nao apagar */
+    /* outline: 1px solid red !important; */
+  }
+
 .navbar{
     margin: 0;
     background-color: #4C79D5;
