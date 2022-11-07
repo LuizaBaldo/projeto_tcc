@@ -41,11 +41,10 @@
 </head>
     <body>
 
-
-        <!-- ========== TUDO QUE TEM "#" PRECISA COLOCAR UM LINK E MUDAR O PHP ========== -->
         <?php
             require_once './partials/common.php';
         ?>
+
         <div class="container_main"> 
             <div class="d-flex flex-wrap align-content-center">
                 <?php foreach ($animais as $animal){
@@ -68,5 +67,6 @@
                 }?>
             </div>
         </div>
+        
     </body>
 </html>

@@ -28,23 +28,21 @@
 
     function imprimirAnimais($animais){
         foreach ($animais as $animal){
-            echo "<div class='col-6 text-center p-3 '>";
-                echo '<a href="pag_animal.php?id='.$animal['id'].'" ; style="text-decoration: none; color:inherit; ">';
-                    echo "<div class='border'>";
-                        echo "<img height='100' src= ".$animal['pathImagem_animal'].">";
-                        echo '<br>';
-                        echo 'tipo do animal: '.$animal['tipo_animal'];
-                        echo '<br>';
-                        echo 'nome do animal: '.$animal['nome_animal'];
-                        echo '<br>';
-                        echo 'idade do animal: '.$animal['idade'];
-                        echo '<br>';
-                        echo 'sexo do animal: '.$animal['sexo']; 
-                        echo '<br>';
-                        echo 'raça do animal: '.$animal['raca'];
-                        echo '<br>';
+            $nome_animal = $animal['nome_animal'];
+            $raca = $animal['raca'];
+            // TESTE CARD 
+            echo '<div class="container_exibir p-5">';
+                echo '<div class="row">';
+                    echo '<div class="card" style="width:300px">';
+                        echo '<img class="card-img-top" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
+                        echo '<div class="card-body">';
+                            echo '<h4 class="card-title">Nome: ' .$nome_animal; '</h4>';
+                            echo '<p class="card-text">Raça: ' .$raca; '</p>';
+                            echo '<p>';
+                            echo '<a href="pag_animal.php?id='.$animal['id'].'" ; style="text-decoration: none; color:inherit; ">Veja Mais</a>';
+                        echo '</div>';
                     echo '</div>';
-                echo '</a>';
+                echo '</div>';
             echo '</div>';
         }
     }

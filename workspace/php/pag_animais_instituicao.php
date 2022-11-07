@@ -58,8 +58,8 @@
 
         <div class="container"> 
             <div class="d-flex flex-wrap align-content-center">
-            <?php imprimirAnimais($animais)
-            ?>
+                
+            <?php imprimirAnimais($animais)?>
 
             </div>
         </div>

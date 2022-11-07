@@ -11,17 +11,10 @@
 
 <div class="header">  
     <nav class="navbar navbar-light mb-3" style="background-color: #4C79D5;">                
-        <div class="container-fluid" id="header_conteainer">
+        <div class="container-fluid" id="header_container">
             <a href="pag_inicial.php"><img src="../img/Novo_Projeto.png" id="logo" style="width: 100px;"/></a>
-            <div class="headerTitle"></div>
 
-                <!-- Barra de Consultas -->
-                <form action="pag_exibicao_animais.php" method="GET">
-                                <input id="search" type="text" placeholder="Pesquise um animal" name="filtro" style="height:30px; width:100%">
-                                <input id="submit" type="submit" value="Search" style="display: none; width: 0%;">
-                </form>
-
-                <div class="menu">
+                <div class="menu fs-5">
                     <nav class="navbar navbar-expand-lg navbar-dark m-3" style="background-color: #4C79D5;">
                         <div class="container-fluid text-xs-center">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
@@ -46,6 +39,14 @@
                             
                         </div>
                     </nav>
+                </div>
+                
+                <!-- Barra de Consultas -->
+                <div class="container_barraPesquisa w-25">
+                    <form class="text-center" action="pag_exibicao_animais.php" method="GET">
+                        <input id="search" type="text" placeholder="Pesquise um animal" name="filtro" style="height:30px; width:100%">
+                        <input id="submit" type="submit" value="Search" style="display: none; width: 0%;">
+                    </form>                    
                 </div>
 
                 <?php
