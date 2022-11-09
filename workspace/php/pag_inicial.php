@@ -82,7 +82,7 @@
                     echo '<div class="container_exibir p-5">';
                         echo '<div class="row">';
                             echo '<div class="card" style="width:300px">';
-                                echo '<img class="card-img-top" src="'.$animal['pathImagem'].'" alt="Card image">';
+                                echo '<img class="card-img-top" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
                                 echo '<div class="card-body">';
                                     echo '<h4 class="card-title">Nome: ' .$animal['nome_animal']. '</h4>';
                                     echo '<p class="card-text">Raça: ' .$animal['raca']; '</p>';

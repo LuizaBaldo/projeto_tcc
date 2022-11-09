@@ -1,8 +1,8 @@
 <?php
     $con = new mysqli("localhost", "root", "", "tcc");
     $comentario = $_POST["comentario"];
-    $nome = $_POST["nome"];
-    $email = $_POST["email"];
+    $nome = $_POST["nomeComentario"];
+    $email = $_POST["emailComentario"];
     $id_animal = $_POST["id_animal"];
     $sql = "insert into comentario (nome, email, conteudo, id_animal)  values (?, ?, ?, ?)";
     $statement = mysqli_prepare($con, $sql);

@@ -39,33 +39,26 @@
             <h1 class="text-center">Alterar Senha</h1>
             <div id="formulario">
                 <form method="post" action="pag_alt_senha.php?alterarSenha=1" id="formAlterarSenha">
-
                     <div class="form" style="width:70%;margin:auto;">
                         <div class="row">
-
                             <div class="mb-3">
                                 <label class="form-label">Senha Antiga</label>
                                 <input type="password" class="form-control form-control-sm" placeholder="Digite sua senha antiga" id="txtSenhaAntiga" name="txtSenhaAntiga"/>
                             </div>
-
                             <div class="mb-3">
                                 <label class="form-label">Nova Senha</label>
                                 <input type="password" class="form-control form-control-sm" placeholder="Digite uma senha" id="txtSenhaNova" name="txtSenhaNova"/>
                             </div>
-
                             <div class="mb-3">
                                 <label class="form-label">Confirme a nova senha</label>
                                 <input type="password" class="form-control form-control-sm" placeholder="Confirme a senha" id="txtConfirmeSenha" name="txtConfirmeSenha"/>
                             </div>
-
                         <br/>
-
                             <div class="mt-3">
                                 <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
                                     <button type="button" class="btn text-white" id="btnAlterar" name="btnAlterar" onclick="validar();">Alterar</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </form>
@@ -81,23 +74,24 @@
         $senhaAntiga = $_POST['txtSenhaAntiga'];
         $id = $user['id'];
         $email = $user['email'];
-        $senhaNova = $_POST['txtSenhaNova'];
+        $senhaNova = password_hash($_POST["txtSenhaNova"], PASSWORD_BCRYPT);
         $confirmaSenhaNova = $_POST['txtConfirmeSenha'];
         $con = new mysqli("localhost", "root", "", "tcc");
-        $query = mysqli_query($con,"SELECT email,senha FROM usuario WHERE id='$id' AND email='$email' AND senha='$senhaAntiga'");
-        $num = mysqli_fetch_array($query);
-     
-        if($num>0){
-            $con = mysqli_query($con, "UPDATE usuario SET senha='$senhaNova' WHERE id='$id'");
-            echo "<script lang='javascript'>alert('Senha Alterada com sucesso');</script>";
-            echo "<script lang='javascript'>window.location.href='pag_usuario.php';</script>";
-        }else{
-            echo "<script lang='javascript'>alert('Senha Antiga Invalida');</script>";
-            echo "<script lang='javascript'>window.location.href='pag_alt_senha.php';</script>";
-            
+        $sql1 = "select * from usuario where email='$email'";
+        $query = mysqli_query($con, $sql1);
+        if($reg = mysqli_fetch_array($query)){
+            if(password_verify($senhaAntiga, $reg['senha'])){
+                $sql = "UPDATE usuario SET senha='$senhaNova' WHERE id='$id'";
+                $resultado = mysqli_query($con, $sql);
+                echo "<script lang='javascript'>alert('Senha Alterada com sucesso');</script>";
+                echo "<script lang='javascript'>window.location.href='sair.php';</script>";
+            }
+            else{
+                echo "<script lang='javascript'>alert('Senha Antiga Invalida');</script>";            }
+        } else{
+
         }
         mysqli_close($con);
-        
     }
 
 ?>

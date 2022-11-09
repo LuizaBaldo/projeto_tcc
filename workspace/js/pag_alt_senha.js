@@ -5,7 +5,7 @@ function validar(){
         txtSenhaNova.focus();
         txtSenhaNova.value = "";
         return false;
-      }
+    }
     if(txtSenhaNova.value != txtConfirmeSenha.value){
         alert("Senha e confirmação são diferentes!");
         txtConfirmeSenha.focus();

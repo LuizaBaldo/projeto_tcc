@@ -2,6 +2,34 @@
     require_once './functions.php';
 ?>
 
+<?php
+  function logarUsuario(){
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    $con = new mysqli("localhost", "root", "", "tcc");
+    $sql = "select * from usuario where email='$email'";
+
+    $retorno = mysqli_query($con, $sql);
+    if($reg = mysqli_fetch_array($retorno)){
+      if(password_verify($senha, $reg['senha'])){
+        $_SESSION["id"] = $reg["id"];
+        $id = session_id();
+        header("location: pag_inicial.php");
+      }
+      else{
+        echo "<br> <center> <h3 style='margin-top:20px;'>E-mail ou senha inválidos!</h3></center>";
+      }
+      
+    } else {
+      echo "<br> <center> <h3 style='margin-top:20px;'>E-mail ou senha inválidos!</h3></center>";
+    }
+    mysqli_close($con);    
+  }
+?>
+
+<?php
+  if(isset($_GET["logar"])) logarUsuario();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,9 +77,6 @@
                     </div>
                 </form>
 
-                <?php
-                  if(isset($_GET["logar"])) logarUsuario();
-                ?>
                 <div class="d-grid gap-2 col-4 mx-auto">
                     <p></p>
                     <a href="Pag_Esq_Senha.html" id="esqueciSenha" class="btn btn-link" style="background-color: #4C79D5; color: white;">Esqueci a senha</a>
@@ -67,33 +92,5 @@
             </div>            
           </div>
         </div>
-
-        
-
     </body>
 </html>
-
-<?php
-  function logarUsuario(){
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-    $con = new mysqli("localhost", "root", "", "tcc");
-    $sql = "select * from usuario where email='$email'";
-
-    $retorno = mysqli_query($con, $sql);
-    if($reg = mysqli_fetch_array($retorno)){
-      if(password_verify($senha, $reg['senha'])){
-        $_SESSION["id"] = $reg["id"];
-        $id = session_id();
-        echo "<script lang='javascript'>window.location.href='pag_inicial.php?';</script>";
-      }
-      else{
-        echo "<br> <center> <h3 style='margin-top:20px;'>E-mail ou senha inválidos!</h3></center>";
-      }
-      
-    } else {
-      echo "<br> <center> <h3 style='margin-top:20px;'>E-mail ou senha inválidos!</h3></center>";
-    }
-    mysqli_close($con);    
-  }
-?>
