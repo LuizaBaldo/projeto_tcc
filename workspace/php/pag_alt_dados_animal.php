@@ -12,8 +12,10 @@
         $raca = $_POST["raca"];
         $descricao = $_POST["descricao"];
         $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql  = "UPDATE animal SET tipo_animal='$tipo', nome_animal='$nome', idade='$idade', sexo='$sexo', raca='$raca' WHERE id='$id'";
-        mysqli_query($con, $sql);
+        $sql  = "UPDATE animal SET tipo_animal=? , nome_animal=?, idade= ?, sexo=? ,raca=? ,descricao=? WHERE id=?";
+        $statement = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($statement, 'sssssss', $tipo, $nome, $idade, $sexo, $raca, $descricao, $id);
+        mysqli_stmt_execute($statement);
         mysqli_close($con);
         header("location: pag_animal.php?id=$id");
 
@@ -132,7 +134,7 @@
                         <input type="text" class="form-control" id="txtRaca" name="raca"  value="<?php echo $animal["raca"];?>"/>
 
                         <label>Descrição</label>
-                        <input type="text" class="form-control" id="txtDescricao" name="descricao"  value="<?php echo $animal["descricao"];?>"/>
+                        <textarea type="text" class="form-control" id="txtDescricao" name="descricao"><?php echo $animal["descricao"];?></textarea>
 
                         <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" style="center" onclick="alterarInfoAnimal();">Salvar alteracoes</button>
                         <button type="button" class="btn btn-danger mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>

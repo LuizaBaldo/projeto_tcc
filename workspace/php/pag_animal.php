@@ -91,7 +91,7 @@
                                                 <label>Nome</label>
                                                 <input type="email" class="form-control" id="txtNomeAnimal" name="nomeAnimal" disabled="true" value="<?php echo $animal["nome_animal"];?>"/>
 
-                                                <label>Idade</label>
+                                                <label>Idade em meses</label>
                                                 <input type="text" class="form-control" id="txtIdade" name="idade" disabled="true" value="<?php echo $animal["idade"];?>"/>
 
                                                 <label>Sexo</label>
@@ -101,7 +101,7 @@
                                                 <input type="text" class="form-control" id="txtRaca" name="raca" disabled="true" value="<?php echo $animal["raca"];?>"/>
 
                                                 <label>Descrição</label>
-                                                <input type="text" class="form-control" id="txtDescricao" name="descricao" disabled="true" value="<?php echo $animal["descricao"];?>"/>
+                                                <textarea type="text" class="form-control" id="txtDescricao" name="descricao" disabled="true"><?php echo $animal["descricao"];?></textarea>
                                             </form>
                                             
                                             

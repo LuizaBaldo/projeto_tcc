@@ -160,8 +160,10 @@
         $cnpj = $_POST["cnpj"];
         $telefone = $_POST["telefone"];
         $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql  = "UPDATE usuario SET nome='$nome', email='$email', cnpj='$cnpj',endereco='$endereco', telefone='$telefone' WHERE id='$id'";
-        mysqli_query($con, $sql);
+        $sql  = "UPDATE usuario SET nome=? , email=? , cnpj=? ,endereco=? , telefone=? WHERE id=? ";
+        $statement = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($statement, 'ssssss', $nome, $email, $cnpj, $endereco, $telefone, $id);
+        mysqli_stmt_execute($statement);
         mysqli_close($con);
 
         echo "<script lang='javascript'>window.location.href='pag_instituicao.php';</script>";

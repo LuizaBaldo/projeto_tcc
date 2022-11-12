@@ -87,7 +87,8 @@
                 echo "<script lang='javascript'>window.location.href='sair.php';</script>";
             }
             else{
-                echo "<script lang='javascript'>alert('Senha Antiga Invalida');</script>";            }
+                echo "<script lang='javascript'>alert('Senha Antiga Invalida');</script>";
+            }
         } else{
 
         }

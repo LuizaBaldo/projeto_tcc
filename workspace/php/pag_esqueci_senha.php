@@ -2,6 +2,36 @@
     require_once './functions.php';
     $user = getUserLogged();
 ?>
+<?php
+    if(isset($_GET["enviar"])){
+        $email = $_POST["txtEmail"];
+        $con  = new mysqli("localhost", "root", "", "tcc");
+        $sql = "select * from usuario where email='$email'";
+        $query = mysqli_query($con, $sql);
+        if(mysqli_fetch_array($query) > 0){
+            $codigo = md5(rand(999999999, 111111111));
+            $sql = "update usuario set codigo = ? WHERE email = ?";
+            $statement = mysqli_prepare($con, $sql);
+            mysqli_stmt_bind_param($statement, 'ss', $codigo, $email);
+            $run_query = mysqli_stmt_execute($statement);
+            if($run_query){
+                $subject  = "Codigo para resetar a senha";
+                $message  = "Seu link para resetar a senha é localhost/TCC/workspace/php/pag_nova_senha.php?codigo=$codigo";
+                if(mail($email, $subject, $message)){
+                    echo "<span>foi enviado no seu email o link para redefinicao de senha</span>"; //fazer modal que mostre que foi enviado o link 
+                }else{
+                    echo "Falha ao enviar o codigo</span>"; //fazer modal
+                }
+            }else{
+                echo "<span>Alguma coisa deu errado</span>";//fazer modal
+            }
+        }else{
+            echo "<span>E-Mail não existe</span>";//fazer modal
+            echo "<br>";
+        }
+        mysqli_close($con); 
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,44 +64,5 @@
                 <button type="submit" name="enviaEmail" class="btn mt-3" style="background-color: #4C79D5; color: white; width:100%">Enviar Email</button>
             </form>
         </div>
-        <?php
-            if(isset($_GET["enviar"])) enviarEmail();{
-
-            } 
-        ?>
     </body>
 </html>
-<?php 
-    function enviarEmail(){
-        $email = $_POST["txtEmail"];
-        var_dump($email);
-        $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from usuario where email='$email'";
-        $query = mysqli_query($con, $sql);
-        var_dump($query);
-        if(mysqli_num_rows($query) > 0){
-            $codigo = rand(999999, 111111);
-            var_dump($codigo);
-            $inserir_codigo = "UPDATE usuario SET codigo = $codigo WHERE email = $email";
-            $run_query =  mysqli_query($con, $inserir_codigo);
-            if($run_query){
-                $subject = "Codigo para resetar a senha";
-                $mensagem = "Seu codigo para resetar a senha é $codigo";
-                $remetente = "From: tccadotorg2022@gmail.com";
-                if(mail($email, $subject, $mensagem, $remetente)){
-                    header('location: pag_reset_codigo.php');
-                    exit();
-                }else{
-                    echo "<span>Falha ao enviar o codigo</span>";
-                }
-            }else{
-                echo "<span>Alguma coisa deu errado</span>";
-            }
-        }else{
-            echo "<span>E-Mail não existe</span>";
-            echo "<br>";
-        }
-                
-    }
-
-?>

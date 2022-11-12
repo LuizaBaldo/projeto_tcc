@@ -25,7 +25,6 @@
     </head>
     
     <body>
-
         <?php
             require_once './partials/common.php';
         ?>
@@ -70,8 +69,6 @@
                                     <label class="form-label">Confirme a senha</label>
                                     <input type="password" class="form-control form-control-sm" placeholder="Confirme a senha" id="txtConfirSenha" name="confirmaSenha"/>
                                 </div>
-                              
-
                             </div>
 
                             <br/>
@@ -114,8 +111,10 @@
         echo "<script lang='javascript'>alert('email já cadastrado no sistema');</script>";
         return;
     }   
-    $sql = "insert into usuario(nome, endereco, telefone, cnpj, email, senha, tipo) values ('$nome', '$endereco', '$telefone', '$cnpj', '$email', '$senha', '$tipo')";
-    mysqli_query($con, $sql);
+    $sql = "insert into usuario(nome, endereco, telefone, cnpj, email, senha, tipo) values (?, ?, ?, ?, ? ,? ,? )";
+    $statement = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($statement, 'sssssss', $nome, $endereco, $telefone, $cnpj, $email, $senha, $tipo);
+    mysqli_stmt_execute($statement);
     echo "<script lang='javascript'>window.location.href='pag_login.php';</script>";
     mysqli_close($con);
   }

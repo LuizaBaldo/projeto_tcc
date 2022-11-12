@@ -157,10 +157,11 @@
         $endereco = $_POST["endereco"];
         $telefone = $_POST["telefone"];
         $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql  = "UPDATE usuario SET nome='$nome', email='$email', endereco='$endereco', telefone='$telefone' WHERE id='$id'";
-        mysqli_query($con, $sql);
+        $sql  = "UPDATE usuario SET nome=?, email=? , endereco=?, telefone=? WHERE id=?";
+        $statement = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($statement, 'sssss', $nome, $email, $endereco, $telefone, $id);
+        mysqli_stmt_execute($statement);
         mysqli_close($con);
-
         echo "<script lang='javascript'>window.location.href='pag_usuario.php';</script>";
     }
 ?>

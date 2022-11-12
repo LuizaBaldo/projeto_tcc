@@ -60,8 +60,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Idade do animal em anos ou meses</label>
-                                <input type="text" class="form-control form-control-sm" id="txtIdadeAnimal" placeholder="Digite a idade do animal em anos" name="idadeAnimal"/>
+                                <label class="form-label">Idade do animal em meses</label>
+                                <input type="text" class="form-control form-control-sm" id="txtIdadeAnimal" placeholder="Digite a idade do animal em meses" name="idadeAnimal"/>
                             </div>
     
                             <div class="col-md-6 mb-3">
