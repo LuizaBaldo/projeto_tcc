@@ -79,7 +79,7 @@
 
                 <div class="d-grid gap-2 col-4 mx-auto">
                     <p></p>
-                    <a href="Pag_Esq_Senha.html" id="esqueciSenha" class="btn btn-link" style="background-color: #4C79D5; color: white;">Esqueci a senha</a>
+                    <a href="pag_esqueci_senha.php" id="esqueciSenha" class="btn btn-link" style="background-color: #4C79D5; color: white;">Esqueci a senha</a>
                 </div>
             </div>
             <!-- CONTAINER CADASTRO -->
