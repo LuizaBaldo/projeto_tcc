@@ -16,7 +16,7 @@
             $run_query = mysqli_stmt_execute($statement);
             if($run_query){
                 $subject  = "Codigo para resetar a senha";
-                $message  = "Seu link para resetar a senha é localhost/TCC/workspace/php/pag_nova_senha.php?codigo=$codigo";
+                $message  = "Seu link para resetar a senha é http://localhost/TCC/workspace/php/pag_nova_senha.php?codigo=$codigo";
                 if(mail($email, $subject, $message)){
                     echo "<span>foi enviado no seu email o link para redefinicao de senha</span>"; //fazer modal que mostre que foi enviado o link 
                 }else{

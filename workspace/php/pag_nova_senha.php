@@ -3,8 +3,18 @@
 ?>
 
 <?php
-    if(!isset($_GET["codigo"])){
-        header('location: pag_login.php');
+    if(isset($_GET["codigo"])){
+        $con  = new mysqli("localhost", "root", "", "tcc");
+        $sql = 'select * from usuario where codigo = ? ';
+        $statement = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($statement, 's', $_GET["codigo"]);
+        mysqli_stmt_execute($statement);
+        $resultado = mysqli_stmt_get_result($statement);
+        if(empty(mysqli_fetch_array($resultado))) {
+            header('location: pag_login.php');
+            die();
+        }
+        mysqli_close($con);
     }
 ?>
 

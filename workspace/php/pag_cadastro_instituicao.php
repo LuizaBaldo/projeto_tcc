@@ -102,8 +102,8 @@
     $email  = $_POST["email"];
     $senha  = password_hash($_POST["senha"], PASSWORD_BCRYPT);
     $cnpj = $_POST["cnpj"];
-    $emailexistente = "select count(*) as count from usuario where email = '$email'";
     $tipo = 'INSTITUICAO';
+    $emailexistente = "select count(*) as count from usuario where email = '$email'";
     $con  = new mysqli("localhost", "root", "", "tcc");
     $retorno = mysqli_query($con, $emailexistente);
     $resultado = mysqli_fetch_array($retorno);

@@ -69,7 +69,6 @@
 </html>
 
 <?php
-
     if(isset($_GET['alterarSenha'])){
         $senhaAntiga = $_POST['txtSenhaAntiga'];
         $id = $user['id'];
@@ -77,9 +76,12 @@
         $senhaNova = password_hash($_POST["txtSenhaNova"], PASSWORD_BCRYPT);
         $confirmaSenhaNova = $_POST['txtConfirmeSenha'];
         $con = new mysqli("localhost", "root", "", "tcc");
-        $sql1 = "select * from usuario where email='$email'";
-        $query = mysqli_query($con, $sql1);
-        if($reg = mysqli_fetch_array($query)){
+        $sql1 = "select * from usuario where email= ?";
+        $statement = mysqli_prepare($con, $sql1);
+        mysqli_stmt_bind_param($statement, 's', $email);
+        mysqli_stmt_execute($statement);
+        $resultado = mysqli_stmt_get_result($statement);
+        if($reg = mysqli_fetch_array($resultado)){
             if(password_verify($senhaAntiga, $reg['senha'])){
                 $sql = "UPDATE usuario SET senha='$senhaNova' WHERE id='$id'";
                 $resultado = mysqli_query($con, $sql);
@@ -89,14 +91,11 @@
             else{
                 echo "<script lang='javascript'>alert('Senha Antiga Invalida');</script>";
             }
-        } else{
-
         }
         mysqli_close($con);
     }
 
 ?>
-
 
 <script lang='javascript'>
     function voltar(){
