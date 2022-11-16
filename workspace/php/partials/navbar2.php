@@ -6,7 +6,6 @@
         $user = getUserLogged();
     }
     
-    
 ?>
 
 <div class="header">  
@@ -43,8 +42,8 @@
                 
                 <!-- Barra de Consultas -->
                 <div class="container_barraPesquisa w-25">
-                    <form class="text-center" action="pag_exibicao_animais.php" method="GET">
-                        <input id="search" type="text" placeholder="Pesquise um animal" name="filtro" style="height:30px; width:100%">
+                    <form class="text-center" action="pag_resultado_pesquisa.php" method="GET">
+                        <input id="search" type="text" placeholder="Pesquise aqui" name="filtro" style="height:30px; width:100%">
                         <input id="submit" type="submit" value="Search" style="display: none; width: 0%;">
                     </form>                    
                 </div>

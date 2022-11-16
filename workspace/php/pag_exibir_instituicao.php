@@ -56,17 +56,12 @@
                             <div class="container_img-about">
                                 <div class="row justify-content-center col-sm-12">
                                     <div class="container_img col-5 text-center" style="background-color: #66C4A9;">
-                                        <img src="<?php echo $instituicao['pathImagem']?>" style="width:100%">  
-
-                                        <!-- ?php if(UsuarioEhinstituicaoDoAnimal()){?>
-                                            <form action="" method="POST" enctype="multipart/form-data">
-                                                <p><label>Selecione o arquivo:</label></p>
-                                                <input name="arquivo" type="file"></p>
-                                                <button name="upload" type="submit"> Enviar arquivo</button>
-                                            </form>
-                                        ?php }?> -->
-
-                                        <!-- <h1><a href="pag_exibir_instituicao.php?id=?= $instituicao['id']?>">?php echo $instituicao['nome']?> </a></h1> MOSTRA A INSTIUICAO DO ANIMAL -->
+                                    <?php
+                                    if(empty($instituicao['pathImagem'])){
+                                    echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
+                                    }
+                                    else{echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
+                                    ?>
                                     </div>
 
                                     <div class="container_about col-6" style="background-color: #66C4A9;">  

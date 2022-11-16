@@ -26,6 +26,14 @@
         return $instituicao;
     }
 
+    function buscaInstituicaoNome($nome){
+        $con = new mysqli("localhost", "root", "", "tcc");
+        $sql = "select * from usuario where nome = $nome ";
+        $retorno = mysqli_query($con, $sql);
+        $instituicao = mysqli_fetch_array($retorno);
+        return $instituicao;
+    }
+
     function imprimirAnimais($animais){
         foreach ($animais as $animal){
             $nome_animal = $animal['nome_animal'];
