@@ -96,17 +96,21 @@
         <div class="usuario_container container rounded p-3" style="background-color: #66C4A9;">
             <div class="usuario_content">
                 <div class="row">
-
                     <div class="col-4">
                         <div class="usuario_img">
-
-                            <img class="card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;">
+                            <?php
+                                if(empty($user['pathImagem'])){
+                                echo '<img class="card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;"/>';
+                                }
+                                else{
+                                    echo '<img class="card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;"/>';
+                                }
+                            ?>
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <p><label>Selecione o arquivo:</label></p>
                                 <input name="arquivo" type="file"></p>
                                 <button name="upload" type="submit"> Enviar arquivo</button>
                             </form>
-
                         </div>
                     </div>
 

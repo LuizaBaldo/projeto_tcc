@@ -98,7 +98,15 @@
                     
                     <div class="col-4">
                         <div class="usuario_img">
-                            <img height="500" src="<?php echo $user['pathImagem']?>" id="instituicao_foto" width="100%">
+                            <?php
+                                if(empty($user['pathImagem'])){
+                                echo '<img height="500" src="../img/default.png" alt="Card img" id="instituicao_foto" width="100%"/>';
+                                }
+                                else{
+                                    echo '<img height="500" src="'.$user['pathImagem'].'" alt="Card img" id="instituicao_foto" width="100%"/>';
+                                }
+                            ?>
+                            
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <p><label>Selecione o arquivo:</label></p>
                                 <input name="arquivo" type="file"></p>

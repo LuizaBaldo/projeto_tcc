@@ -43,7 +43,12 @@
                 <div class="row rounded py-2" style="background-color: #66C4A9;">
                     <div class="col-4">
                         <div class="instituicao_img">
-                            <img height="500" src="<?php echo $user['pathImagem']?>" id="instituicao_foto" width="100%">    
+                            <?php
+                                if(empty($user['pathImagem'])){
+                                echo '<img height="500" src="../img/default.png" id="instituicao_foto" width="100%">';
+                                }
+                                else{echo '<img height="500" src="'.$user['pathImagem'].'" id="instituicao_foto" width="100%">';}
+                            ?> 
                             <br>
                             <a href="pag_alt_dados_inst.php">
                                 <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  

@@ -45,6 +45,12 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="container_img" style="text-align: center; padding-left: 3rem;">
+                            <?php
+                                if(empty($user['pathImagem'])){
+                                echo '<img class="card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;';
+                                }
+                                else{echo '<img class="card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;';}
+                            ?> 
                             <img class="card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;">
                         </div>
                         

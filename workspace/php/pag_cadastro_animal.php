@@ -2,6 +2,8 @@
     require_once './functions.php';
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,59 +34,62 @@
         <div class="container rounded py-2" style="background-color: #66C4A9;">
             <h1 class="text-center">Cadastrar Animal</h1>
             <div id="formulario">
-                <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastroAnimal">
+                <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastroAnimal" enctype="multipart/form-data">
+                    <div class="form form-group mt-3" style="width:70%;margin:auto;">
+                        <div class="form-row">
+                            <div class="row">
 
-                <div class="form form-group mt-3" style="width:70%;margin:auto;">
-                    <div class="form-row">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="tipo">Selecione o tipo de animal</label>
-                                <select name="tipoAnimal" id="tipoAnimal" class="form-select form-select-sm">
-                                    <option value="cachorro">Cachorro</option>
-                                    <option value="gato">Gato</option>
-                                    <option value="ave">Ave</option>
-                                </select>
-                            </div>
+                                <label>Selecione a foto do animal:</label>
+                                <input type="file" name="foto_animal" id="foto_animal"></p>
 
-                            <div class="col-md-6 mb-3">
-                                    <label for="sexo">Selecione o sexo do animal</label>
-                                    <select name="sexoAnimal" id="sexoAnimal" class="form-select form-select-sm">
-                                        <option value="Femea">Fêmea</option>
-                                        <option value="Macho">Macho</option>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tipo">Selecione o tipo de animal</label>
+                                    <select name="tipoAnimal" id="tipoAnimal" class="form-select form-select-sm">
+                                        <option value="cachorro">Cachorro</option>
+                                        <option value="gato">Gato</option>
+                                        <option value="ave">Ave</option>
                                     </select>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                        <label for="sexo">Selecione o sexo do animal</label>
+                                        <select name="sexoAnimal" id="sexoAnimal" class="form-select form-select-sm" required>
+                                            <option value="Femea">Fêmea</option>
+                                            <option value="Macho">Macho</option>
+                                        </select>
+                                </div>
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nome do animal</label>
+                                <input type="text" class="form-control form-control-sm" id="txtNomeAnimal" placeholder="Digite nome do animal" name="nomeAnimal" required/>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Idade do animal em meses</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtIdadeAnimal" placeholder="Digite a idade do animal em meses" name="idadeAnimal" required/>
+                                </div>
+        
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Raça do animal</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Digite a raça do animal" id="txtRacaAnimal" name="racaAnimal" required/>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="form-label">Descrição do animal</label>
+                                <textarea type="text" class="form-control form-control-sm" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal" required></textarea>
+                            </div> 
                         </div>
+
+                        <br/>
+
                         <div class="mb-3">
-                            <label class="form-label">Nome do animal</label>
-                            <input type="text" class="form-control form-control-sm" id="txtNomeAnimal" placeholder="Digite nome do animal" name="nomeAnimal"/>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Idade do animal em meses</label>
-                                <input type="text" class="form-control form-control-sm" id="txtIdadeAnimal" placeholder="Digite a idade do animal em meses" name="idadeAnimal"/>
-                            </div>
-    
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Raça do animal</label>
-                                <input type="text" class="form-control form-control-sm" placeholder="Digite a raça do animal" id="txtRacaAnimal" name="racaAnimal"/>
+                            <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
+                                <button type="submit" class="btn text-white" id="btnCadastrar" name="btnCadastrar" style="background-color: #4C79D5;">Cadastrar</button>
                             </div>
                         </div>
 
-                        <div>
-                            <label class="form-label">Descrição do animal</label>
-                            <textarea type="text" class="form-control form-control-sm" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal"></textarea>
-                        </div> 
                     </div>
-
-                    <br/>
-
-                    <div class="mb-3">
-                        <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
-                            <button type="submit" class="btn text-white" id="btnCadastrar" name="btnCadastrar" style="background-color: #4C79D5;">Cadastrar</button>
-                        </div>
-                    </div>
-
-                </div>
                 </form>
 
                 <?php
@@ -95,22 +100,59 @@
 
     </body>
 </html>
-
 <?php
-  function cadastrarAnimal(){
-    $nomeAnimal   = $_POST["nomeAnimal"];
-    $idadeAnimal = $_POST["idadeAnimal"];
-    $sexoAnimal = $_POST["sexoAnimal"];
-    $racaAnimal  = $_POST["racaAnimal"];
-    $descAnimal  = $_POST["descAnimal"];
-    $tipoAnimal = $_POST["tipoAnimal"];
-    $id = $_SESSION["id"];
-    $con  = new mysqli("localhost", "root", "", "tcc");
-    $sql = "insert into animal(id_usuario, tipo_animal, nome_animal, idade, sexo, raca, descricao) values ( ?, ?, ?, ?, ?, ?, ?)";
-    $statement = mysqli_prepare($con, $sql);
-    mysqli_stmt_bind_param($statement, 'ississs', $id, $tipoAnimal, $nomeAnimal, $idadeAnimal, $sexoAnimal, $racaAnimal, $descAnimal);
-    mysqli_stmt_execute($statement);
-    echo "<script lang='javascript'>window.location.href='pag_instituicao.php';</script>";
-    mysqli_close($con);
-  }
+    function cadastrarAnimal(){
+        $nomeAnimal   = $_POST["nomeAnimal"];
+        $idadeAnimal = $_POST["idadeAnimal"];
+        $sexoAnimal = $_POST["sexoAnimal"];
+        $racaAnimal  = $_POST["racaAnimal"];
+        $descAnimal  = $_POST["descAnimal"];
+        $tipoAnimal = $_POST["tipoAnimal"];
+        $id = $_SESSION["id"];
+        $arquivo = $_FILES['foto_animal'];
+        if (!empty($arquivo["name"])) {
+            $nomeDoArquivo = $arquivo["name"];
+    
+            $arquivoValido = true;
+    
+            // validar extensao do arquivo
+            $tipoDoArquivo = array(
+                'jpg',
+                'jpeg',
+                'png'
+            );
+            $nomeDoArquivo = $arquivo['name'];
+            $novoNomeDoArquivo = uniqid();
+            $pasta = '../img/';
+            $extensaoDoArquivo = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+            if (! in_array($extensaoDoArquivo, $tipoDoArquivo)) {
+                echo "<span>Formato de arquivo não suportado. somente upload<b>" . implode(", ", $tipoDoArquivo) . "</b> arquivos .</span>";
+                $arquivoValido = false;
+            }
+    
+            // Validate file size
+            if ($_FILES["foto_animal"]["size"] > 200000) {
+                echo "<span>Arquivo muito grande Max:2MB.</span>";
+                $arquivoValido = 0;
+            }
+            
+            $path = $pasta . $novoNomeDoArquivo . "." . $extensaoDoArquivo;
+    
+            if ($arquivoValido) {
+                move_uploaded_file($arquivo["tmp_name"], $path);
+                $con  = new mysqli("localhost", "root", "", "tcc");
+                $sql = "insert into animal(id_usuario, tipo_animal, nome_animal, idade, sexo, raca, descricao, pathImagem_animal) values ( ?, ?, ?, ?, ?, ?, ?, ?)";
+                $statement = mysqli_prepare($con, $sql);
+                mysqli_stmt_bind_param($statement, 'ississss', $id, $tipoAnimal, $nomeAnimal, $idadeAnimal, $sexoAnimal, $racaAnimal, $descAnimal, $path);
+                mysqli_stmt_execute($statement);
+                $idNovo = mysqli_insert_id($con);
+                echo "<script lang='javascript'>window.location.href='pag_animal.php?id=".$idNovo."';</script>";
+                mysqli_close($con);
+            }
+            else{
+                echo "falha ao enviar arquivo";
+            }
+        } else 
+            echo "No files have been chosen.";
+        }   
 ?>
