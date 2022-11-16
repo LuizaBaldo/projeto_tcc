@@ -88,7 +88,13 @@
                     echo '<div class="container_exibir p-5">';
                         echo '<div class="row">';
                             echo '<div class="card" style="width:300px">';
-                                echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';
+                                if(empty($instituicao['pathImagem'])){
+                                echo '<img class="card-img-top" src="../img/default.png" alt="Card img" alt="Card image">';
+                                }
+                                else{
+                                    echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';
+                                }
+                                
                                 echo '<div class="card-body">';
                                     echo '<h4 class="card-title">Nome: ' .$nome; '</h4>';
                                     echo '<p class="card-text">Endereco: ' .$endereco; '</p>';
