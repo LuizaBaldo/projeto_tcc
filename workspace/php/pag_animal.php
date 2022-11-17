@@ -65,24 +65,26 @@
         
         <div class="container_main">
             <div class="row justify-content-center me-0">
-                <div class="card w-75 pt-4" style="background-color: #66C4A9;">
+                <div class="card w-75 pt-4" style="background-color: ">
 
                     <div class="container_body">
                         <div class="row">
                             <!-- CONTAINER IMG + INFO -->
                             <div class="container_img-about">
                                 <div class="row justify-content-center col-sm-12">
-                                    <div class="container_img col-5 text-center" style="background-color: #66C4A9;">
-                                        <h1><a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a></h1> <!-- MOSTRA A INSTIUICAO DO ANIMAL -->
+                                    <div class="container_img col-5 text-center" style="background-color: ">
                                         <img src="<?php echo $animal['pathImagem_animal']?>" style="width:100%">
+                                        <h3><a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a></h3> <!-- MOSTRA A INSTIUICAO DO ANIMAL -->
+
                                         <?php if(UsuarioEhinstituicaoDoAnimal()){?>  
-                                        <a href="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>">
-                                            <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" style="center" >Alterar animal</button>
-                                        </a>
+                                            <a href="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>">
+                                                <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" style="center" >Alterar animal</button>
+                                            </a>
                                         <?php }?>
+
                                     </div>
 
-                                    <div class="container_about col-6" style="background-color: #66C4A9;">               
+                                    <div class="container_about col-6" style="background-color: ">               
                                         <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
                                             <form method="post">
                                                 <label>Tipo do Animal</label> 
@@ -112,19 +114,22 @@
                             <!-- CONTIANER REALIZAR COMENTARIO + COMENTARIO -->
                             <div class="container_footer" style="max-height: 60vh;">
                                 <div class="row justify-content-center col-sm-12 pt-5" style="height: 70vh;"> 
-                                    <div class="container_comentar col-4" style="background-color: #66C4A9; margin-right: 72px; height: 50vh;">
+                                    <div class="container_comentar col-4" style="background-color: ; margin-right: 72px; height: 50vh;">
                                         <form class="pb-3" method="post" action="guardar_comentario.php" style="display: flexbox" id="formComentario">
                                             <div class="inputNome pb-2">
-                                                <input type="text" id="nomeComentario" name="nomeComentario" placeholder="nome" style="width: 35%">
+                                                <input class="border border-2" type="text" id="nomeComentario" name="nomeComentario" placeholder="nome" style="width: 35%">
                                             </div>
+                                            
                                             <div class="inputEmail pb-2">
-                                                <input  type="text" id="emailComentario" name="emailComentario" placeholder="email" style="width: 35%">
+                                                <input class="border border-2" type="text" id="emailComentario" name="emailComentario" placeholder="email" style="width: 50%">
                                             </div>
+
                                             <div class="textComentario pb-2">
                                                 <textarea class="rounded-3" id="comentario" name="comentario" rows="5" cols="33" placeholder="Digite seu comentario"></textarea>
                                             </div>
+
                                             <button type="button" class="btn btn-success mt-2" id="btnComentario" name="btnComentario" onclick="validarComentario();">Comentar</button>
-                                            <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
+                                                <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
                                         </form>
                                     </div>
                                     <div class="container_coment card col-6" style="background-color: white; overflow: scroll; height: 50vh">
@@ -132,14 +137,14 @@
                                         <div class="card-body">
                                             <?php
                                                 foreach ($comentarios as $comentario){
-                                                echo '<div class="row pb-3" style="">';     
+                                                echo '<div class="row pb-4" style="">';     
                                                     echo '<div class="border">';
-                                                        echo '<p>Nome: '.$comentario['nome'];
+                                                        echo '<p>Nome: <b>'.$comentario['nome'].'</b>';
                                                         echo '<p>Comentario: '.$comentario['conteudo'];
                                                     echo '</div>';
                                                 if ($comentario['resposta'] != null){
-                                                    echo '<div class="border">';
-                                                        echo '<p>Instituição: '.$instituicao['nome'];
+                                                    echo '<div class="border mt-1">';
+                                                        echo '<p>Instituição: <b>'.$instituicao['nome'].'</b>';
                                                         echo '<p>Comentario: '.$comentario['resposta'];
                                                     echo '</div>';
                                                 }

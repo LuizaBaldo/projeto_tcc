@@ -48,23 +48,27 @@
         
         <div class="container_main">
             <div class="row justify-content-center me-0"> 
-                <div class="card w-75 pt-4" style="background-color: #66C4A9; height: 80vh;">
+                <div class="card w-75 pt-4" style="height: 65vh;">
                     <div class="container_body">
 
                         <div class="row">
                             <!-- CONTAINER IMG + INFO -->
                             <div class="container_img-about">
                                 <div class="row justify-content-center col-sm-12">
-                                    <div class="container_img col-5 text-center" style="background-color: #66C4A9;">
-                                    <?php
-                                    if(empty($instituicao['pathImagem'])){
-                                    echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
-                                    }
-                                    else{echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
-                                    ?>
+                                    <div class="container_img col-5 text-center" style="background-color: ">
+
+                                        <?php
+                                            if(empty($instituicao['pathImagem'])){
+                                                echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
+                                            }
+                                            else{
+                                                echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';
+                                            }
+                                        ?>
+
                                     </div>
 
-                                    <div class="container_about col-6" style="background-color: #66C4A9;">  
+                                    <div class="container_about col-6" style="background-color: ">  
                                                             
                                         <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
                                             <label>Nome</label> 

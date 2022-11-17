@@ -2,36 +2,7 @@
     require_once './functions.php';
     $user = getUserLogged();
 ?>
-<?php
-    if(isset($_GET["enviar"])){
-        $email = $_POST["txtEmail"];
-        $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from usuario where email='$email'";
-        $query = mysqli_query($con, $sql);
-        if(mysqli_fetch_array($query) > 0){
-            $codigo = md5(rand(999999999, 111111111));
-            $sql = "update usuario set codigo = ? WHERE email = ?";
-            $statement = mysqli_prepare($con, $sql);
-            mysqli_stmt_bind_param($statement, 'ss', $codigo, $email);
-            $run_query = mysqli_stmt_execute($statement);
-            if($run_query){
-                $subject  = "Codigo para resetar a senha";
-                $message  = "Seu link para resetar a senha é http://localhost/TCC/workspace/php/pag_nova_senha.php?codigo=$codigo";
-                if(mail($email, $subject, $message)){
-                    echo "<span>foi enviado no seu email o link para redefinicao de senha</span>"; //fazer modal que mostre que foi enviado o link 
-                }else{
-                    echo "Falha ao enviar o codigo</span>"; //fazer modal
-                }
-            }else{
-                echo "<span>Alguma coisa deu errado</span>";//fazer modal
-            }
-        }else{
-            echo "<span>E-Mail não existe</span>";//fazer modal
-            echo "<br>";
-        }
-        mysqli_close($con); 
-    }
-?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -61,8 +32,54 @@
             <form method="post" action="pag_esqueci_senha.php?enviar=1" id="formEsqueci">
                 <label class="form-label">Insira seu e-mail</label>
                 <input class="form-control form-control-sm" id="txtEmail" name="txtEmail" type="email" required/>
-                <button type="submit" name="enviaEmail" class="btn mt-3" style="background-color: #4C79D5; color: white; width:100%">Enviar Email</button>
+                <button id="toastbtn" type="submit" name="enviaEmail" class="btn mt-3" style="background-color: #4C79D5; color: white; width:100%">Enviar Email</button>
             </form>
         </div>
     </body>
 </html>
+
+<?php
+    if(isset($_GET["enviar"])){
+        $email = $_POST["txtEmail"];
+        $con  = new mysqli("localhost", "root", "", "tcc");
+        $sql = "select * from usuario where email='$email'";
+        $query = mysqli_query($con, $sql);
+        if(mysqli_fetch_array($query) > 0){
+            $codigo = md5(rand(999999999, 111111111));
+            $sql = "update usuario set codigo = ? WHERE email = ?";
+            $statement = mysqli_prepare($con, $sql);
+            mysqli_stmt_bind_param($statement, 'ss', $codigo, $email);
+            $run_query = mysqli_stmt_execute($statement);
+            if($run_query){
+                $subject  = "Codigo para resetar a senha";
+                $message  = "Seu link para resetar a senha é http://localhost/TCC/workspace/php/pag_nova_senha.php?codigo=$codigo";
+                if(mail($email, $subject, $message)){
+                    echo '<div class="container mt-3 w-50 text-center">';
+                        echo '<div class="alert alert-success alert-dismissible fade show">Foi enviado no seu email o link para redefinicao de senha!!!';
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                        echo '</div>';
+                    echo '</div>';
+                }else{
+                    echo '<div class="container mt-3 w-50 text-center">';                
+                        echo '<div class="alert alert-warning alert-dismissible fade show">Falha ao enviar o codigo!';
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                        echo '</div>';
+                    echo '</div>';
+                }
+            }else{
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show">Alguma coisa deu errado!!';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
+            }
+        }else{
+            echo '<div class="container mt-3 w-50 text-center">';  
+                echo '<div class="col align-self-center alert alert-info alert-dismissible fade show">E-Mail não existe!!!';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                echo '</div>';
+            echo '</div>';
+        }
+        mysqli_close($con); 
+    }
+?>
