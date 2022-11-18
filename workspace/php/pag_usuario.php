@@ -105,14 +105,3 @@
 
     </body>
 </html>
-
-<?php 
-    function excluir(){
-        $id = $_GET['deletar'];
-        $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql = "delete from usuario where id = $id";
-        mysqli_query($con, $sql);
-        echo "<script lang='javascript'>window.location.href='sair.php';</script>";
-        mysqli_close($con);
-    }
-?>

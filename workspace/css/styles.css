@@ -22,9 +22,11 @@ label{
 }
 
 img{
-    width: 50% !important;
-    height: 300 !important;
+    width: 50% ;
+    height: 300 s;
 }
+
+
 
 * {
     box-sizing: border-box;

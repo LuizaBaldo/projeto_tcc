@@ -55,5 +55,23 @@
         }
     }
 
+    function excluir(){
+        $id = $_GET['deletar'];
+        $con  = new mysqli("localhost", "root", "", "tcc");
+        $sql = "delete from usuario where id = $id";
+        mysqli_query($con, $sql);
+        echo "<script lang='javascript'>window.location.href='sair.php';</script>";
+        mysqli_close($con);
+    }
+
+    function excluirAnimal(){
+        $idInstituicao = $_GET['instituicaoid'];
+        $id = $_GET['deletar'];
+        $con  = new mysqli("localhost", "root", "", "tcc");
+        $sql = "delete from animal where id = $id";
+        mysqli_query($con, $sql);
+        echo "<script lang='javascript'>window.location.href='pag_instituicao.php?id=$idInstituicao';</script>";
+        mysqli_close($con);
+    }
 ?>
     

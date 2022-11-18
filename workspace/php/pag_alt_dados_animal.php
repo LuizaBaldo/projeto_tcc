@@ -24,7 +24,6 @@
 
 <?php
     $animal = buscaAnimalPorId($_GET['id']);
-    $instituicao = buscaInstituicaoId($animal['id_usuario']);
 ?>
 
 <?php 
@@ -67,7 +66,7 @@
                 mysqli_stmt_bind_param($statement, 's', $path);
                 mysqli_stmt_execute($statement);
                 mysqli_close($con);
-                echo "<script lang='javascript'>window.location.href='pag_animal.php?id=".$animal['id']."';</script>";
+                echo "<script lang='javascript'>window.location.href='pag_alt_dados_animal.php?id=".$animal['id']."';</script>";
             }
             else{
                 echo "falha ao enviar arquivo";
@@ -75,6 +74,11 @@
         } else 
             echo "No files have been chosen.";
     }
+    
+?>
+
+<?php
+    if(isset($_GET["deletar"])) excluirAnimal();{}
 ?>
 
 <!DOCTYPE html>
@@ -111,11 +115,16 @@
                     <p><label>Selecione o arquivo:</label></p>
                     <input name="arquivo" type="file"></p>
                     <button name="upload" type="submit"> Enviar arquivo</button>
-                </form>  
+                </form>
+                <br>
+                <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este animal?');" action="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>&deletar=<?php echo $animal['id'];?>&instituicaoid=<?php echo $animal['id_usuario'];?>">
+                    <button type="submit" class="btn btn-danger" id="btnExcluirAnimal" name="btnExcluirAnimal">Excluir Animal</button>
+                </form>
             </div>
 
             <div class="col-8">              
                 <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
+                    
                     
                     <form method="post" action="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>&alterar=<?php echo $animal["id"];?>" id="formAlterarInfoAnimal" >
                         <label>Tipo do Animal</label> 
@@ -139,7 +148,6 @@
                         <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" onclick="alterarInfoAnimal();">Salvar alteracoes</button>
                         <button type="button" class="btn btn-danger mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
                     </form>
-                    
                 </div>
             </div>
         </div>       
