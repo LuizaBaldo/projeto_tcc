@@ -40,27 +40,36 @@
         
         <div class="instituicao_container container">
             <div class="instituicao_content">
-                <div class="row rounded py-2" style="background-color: #66C4A9;">
+                <div class="row rounded py-2">
                     <div class="col-4">
                         <div class="instituicao_img">
-                            <?php
-                                if(empty($user['pathImagem'])){
-                                echo '<img class="img_pag_instituicao" src="../img/default.png" id="instituicao_foto">';
-                                }
-                                else{echo '<img class="img_pag_instituicao" src="'.$user['pathImagem'].'" id="instituicao_foto">';}
-                            ?> 
+                            <div class="container_img text-center mt-2">
+                                <?php
+                                    if(empty($user['pathImagem'])){
+                                    echo '<img class="img_pag_instituicao" src="../img/default.png" id="instituicao_foto">';
+                                    }
+                                    else{echo '<img class="img_pag_instituicao" src="'.$user['pathImagem'].'" id="instituicao_foto">';}
+                                ?> 
+                            </div>
+
                             <br>
+
                             <a href="pag_alt_dados_inst.php">
-                                <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
+                                <button type="button" class="btn btn-primary mt-2 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
                             </a>
+
                             <br>
+
                             <a href="pag_alt_senha.php">
                                 <button type="button" class="btn btn-primary mb-1" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
-                            </a>                 
+                            </a>    
+
                             <br>
+
                             <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $user['id'];?>">
                                 <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
                             </form>
+
                         </div>
                     </div>
                     <div class="col-8">                            

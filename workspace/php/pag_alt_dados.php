@@ -98,14 +98,22 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="usuario_img">
-                            <?php
-                                if(empty($user['pathImagem'])){
-                                echo '<img class="card-img-left img_alt_dados" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
-                                }
-                                else{
-                                    echo '<img class="card-img-left img_alt_dados" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
-                                }
-                            ?>
+                            <div class="container_img text-center mb-3">
+                                <?php
+                                    if(empty($user['pathImagem'])){
+
+                                        echo '<img class="card-img-left img_alt_dados" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
+
+                                    }
+
+                                    else{
+
+                                        echo '<img class="card-img-left img_alt_dados" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
+                                        
+                                    }
+                                ?>    
+                            </div>
+                            
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <p><label>Selecione o arquivo:</label></p>
                                 <input name="arquivo" type="file"></p>

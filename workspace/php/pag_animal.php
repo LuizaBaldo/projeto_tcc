@@ -74,7 +74,10 @@
                                 <div class="row justify-content-center col-sm-12">
                                     <div class="container_img col-5 text-center">
                                         <img class="img_pag_animal" src="<?php echo $animal['pathImagem_animal']?>">
-                                        <h3><a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a></h3> <!-- MOSTRA A INSTIUICAO DO ANIMAL -->
+
+                                        <div class="text-center mt-2">
+                                           <label for=""><b>Instituição: </b> <a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a> <!-- MOSTRA A INSTIUICAO DO ANIMAL --></label>
+                                        </div>
 
                                         <div class="text-center mt-2">
                                             <a href="pag_inicial.php">
@@ -127,7 +130,7 @@
                                             </div>
                                             
                                             <div class="inputEmail pb-2">
-                                                <input class="border border-2" type="text" id="emailComentario" name="emailComentario" placeholder="email" style="width: 50%">
+                                                <input class="border border-2" type="text" id="emailComentario" name="emailComentario" placeholder="email" style="width: 75%">
                                             </div>
 
                                             <div class="textComentario pb-2">
@@ -145,13 +148,13 @@
                                                 foreach ($comentarios as $comentario){
                                                 echo '<div class="row pb-4" style="">';     
                                                     echo '<div class="border">';
-                                                        echo '<p>Nome: <b>'.$comentario['nome'].'</b>';
-                                                        echo '<p>Comentario: '.$comentario['conteudo'];
+                                                        echo '<p class="pt-3">Nome: <b>'.$comentario['nome'].'</b>';
+                                                        echo '<p>Comentario: <span class="lead">'.$comentario['conteudo'].'</span>';
                                                     echo '</div>';
                                                 if ($comentario['resposta'] != null){
                                                     echo '<div class="border mt-1">';
                                                         echo '<p>Instituição: <b>'.$instituicao['nome'].'</b>';
-                                                        echo '<p>Comentario: '.$comentario['resposta'];
+                                                        echo '<p>Comentario: <span class="lead">'.$comentario['resposta'].'</span>';
                                                     echo '</div>';
                                                 }
                                                 if (UsuarioEhinstituicaoDoAnimal()){

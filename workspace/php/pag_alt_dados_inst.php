@@ -97,13 +97,13 @@
                 <div class="row rounded py-2" style="background-color: #66C4A9;">
                     
                     <div class="col-4">
-                        <div class="usuario_img">
+                        <div class="usuario_img text-center">
                             <?php
                                 if(empty($user['pathImagem'])){
                                 echo '<img class="img_pag_alt_inst" src="../img/default.png" alt="Card img" id="instituicao_foto"/>';
                                 }
                                 else{
-                                    echo '<img class="img_pag_alt_inst-animal" src="'.$user['pathImagem'].'" alt="Card img" id="instituicao_foto"/>';
+                                    echo '<img class="img_pag_alt_inst" src="'.$user['pathImagem'].'" alt="Card img" id="instituicao_foto"/>';
                                 }
                             ?>
                             

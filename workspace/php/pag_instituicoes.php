@@ -47,22 +47,7 @@
                 <?php foreach ($instituicoes as $instituicao){
                     $nome_inst = $instituicao['nome'];
                     $endereco_inst = $instituicao['endereco'];
-                    // echo "<div class='col-6 text-center p-3 '>";
-                    //     echo '<a href="pag_exibir_instituicao.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit; ">';
-                    //         echo "<div class='border'>";
-                    //             echo 'Nome da instituicao: '.$instituicao['nome'];
-                    //             echo '<br>';
-                    //             echo 'endereco da instituicao: '.$instituicao['endereco'];
-                    //             echo '<br>';
-                    //             echo 'telefone da instituicao: '.$instituicao['telefone'];
-                    //             echo '<br>';
-                    //             echo 'email da instituicao: '.$instituicao['email']; 
-                    //             echo '<br>';
-                    //             echo 'cnpj da instituicao: '.$instituicao['cnpj'];
-                    //         echo '</div>';  
-                    //     echo '</a>';    
-                    // echo '</div>';
-                // TESTE CARD 
+
                 echo '<div class="container_exibir p-5">';
                     echo '<div class="row">';
                         echo '<div class="card"">';
@@ -72,7 +57,7 @@
                             else{
                                 echo '<img class="img_pag_instituicoes card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
                             echo '<div class="card-body">';
-                                echo '<h4 class="card-title">' .$nome_inst; '</h4>';
+                                echo '<p class="card-title">' .$nome_inst; '</p>';
                                 echo '<p class="card-text">' .$endereco_inst; '</p>';
                                 echo '<p>';
                                 echo '<a href="pag_exibir_instituicao.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit;">Veja Mais</a>';

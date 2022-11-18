@@ -40,58 +40,66 @@
             require_once './partials/common.php';
         ?>
         
-        <div class="container_usuario" style="padding-left: 20rem; padding-top: 2rem;">
-            <div class="card w-75 p-0" style="background-color: #66C4A9; height: 34rem;">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="container_img" style="text-align: center; padding-left: 3rem;">
-                            <?php
-                                if(empty($user['pathImagem'])){
-                                echo '<img class="img_pag_usuario card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;';
-                                }
-                                else{echo '<img class="img_pag_usuario card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;';}
-                            ?> 
-                            <img class="img_pag_usuario card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="padding-top: 1rem;">
-                        </div>
-                        
-                        <div class="container_buttoms" style="text-align: center; padding-left: 6rem;">
-                            <a href="pag_alt_dados.php">
-                                <button type="button" class="btn mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar" style="background-color: #4C79D5; color: white;">Alterar Cadastro</button>  
-                            </a>
-                            <p>
-                            <p>
-                            <a href="pag_alt_senha.php">
-                                <button type="button" class="btn mb-1" id="btnAltSenha" name="btnAltSenha" style="background-color: #4C79D5; color: white;">Alterar Senha</button>                        
-                            </a>                 
-                            <p>
-                            <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_usuario.php?deletar=<?php echo $user['id'];?>">
-                                <button type="submit" class="btn" id="btnExcluir" name="btnExcluir" style="background-color: #4C79D5; color: white;">Excluir Perfil</button>
-                            </form>                            
-                        </div>                        
-                    </div>
-
-                    <div class="col-4">                            
-                        <div class="container_info" style="padding: 100px; width: 600px;"> <!-- -->
-                            <label>Nome</label> 
-                            <input  type="text" class="form-control" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
-
-                            <label>E-mail</label>
-                            <input type="email" class="form-control" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
-
-                            <label>Endereço</label>
-                            <input type="text" class="form-control" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
-
-                            <label>Telefone</label>
-                            <input type="text" class="form-control" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
+        <div class="container_usuario">
+            <div class="row justify-content-center me-0">
+                <div class="card w-50 p-0">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="container_img" style="text-align: center; padding-left: 3rem;">
+                                <?php
+                                    if(empty($user['pathImagem'])){
+                                    echo '<img class="img_pag_usuario card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;';
+                                    }
+                                    else{echo '<img class="img_pag_usuario card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;';}
+                                ?> 
+                                <img class="img_pag_usuario card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="padding-top: 1rem;">
+                            </div>
                             
+                            <div class="container_buttoms text-center ps-5 pt-3">
+
+                                <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_usuario.php?deletar=<?php echo $user['id'];?>">
+                                    <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
+                                </form>
+
+                                <a href="pag_alt_dados.php">
+                                    <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
+                                </a>
+
+                                <p>
+                                <p>
+
+                                <a href="pag_alt_senha.php">
+                                    <button type="button" class="btn btn-primary mb-1" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
+                                </a>         
+
+                                <p>
+                                
+                            </div>                        
                         </div>
 
-                        <div class="text-center mt-2">
-                            <a href="pag_inicial.php">
-                                <button type="button" class="btn btn-danger mt-2" id="btnVoltarUsuario" name="btnVoltarUsuario">Voltar</button>
-                            </a>
+                        <div class="col-4">                            
+                            <div class="container_info pt-5">
+                                <label>Nome</label> 
+                                <input  type="text" class="form-control" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
+
+                                <label>E-mail</label>
+                                <input type="email" class="form-control" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
+
+                                <label>Endereço</label>
+                                <input type="text" class="form-control" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
+
+                                <label>Telefone</label>
+                                <input type="text" class="form-control" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
+                                
+                            </div>
+                            
+                            <div class="text-center mt-5">
+                                <a href="pag_inicial.php">
+                                    <button type="button" class="btn btn-danger mt-2" id="btnVoltarUsuario" name="btnVoltarUsuario">Voltar</button>
+                                </a>
+                            </div>
+
                         </div>
-                        
                     </div>
                 </div>
             </div>
