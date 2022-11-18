@@ -65,27 +65,34 @@
         
         <div class="container_main">
             <div class="row justify-content-center me-0">
-                <div class="card w-75 pt-4" style="background-color: ">
+                <div class="card w-75 pt-4">
 
                     <div class="container_body">
                         <div class="row">
                             <!-- CONTAINER IMG + INFO -->
                             <div class="container_img-about">
                                 <div class="row justify-content-center col-sm-12">
-                                    <div class="container_img col-5 text-center" style="background-color: ">
-                                        <img src="<?php echo $animal['pathImagem_animal']?>" style="width:100%">
+                                    <div class="container_img col-5 text-center">
+                                        <img src="<?php echo $animal['pathImagem_animal']?>">
                                         <h3><a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a></h3> <!-- MOSTRA A INSTIUICAO DO ANIMAL -->
+
+                                        <div class="text-center mt-2">
+                                            <a href="pag_inicial.php">
+                                                <button type="button" class="btn btn-danger btn-lg mt-2" id="btnVoltarAnimal" name="btnVoltarAnimal">Voltar</button>
+                                            </a>
+                                        </div>
 
                                         <?php if(UsuarioEhinstituicaoDoAnimal()){?>  
                                             <a href="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>">
-                                                <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" style="center" >Alterar animal</button>
+                                                <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal">Alterar animal</button>
                                             </a>
                                         <?php }?>
 
                                     </div>
 
-                                    <div class="container_about col-6" style="background-color: ">               
+                                    <div class="container_about col-6">               
                                         <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
+
                                             <form method="post">
                                                 <label>Tipo do Animal</label> 
                                                 <input  type="text" class="form-control" id="txtTipoAnimal" name="tipoAnimal" disabled="true" value="<?php echo $animal["tipo_animal"];?>"/>
@@ -106,7 +113,6 @@
                                                 <textarea type="text" class="form-control" id="txtDescricao" name="descricao" disabled="true"><?php echo $animal["descricao"];?></textarea>
                                             </form>
                                             
-                                            
                                         </div>
                                     </div>                
                                 </div>
@@ -114,7 +120,7 @@
                             <!-- CONTIANER REALIZAR COMENTARIO + COMENTARIO -->
                             <div class="container_footer" style="max-height: 60vh;">
                                 <div class="row justify-content-center col-sm-12 pt-5" style="height: 70vh;"> 
-                                    <div class="container_comentar col-4" style="background-color: ; margin-right: 72px; height: 50vh;">
+                                    <div class="container_comentar col-4" style="margin-right: 72px; height: 50vh;">
                                         <form class="pb-3" method="post" action="guardar_comentario.php" style="display: flexbox" id="formComentario">
                                             <div class="inputNome pb-2">
                                                 <input class="border border-2" type="text" id="nomeComentario" name="nomeComentario" placeholder="nome" style="width: 35%">

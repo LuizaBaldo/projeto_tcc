@@ -65,7 +65,7 @@
                 // TESTE CARD 
                 echo '<div class="container_exibir p-5">';
                     echo '<div class="row">';
-                        echo '<div class="card" style="width:300px">';
+                        echo '<div class="card"">';
                             if(empty($instituicao['pathImagem'])){
                                 echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
                             }

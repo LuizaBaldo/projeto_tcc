@@ -64,6 +64,12 @@
             </div>
         </div>
 
+        <div class="text-center mt-2">
+            <a href="pag_instituicao.php">
+                <button type="button" class="btn btn-danger btn-lg mt-2" id="btnVoltarInst" name="btnVoltarInst">Voltar</button>
+            </a>
+        </div>
+
 
 
     </body>

@@ -48,14 +48,14 @@
         
         <div class="container_main">
             <div class="row justify-content-center me-0"> 
-                <div class="card w-75 pt-4" style="height: 65vh;">
+                <div class="card w-75 pt-4" style="height: 70vh;">
                     <div class="container_body">
 
                         <div class="row">
                             <!-- CONTAINER IMG + INFO -->
                             <div class="container_img-about">
                                 <div class="row justify-content-center col-sm-12">
-                                    <div class="container_img col-5 text-center" style="background-color: ">
+                                    <div class="container_img col-5 text-center">
 
                                         <?php
                                             if(empty($instituicao['pathImagem'])){
@@ -68,9 +68,9 @@
 
                                     </div>
 
-                                    <div class="container_about col-6" style="background-color: ">  
+                                    <div class="container_about col-6">  
                                                             
-                                        <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
+                                        <div class="animal_info" style="padding: 0 15px 0 15px; width: 70%">
                                             <label>Nome</label> 
                                             <input  type="text" class="form-control" id="txtNomeInst" name="tipoNome" disabled="true" value="<?php echo $instituicao["nome"];?>"/>
 
@@ -100,6 +100,12 @@
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Veja os Animais da Instituição
                             </button>
+                        </div>
+
+                        <div class="text-center mt-2">
+                            <a href="pag_inicial.php">
+                                <button type="button" class="btn btn-danger mt-2" id="btnVoltarExibirInst" name="btnVoltarExibirInst">Voltar</button>
+                            </a>
                         </div>
 
                     </div>

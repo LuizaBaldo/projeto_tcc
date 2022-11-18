@@ -45,9 +45,9 @@
                         <div class="instituicao_img">
                             <?php
                                 if(empty($user['pathImagem'])){
-                                echo '<img height="500" src="../img/default.png" id="instituicao_foto" width="100%">';
+                                echo '<img src="../img/default.png" id="instituicao_foto">';
                                 }
-                                else{echo '<img height="500" src="'.$user['pathImagem'].'" id="instituicao_foto" width="100%">';}
+                                else{echo '<img src="'.$user['pathImagem'].'" id="instituicao_foto">';}
                             ?> 
                             <br>
                             <a href="pag_alt_dados_inst.php">
@@ -82,12 +82,16 @@
                             
                             <div class="d-flex justify-content-between">
 
+                                <a href="pag_inicial.php">
+                                    <button type="button" class="btn btn-danger mt-3" id="btnVoltarInst" name="btnVoltarInst">Voltar</button>
+                                </a>
+
                                 <a href="pag_cadastro_animal.php">
                                     <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
                                 </a>
 
                                 <a href="pag_animais_instituicao.php">
-                                    <button type="submit" class="btn btn-primary mt-3 mx-3">Visualizar Animais</button>
+                                    <button type="submit" class="btn btn-primary mt-3">Visualizar Animais</button>
                                 </a>
 
                             </div>

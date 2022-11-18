@@ -21,6 +21,11 @@ label{
 
 }
 
+img{
+    width: 50% !important;
+    height: 300 !important;
+}
+
 * {
     box-sizing: border-box;
     /* linha abaixo está sendo usada para debuggar o css, favor nao apagar */

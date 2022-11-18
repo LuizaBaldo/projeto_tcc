@@ -100,10 +100,10 @@
                         <div class="usuario_img">
                             <?php
                                 if(empty($user['pathImagem'])){
-                                echo '<img class="card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;"/>';
+                                echo '<img class="card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
                                 }
                                 else{
-                                    echo '<img class="card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;"/>';
+                                    echo '<img class="card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
                                 }
                             ?>
                             <form action="" method="POST" enctype="multipart/form-data">
@@ -169,9 +169,3 @@
         echo "<script lang='javascript'>window.location.href='pag_usuario.php';</script>";
     }
 ?>
-
-<script lang='javascript'>
-    function voltar(){
-        window.location.href='pag_usuario.php';
-    }
-</script>

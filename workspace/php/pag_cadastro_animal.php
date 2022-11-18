@@ -84,8 +84,12 @@
                         <br/>
 
                         <div class="mb-3">
-                            <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
-                                <button type="submit" class="btn text-white" id="btnCadastrar" name="btnCadastrar" style="background-color: #4C79D5;">Cadastrar</button>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg" id="btnCadastrar" name="btnCadastrar">Cadastrar</button>
+
+                                <a href="pag_instituicao.php">
+                                    <button type="button" class="btn btn-danger btn-lg" id="btnVoltarInst" name="btnVoltarInst">Voltar</button>
+                                </a>
                             </div>
                         </div>
 

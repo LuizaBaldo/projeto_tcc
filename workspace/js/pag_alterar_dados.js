@@ -26,3 +26,7 @@ function alterarInfoCadastro(){
     }
     formAlterarInfo.submit();
 }
+
+function voltar(){
+    window.location.href='pag_usuario.php';
+}

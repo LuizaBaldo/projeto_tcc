@@ -63,7 +63,7 @@
 
                     echo '<div class="container_exibir p-5">';
                         echo '<div class="row">';
-                            echo '<div class="card" style="width:300px">';
+                            echo '<div class="card">';
                                 if(empty($instituicao['pathImagem'])){
                                     echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
                                 }
@@ -84,7 +84,7 @@
 
                     echo '<div class="container_exibir p-5">';
                         echo '<div class="row">';
-                            echo '<div class="card" style="width:300px">';
+                            echo '<div class="card">';
                                 echo '<img class="card-img-top" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
                                 echo '<div class="card-body">';
                                     echo '<h4 class="card-title">Nome: ' .$animal['nome_animal']. '</h4>';

@@ -106,7 +106,7 @@
         <div class="row rounded py-2" style="background-color: #66C4A9;">
 
             <div class="col-4">
-                <img src="<?php echo $animal['pathImagem_animal']?>" style="width:100%">
+                <img src="<?php echo $animal['pathImagem_animal']?>">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <p><label>Selecione o arquivo:</label></p>
                     <input name="arquivo" type="file"></p>
@@ -136,7 +136,7 @@
                         <label>Descrição</label>
                         <textarea type="text" class="form-control" id="txtDescricao" name="descricao"><?php echo $animal["descricao"];?></textarea>
 
-                        <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" style="center" onclick="alterarInfoAnimal();">Salvar alteracoes</button>
+                        <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" onclick="alterarInfoAnimal();">Salvar alteracoes</button>
                         <button type="button" class="btn btn-danger mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
                     </form>
                     

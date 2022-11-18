@@ -53,12 +53,17 @@
                                 <label class="form-label">Confirme a nova senha</label>
                                 <input type="password" class="form-control form-control-sm" placeholder="Confirme a senha" id="txtConfirmeSenha" name="txtConfirmeSenha"/>
                             </div>
-                        <br/>
+
                             <div class="mt-3">
-                                <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
-                                    <button type="button" class="btn text-white" id="btnAlterar" name="btnAlterar" onclick="validar();">Alterar</button>
+                                <div class="text-center mt-2 w-100">
+                                    <button type="button" class="btn btn-primary btn-lg" id="btnAlterar" name="btnAlterar" onclick="validar();">Alterar</button>
+
+                                    <a href="pag_inicial.php">
+                                        <button type="button" class="btn btn-danger btn-lg" id="btnVoltarAltSenha" name="btnVoltarAltSenha">Voltar</button>
+                                    </a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </form>

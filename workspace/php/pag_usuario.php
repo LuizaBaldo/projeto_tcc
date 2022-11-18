@@ -47,11 +47,11 @@
                         <div class="container_img" style="text-align: center; padding-left: 3rem;">
                             <?php
                                 if(empty($user['pathImagem'])){
-                                echo '<img class="card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;';
+                                echo '<img class="card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;';
                                 }
-                                else{echo '<img class="card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;';}
+                                else{echo '<img class="card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;';}
                             ?> 
-                            <img class="card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="width: 300px; padding-top: 1rem;">
+                            <img class="card-img-left" src="<?php echo $user['pathImagem']?>" alt="Card img" id="usuario_foto" style="padding-top: 1rem;">
                         </div>
                         
                         <div class="container_buttoms" style="text-align: center; padding-left: 6rem;">
@@ -85,6 +85,13 @@
                             <input type="text" class="form-control" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
                             
                         </div>
+
+                        <div class="text-center mt-2">
+                            <a href="pag_inicial.php">
+                                <button type="button" class="btn btn-danger mt-2" id="btnVoltarUsuario" name="btnVoltarUsuario">Voltar</button>
+                            </a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

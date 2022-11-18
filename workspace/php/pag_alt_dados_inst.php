@@ -100,10 +100,10 @@
                         <div class="usuario_img">
                             <?php
                                 if(empty($user['pathImagem'])){
-                                echo '<img height="500" src="../img/default.png" alt="Card img" id="instituicao_foto" width="100%"/>';
+                                echo '<img src="../img/default.png" alt="Card img" id="instituicao_foto"/>';
                                 }
                                 else{
-                                    echo '<img height="500" src="'.$user['pathImagem'].'" alt="Card img" id="instituicao_foto" width="100%"/>';
+                                    echo '<img src="'.$user['pathImagem'].'" alt="Card img" id="instituicao_foto"/>';
                                 }
                             ?>
                             
