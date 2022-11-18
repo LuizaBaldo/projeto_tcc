@@ -100,10 +100,10 @@
                         <div class="usuario_img">
                             <?php
                                 if(empty($user['pathImagem'])){
-                                echo '<img class="card-img-left" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
+                                echo '<img class="card-img-left img_alt_dados" src="../img/default.png" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
                                 }
                                 else{
-                                    echo '<img class="card-img-left" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
+                                    echo '<img class="card-img-left img_alt_dados" src="'.$user['pathImagem'].'" alt="Card img" id="usuario_foto" style="padding-top: 1rem;"/>';
                                 }
                             ?>
                             <form action="" method="POST" enctype="multipart/form-data">

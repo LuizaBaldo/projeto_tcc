@@ -11,7 +11,7 @@
 <div class="header">  
     <nav class="navbar navbar-light mb-3" style="background-color: #4C79D5;">                
         <div class="container-fluid" id="header_container">
-            <a href="pag_inicial.php"><img src="../img/Novo_Projeto.png" id="logo" style="width: 100px;"/></a>
+            <a href="pag_inicial.php"><img class="img_navbar" src="../img/Novo_Projeto.png" id="logo" style="width: 100px;"/></a>
 
                 <div class="menu fs-5">
                     <nav class="navbar navbar-expand-lg navbar-dark m-3" style="background-color: #4C79D5;">

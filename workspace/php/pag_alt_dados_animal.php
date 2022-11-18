@@ -110,7 +110,7 @@
         <div class="row rounded py-2" style="background-color: #66C4A9;">
 
             <div class="col-4">
-                <img src="<?php echo $animal['pathImagem_animal']?>">
+                <img class="img_pag_alt_animal" src="<?php echo $animal['pathImagem_animal']?>">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <p><label>Selecione o arquivo:</label></p>
                     <input name="arquivo" type="file"></p>

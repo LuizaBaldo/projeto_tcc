@@ -65,9 +65,9 @@
                         echo '<div class="row">';
                             echo '<div class="card">';
                                 if(empty($instituicao['pathImagem'])){
-                                    echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
+                                    echo '<img class="img_pag_inicial card-img-top" src="../img/default.png" alt="Card image">';
                                 }
-                                else{echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
+                                else{echo '<img class="img_pag_inicial card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
                                 echo '<div class="card-body">';
                                     echo '<h4 class="card-title">' .$instituicao['nome']. '</h4>';
                                     echo '<p class="card-text">' .$instituicao['endereco']. '</p>';
@@ -85,7 +85,7 @@
                     echo '<div class="container_exibir p-5">';
                         echo '<div class="row">';
                             echo '<div class="card">';
-                                echo '<img class="card-img-top" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
+                                echo '<img class="img_pag_inicial card-img-top" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
                                 echo '<div class="card-body">';
                                     echo '<h4 class="card-title">Nome: ' .$animal['nome_animal']. '</h4>';
                                     echo '<p class="card-text">Raça: ' .$animal['raca']; '</p>';

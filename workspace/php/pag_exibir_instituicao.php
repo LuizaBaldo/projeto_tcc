@@ -59,10 +59,10 @@
 
                                         <?php
                                             if(empty($instituicao['pathImagem'])){
-                                                echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
+                                                echo '<img class="img_exibicao_inst card-img-top" src="../img/default.png" alt="Card image">';
                                             }
                                             else{
-                                                echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';
+                                                echo '<img class="img_exibicao_inst card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';
                                             }
                                         ?>
 

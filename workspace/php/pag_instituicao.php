@@ -45,9 +45,9 @@
                         <div class="instituicao_img">
                             <?php
                                 if(empty($user['pathImagem'])){
-                                echo '<img src="../img/default.png" id="instituicao_foto">';
+                                echo '<img class="img_pag_instituicao" src="../img/default.png" id="instituicao_foto">';
                                 }
-                                else{echo '<img src="'.$user['pathImagem'].'" id="instituicao_foto">';}
+                                else{echo '<img class="img_pag_instituicao" src="'.$user['pathImagem'].'" id="instituicao_foto">';}
                             ?> 
                             <br>
                             <a href="pag_alt_dados_inst.php">

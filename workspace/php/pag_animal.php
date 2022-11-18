@@ -73,7 +73,7 @@
                             <div class="container_img-about">
                                 <div class="row justify-content-center col-sm-12">
                                     <div class="container_img col-5 text-center">
-                                        <img src="<?php echo $animal['pathImagem_animal']?>">
+                                        <img class="img_pag_animal" src="<?php echo $animal['pathImagem_animal']?>">
                                         <h3><a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a></h3> <!-- MOSTRA A INSTIUICAO DO ANIMAL -->
 
                                         <div class="text-center mt-2">

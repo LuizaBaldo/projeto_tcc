@@ -67,9 +67,10 @@
                     echo '<div class="row">';
                         echo '<div class="card"">';
                             if(empty($instituicao['pathImagem'])){
-                                echo '<img class="card-img-top" src="../img/default.png" alt="Card image">';
+                                echo '<img class="img_pag_instituicoes card-img-top" src="../img/default.png" alt="Card image">';
                             }
-                            else{echo '<img class="card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
+                            else{
+                                echo '<img class="img_pag_instituicoes card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
                             echo '<div class="card-body">';
                                 echo '<h4 class="card-title">' .$nome_inst; '</h4>';
                                 echo '<p class="card-text">' .$endereco_inst; '</p>';
