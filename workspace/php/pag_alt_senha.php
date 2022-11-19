@@ -35,7 +35,7 @@
             require_once './partials/common.php';
         ?>
 
-        <div class="container rounded mt-5 p-3" style="background-color: #66C4A9; width: 60%;">
+        <div class="container rounded mt-5 p-3" style="background-color: white; width: 60%;">
             <h1 class="text-center">Alterar Senha</h1>
             <div id="formulario">
                 <form method="post" action="pag_alt_senha.php?alterarSenha=1" id="formAlterarSenha">

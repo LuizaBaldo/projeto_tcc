@@ -39,7 +39,7 @@
         ?>
         
         <div class="instituicao_container container">
-            <div class="instituicao_content">
+            <div class="instituicao_content" style="background-color: white;">
                 <div class="row rounded py-2">
                     <div class="col-4">
                         <div class="instituicao_img">

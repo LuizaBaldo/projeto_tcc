@@ -14,7 +14,7 @@
             <a href="pag_inicial.php"><img class="img_navbar" src="../img/Novo_Projeto.png" id="logo" style="width: 100px;"/></a>
 
                 <div class="menu fs-5">
-                    <nav class="navbar navbar-expand-lg navbar-dark m-3" style="background-color: #4C79D5;">
+                    <nav class="navbar navbar-expand-lg navbar-dark m-3">
                         <div class="container-fluid text-xs-center">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 

@@ -93,8 +93,8 @@
             require_once './partials/common.php';
         ?>
         
-        <div class="usuario_container container rounded p-3" style="background-color: #66C4A9;">
-            <div class="usuario_content">
+        <div class="usuario_container container rounded p-3">
+            <div class="card">
                 <div class="row">
                     <div class="col-4">
                         <div class="usuario_img">

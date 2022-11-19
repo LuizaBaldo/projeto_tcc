@@ -48,23 +48,22 @@
                     $nome_inst = $instituicao['nome'];
                     $endereco_inst = $instituicao['endereco'];
 
-                echo '<div class="container_exibir p-5">';
-                    echo '<div class="row">';
-                        echo '<div class="card"">';
-                            if(empty($instituicao['pathImagem'])){
-                                echo '<img class="img_pag_instituicoes card-img-top" src="../img/default.png" alt="Card image">';
-                            }
-                            else{
-                                echo '<img class="img_pag_instituicoes card-img-top" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
-                            echo '<div class="card-body">';
-                                echo '<p class="card-title">' .$nome_inst; '</p>';
-                                echo '<p class="card-text">' .$endereco_inst; '</p>';
-                                echo '<p>';
-                                echo '<a href="pag_exibir_instituicao.php?id='.$instituicao['id'].'" ; style="text-decoration: none; color:inherit;">Veja Mais</a>';
+                    echo '<div class="container_exibir p-5">';
+                        echo '<div class="row">';
+                            echo '<div class="card">';
+                                if(empty($instituicao['pathImagem'])){
+                                    echo '<img class="img_pag_inicial card-img-top" src="../img/default.png" alt="Card image">';
+                                }
+                                else{echo '<img class="img_pag_inicial card-img-top pt-3" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
+                                echo '<div class="card-body text-center">';
+                                    echo '<p class="card-title">Nome: <span class="lead">' .$nome_inst. '</span></p>';
+                                    echo '<p class="card-text">Endereço: <span class="lead">' .$endereco_inst. '</span></p>';
+                                    echo '<p>';
+                                    echo '<div class="text-center"><a class="btn btn-primary stretched-link" href="pag_exibir_instituicao.php?id='.$instituicao['id'].'">Veja Mais</a></div>';
+                                echo '</div>';
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
-                echo '</div>';
 
                 }?>
 
