@@ -39,70 +39,70 @@
         ?>
         
         <div class="instituicao_container container">
-            <div class="instituicao_content" style="background-color: white;">
-                <div class="row rounded py-2">
-                    <div class="col-4">
-                        <div class="instituicao_img">
-                            <div class="container_img text-center mt-2">
-                                <?php
-                                    if(empty($user['pathImagem'])){
-                                    echo '<img class="img_pag_instituicao" src="../img/default.png" id="instituicao_foto">';
-                                    }
-                                    else{echo '<img class="img_pag_instituicao" src="'.$user['pathImagem'].'" id="instituicao_foto">';}
-                                ?> 
+            <div class="card">
+                <div class="card">
+                    <div class="row rounded py-2">
+                        <div class="col-4">
+                            <div class="instituicao_img">
+                                <div class="container_img text-center mt-2">
+                                    <?php
+                                        if(empty($user['pathImagem'])){
+                                        echo '<img class="img_pag_instituicao" src="../img/default.png" id="instituicao_foto">';
+                                        }
+                                        else{echo '<img class="img_pag_instituicao" src="'.$user['pathImagem'].'" id="instituicao_foto">';}
+                                    ?> 
+                                </div>
+
+                                <div class="container_buttons text-center mt-4">
+                                    <form class="mb-2" method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $user['id'];?>">
+                                        <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
+                                    </form>
+
+                                    <a href="pag_alt_dados_inst.php">
+                                        <button type="button" class="btn btn-primary mb-2" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
+                                    </a>
+
+                                    <br>
+
+                                    <a href="pag_alt_senha.php">
+                                        <button type="button" class="btn btn-primary mb-2" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
+                                    </a>    
+                                </div>
                             </div>
-
-                            <br>
-
-                            <a href="pag_alt_dados_inst.php">
-                                <button type="button" class="btn btn-primary mt-2 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
-                            </a>
-
-                            <br>
-
-                            <a href="pag_alt_senha.php">
-                                <button type="button" class="btn btn-primary mb-1" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
-                            </a>    
-
-                            <br>
-
-                            <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $user['id'];?>">
-                                <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
-                            </form>
-
                         </div>
-                    </div>
-                    <div class="col-8">                            
-                        <div class="instituicao_info" style="padding: 0 15px 0 15px;">
-                            <label>Nome</label> 
-                            <input  type="text" class="form-control form-control-sm" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
 
-                            <label>E-mail</label>
-                            <input type="email" class="form-control form-control-sm" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
+                        <div class="col-8">                            
+                            <div class="instituicao_info" style="padding: 0 15px 0 15px;">
+                                <label>Nome</label> 
+                                <input  type="text" class="form-control form-control-sm" id="txtNome" name="nome" disabled="true" value="<?php echo $user["nome"];?>"/>
 
-                            <label>CNPJ</label>
-                            <input type="text" class="form-control form-control-sm" id="txtCNPJ" name="cnpj" disabled="true" value="<?php echo $user["cnpj"];?>"/>
+                                <label>E-mail</label>
+                                <input type="email" class="form-control form-control-sm" id="txtEmail" name="email" disabled="true" value="<?php echo $user["email"];?>"/>
 
-                            <label>Endereço</label>
-                            <input type="text" class="form-control form-control-sm" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
+                                <label>CNPJ</label>
+                                <input type="text" class="form-control form-control-sm" id="txtCNPJ" name="cnpj" disabled="true" value="<?php echo $user["cnpj"];?>"/>
 
-                            <label>Telefone</label>
-                            <input type="text" class="form-control form-control-sm" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
-                            
-                            <div class="d-flex justify-content-between">
+                                <label>Endereço</label>
+                                <input type="text" class="form-control form-control-sm" id="txtEndereco" name="endereco" disabled="true" value="<?php echo $user["endereco"];?>"/>
 
-                                <a href="pag_inicial.php">
-                                    <button type="button" class="btn btn-danger mt-3" id="btnVoltarInst" name="btnVoltarInst">Voltar</button>
-                                </a>
+                                <label>Telefone</label>
+                                <input type="text" class="form-control form-control-sm" id="nrTelefone" name="telefone" disabled="true" value="<?php echo $user["telefone"];?>"/>
+                                
+                                <div class="d-flex justify-content-between">
 
-                                <a href="pag_cadastro_animal.php">
-                                    <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
-                                </a>
+                                    <a href="pag_inicial.php">
+                                        <button type="button" class="btn btn-danger mt-3" id="btnVoltarInst" name="btnVoltarInst">Voltar</button>
+                                    </a>
 
-                                <a href="pag_animais_instituicao.php">
-                                    <button type="submit" class="btn btn-primary mt-3">Visualizar Animais</button>
-                                </a>
+                                    <a href="pag_cadastro_animal.php">
+                                        <button type="submit" class="btn btn-primary mt-3">Cadastrar Animal</button>
+                                    </a>
 
+                                    <a href="pag_animais_instituicao.php">
+                                        <button type="submit" class="btn btn-primary mt-3">Visualizar Animais</button>
+                                    </a>
+
+                                </div>
                             </div>
                         </div>
                     </div>

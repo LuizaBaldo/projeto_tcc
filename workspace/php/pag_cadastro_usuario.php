@@ -31,8 +31,8 @@
 
         <div class="container_main">
             <div class="row justify-content-center me-0">
-                <div class="card w-75" style="background-color: #66C4A9;">
-                    <h1 class="text-center">Cadastrar usuário</h1>
+                <div class="card w-75">
+                    <h2 class="text-center border-bottom border-2 pb-3 pt-3">Cadastrar Usuário</h2>
                     
                     <div id="formulario">
                         <form method="post" action="pag_cadastro_usuario.php?salvar=1" id="formCadastroUsuario">
@@ -74,7 +74,7 @@
 
                             <div class="mb-3">
                                 <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
-                                    <button type="button" class="btn text-white" id="btnCadastrar" name="btnCadastrar" onclick="validar();">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary text-white" id="btnCadastrar" name="btnCadastrar" onclick="validar();">Cadastrar</button>
                                 </div>
                             </div>
 

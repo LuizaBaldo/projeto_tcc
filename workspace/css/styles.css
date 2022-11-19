@@ -12,9 +12,9 @@ input{
 
 }
 
-input:focus{
+/* input:focus{
     border-color: #4C79D5;
-}
+} */
 
 label{
     font-size: 20px;
@@ -60,7 +60,7 @@ img{
 
 .img_imprimir_animais{
 
-    width: 30vh;
+    width: 38vh;
     height: 30vh;
 
 }
@@ -102,7 +102,7 @@ img{
 
 .img_pag_inicial{
 
-    width: 50vh;
+    width: 56.5vh;
     height: 40vh;
 
 }

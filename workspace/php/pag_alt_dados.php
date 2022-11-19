@@ -114,10 +114,13 @@
                                 ?>    
                             </div>
                             
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form  class="ms-4" action="" method="POST" enctype="multipart/form-data">
                                 <p><label>Selecione o arquivo:</label></p>
-                                <input name="arquivo" type="file"></p>
-                                <button name="upload" type="submit"> Enviar arquivo</button>
+
+                                <input class="form-control" type="file" style="padding: 0 !important; padding-left: 10px;"></p>
+
+                                <button class="btn btn-block btn-success mb-3" name="upload" type="submit"> Enviar arquivo</button>
+
                             </form>
                         </div>
                     </div>

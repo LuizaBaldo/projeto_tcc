@@ -42,12 +42,12 @@
             echo '<div class="container_exibir p-5">';
                 echo '<div class="row">';
                     echo '<div class="card">';
-                        echo '<img class="img_imprimir_animais" class="card-img-top" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
-                        echo '<div class="card-body">';
-                            echo '<h4 class="card-title">Nome: ' .$nome_animal; '</h4>';
-                            echo '<p class="card-text">Raça: ' .$raca; '</p>';
+                        echo '<img class="img_imprimir_animais card-img-top pt-3" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
+                        echo '<div class="card-body text-center">';
+                            echo '<p class="card-title">Nome: <span class="lead">' .$nome_animal. '</span></p>';
+                            echo '<p class="card-text">Raça: <span class="lead">' .$raca; '</span></p>';
                             echo '<p>';
-                            echo '<a href="pag_animal.php?id='.$animal['id'].'" ; style="text-decoration: none; color:inherit; ">Veja Mais</a>';
+                            echo '<div class="text-center"><a class="btn btn-primary stretched-link" href="pag_animal.php?id='.$animal['id'].'">Veja Mais</a></div>';
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';

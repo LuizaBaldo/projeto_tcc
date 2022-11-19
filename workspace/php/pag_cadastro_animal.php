@@ -31,74 +31,82 @@
             require_once './partials/common.php';
         ?>
         
-        <div class="container rounded py-2" style="background-color: #66C4A9;">
-            <h1 class="text-center">Cadastrar Animal</h1>
-            <div id="formulario">
-                <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastroAnimal" enctype="multipart/form-data">
-                    <div class="form form-group mt-3" style="width:70%;margin:auto;">
-                        <div class="form-row">
-                            <div class="row">
+        <div class="container rounded py-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center border-bottom border-2 pb-3">Cadastrar Animal</h2>
 
-                                <label>Selecione a foto do animal:</label>
-                                <input type="file" name="foto_animal" id="foto_animal"></p>
+                    <div id="formulario">
+                        <form method="post" action="pag_cadastro_animal.php?salvar=1" id="formCadastroAnimal" enctype="multipart/form-data">
+                            <div class="form form-group mt-3" style="width:70%;margin:auto;">
+                                <div class="form-row">
+                                    <div class="row">
 
-                                <div class="col-md-6 mb-3">
-                                    <label for="tipo">Selecione o tipo de animal</label>
-                                    <select name="tipoAnimal" id="tipoAnimal" class="form-select form-select-sm">
-                                        <option value="cachorro">Cachorro</option>
-                                        <option value="gato">Gato</option>
-                                        <option value="ave">Ave</option>
-                                    </select>
+                                        <label>Selecione a foto do animal:</label>
+
+                                        <div class="button">
+                                            <input class="form-control w-50" type="file" name="foto_animal" id="foto_animal" style="padding: 0 !important; padding-left: 10px;"></p>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label for="tipo">Selecione o tipo de animal</label>
+                                            <select name="tipoAnimal" id="tipoAnimal" class="form-select form-select-sm">
+                                                <option value="cachorro">Cachorro</option>
+                                                <option value="gato">Gato</option>
+                                                <option value="ave">Ave</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                                <label for="sexo">Selecione o sexo do animal</label>
+                                                <select name="sexoAnimal" id="sexoAnimal" class="form-select form-select-sm" required>
+                                                    <option value="Femea">Fêmea</option>
+                                                    <option value="Macho">Macho</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nome do animal</label>
+                                        <input type="text" class="form-control form-control-sm" id="txtNomeAnimal" placeholder="Digite nome do animal" name="nomeAnimal" required/>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Idade do animal em meses</label>
+                                            <input type="text" class="form-control form-control-sm" id="txtIdadeAnimal" placeholder="Digite a idade do animal em meses" name="idadeAnimal" required/>
+                                        </div>
+                
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Raça do animal</label>
+                                            <input type="text" class="form-control form-control-sm" placeholder="Digite a raça do animal" id="txtRacaAnimal" name="racaAnimal" required/>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="form-label">Descrição do animal</label>
+                                        <textarea type="text" class="form-control form-control-sm" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal" required></textarea>
+                                    </div> 
                                 </div>
 
-                                <div class="col-md-6 mb-3">
-                                        <label for="sexo">Selecione o sexo do animal</label>
-                                        <select name="sexoAnimal" id="sexoAnimal" class="form-select form-select-sm" required>
-                                            <option value="Femea">Fêmea</option>
-                                            <option value="Macho">Macho</option>
-                                        </select>
+                                <br/>
+
+                                <div class="mb-3">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg" id="btnCadastrar" name="btnCadastrar">Cadastrar</button>
+
+                                        <a href="pag_instituicao.php">
+                                            <button type="button" class="btn btn-danger btn-lg" id="btnVoltarInst" name="btnVoltarInst">Voltar</button>
+                                        </a>
+                                    </div>
                                 </div>
+
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Nome do animal</label>
-                                <input type="text" class="form-control form-control-sm" id="txtNomeAnimal" placeholder="Digite nome do animal" name="nomeAnimal" required/>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Idade do animal em meses</label>
-                                    <input type="text" class="form-control form-control-sm" id="txtIdadeAnimal" placeholder="Digite a idade do animal em meses" name="idadeAnimal" required/>
-                                </div>
-        
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Raça do animal</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="Digite a raça do animal" id="txtRacaAnimal" name="racaAnimal" required/>
-                                </div>
-                            </div>
+                        </form>
 
-                            <div>
-                                <label class="form-label">Descrição do animal</label>
-                                <textarea type="text" class="form-control form-control-sm" placeholder="Breve descrição do animal" id="txtDescAnimal" name="descAnimal" required></textarea>
-                            </div> 
-                        </div>
-
-                        <br/>
-
-                        <div class="mb-3">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg" id="btnCadastrar" name="btnCadastrar">Cadastrar</button>
-
-                                <a href="pag_instituicao.php">
-                                    <button type="button" class="btn btn-danger btn-lg" id="btnVoltarInst" name="btnVoltarInst">Voltar</button>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-
-                <?php
-                if(isset($_GET["salvar"])) cadastrarAnimal();
-                ?>
+                        <?php
+                        if(isset($_GET["salvar"])) cadastrarAnimal();
+                        ?>
+                    </div>                    
+                </div>
             </div>
         </div>
 

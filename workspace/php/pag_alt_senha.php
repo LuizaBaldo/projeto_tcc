@@ -35,38 +35,46 @@
             require_once './partials/common.php';
         ?>
 
-        <div class="container rounded mt-5 p-3" style="background-color: white; width: 60%;">
-            <h1 class="text-center">Alterar Senha</h1>
-            <div id="formulario">
-                <form method="post" action="pag_alt_senha.php?alterarSenha=1" id="formAlterarSenha">
-                    <div class="form" style="width:70%;margin:auto;">
-                        <div class="row">
-                            <div class="mb-3">
-                                <label class="form-label">Senha Antiga</label>
-                                <input type="password" class="form-control form-control-sm" placeholder="Digite sua senha antiga" id="txtSenhaAntiga" name="txtSenhaAntiga"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Nova Senha</label>
-                                <input type="password" class="form-control form-control-sm" placeholder="Digite uma senha" id="txtSenhaNova" name="txtSenhaNova"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Confirme a nova senha</label>
-                                <input type="password" class="form-control form-control-sm" placeholder="Confirme a senha" id="txtConfirmeSenha" name="txtConfirmeSenha"/>
-                            </div>
+        <div class="container rounded mt-5 p-3 w-50">
+            <div class="card">
+                <h2 class="text-center border-bottom border-1 pb-3 pt-3">Alterar Senha</h2>
+                
+                <div class="card-body">
+                    <div id="formulario">
+                        <form method="post" action="pag_alt_senha.php?alterarSenha=1" id="formAlterarSenha">
+                            <div class="form" style="width:70%;margin:auto;">
+                                <div class="row">
 
-                            <div class="mt-3">
-                                <div class="text-center mt-2 w-100">
-                                    <button type="button" class="btn btn-primary btn-lg" id="btnAlterar" name="btnAlterar" onclick="validar();">Alterar</button>
+                                    <div class="mb-3">
+                                        <label class="form-label">Senha Antiga</label>
+                                        <input type="password" class="form-control form-control-sm" placeholder="Digite sua senha antiga" id="txtSenhaAntiga" name="txtSenhaAntiga"/>
+                                    </div>
 
-                                    <a href="pag_inicial.php">
-                                        <button type="button" class="btn btn-danger btn-lg" id="btnVoltarAltSenha" name="btnVoltarAltSenha">Voltar</button>
-                                    </a>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nova Senha</label>
+                                        <input type="password" class="form-control form-control-sm" placeholder="Digite uma senha" id="txtSenhaNova" name="txtSenhaNova"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Confirme a nova senha</label>
+                                        <input type="password" class="form-control form-control-sm" placeholder="Confirme a senha" id="txtConfirmeSenha" name="txtConfirmeSenha"/>
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <div class="text-center mt-2 w-100">
+                                            <button type="button" class="btn btn-primary btn-lg" id="btnAlterar" name="btnAlterar" onclick="validar();">Alterar</button>
+
+                                            <a href="pag_instituicao.php">
+                                                <button type="button" class="btn btn-danger btn-lg" id="btnVoltarAltSenha" name="btnVoltarAltSenha">Voltar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
         

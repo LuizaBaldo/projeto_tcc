@@ -94,64 +94,74 @@
         
         <div class="usuario_container container">
             <div class="usuario_content">
-                <div class="row rounded py-2" style="background-color: #66C4A9;">
-                    
-                    <div class="col-4">
-                        <div class="usuario_img text-center">
-                            <?php
-                                if(empty($user['pathImagem'])){
-                                echo '<img class="img_pag_alt_inst" src="../img/default.png" alt="Card img" id="instituicao_foto"/>';
-                                }
-                                else{
-                                    echo '<img class="img_pag_alt_inst" src="'.$user['pathImagem'].'" alt="Card img" id="instituicao_foto"/>';
-                                }
-                            ?>
-                            
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <p><label>Selecione o arquivo:</label></p>
-                                <input name="arquivo" type="file"></p>
-                                <button name="upload" type="submit"> Enviar arquivo</button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row rounded py-2">
 
-                    <div class="col-8">
-                        <div id="formulario">
-                            <form method="post" action="pag_alt_dados_inst.php?alterar=<?php echo $user["id"];?>" id="formAlterarInfo" style="padding: 0 15px 0 15px; width: 70% ">
-                                <div class="form row">
-                                    <div class="form-group">
-                                        <label>Nome</label>
-                                        <input type="text" class="form-control form-control-sm" id="txtNome" name="nome" value="<?php echo $user["nome"];?>"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                    <label>E-mail</label>
-                                    <input type="email" class="form-control form-control-sm" id="txtEmail" name="email" value="<?php echo $user["email"];?>"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                    <label>CNPJ</label>
-                                    <input type="email" class="form-control form-control-sm" id="txtCNPJ" name="cnpj" value="<?php echo $user["cnpj"];?>"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Endereço</label>
-                                        <input type="text" class="form-control form-control-sm" id="txtEndereco" name="endereco"  value="<?php echo $user["endereco"];?>"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Telefone</label>
-                                        <input type="text" class="form-control form-control-sm" id="nrTelefone" name="telefone"  value="<?php echo $user["telefone"];?>"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-success mt-3" id="btnSalvarCadastro" name="btnSalvarCadastro" onclick="alterarInfoCadastro();">Salvar cadastro </button>
-                                        <a href="pag_instituicao.php">
-                                            <button type="button" class="btn btn-danger mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
-                                        </a>
-                                    </div>
+                            <div class="col-6">
+                                <div class="usuario_img text-center">
+                                    <?php
+                                        if(empty($user['pathImagem'])){
+                                        echo '<img class="img_pag_alt_inst" src="../img/default.png" alt="Card img" id="instituicao_foto"/>';
+                                        }
+                                        else{
+                                            echo '<img class="img_pag_alt_inst" src="'.$user['pathImagem'].'" alt="Card img" id="instituicao_foto"/>';
+                                        }
+                                    ?>
                                 </div>
-                            </form>
+
+                                <div class="img">
+                                    <form  class="ms-4 mt-4" action="" method="POST" enctype="multipart/form-data">
+                                        <p><label>Selecione o arquivo:</label></p>
+
+                                        <input class="form-control" type="file" style="padding: 0 !important; padding-left: 10px;"></p>
+
+                                        <button class="btn btn-block btn-success mb-3" name="upload" type="submit"> Enviar arquivo</button>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div id="formulario">
+                                    <form method="post" action="pag_alt_dados_inst.php?alterar=<?php echo $user["id"];?>" id="formAlterarInfo" style="padding: 0 15px 0 15px; width: 70% ">
+                                        <div class="form row">
+                                            <div class="form-group">
+                                                <label>Nome</label>
+                                                <input type="text" class="form-control form-control-sm" id="txtNome" name="nome" value="<?php echo $user["nome"];?>"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                            <label>E-mail</label>
+                                            <input type="email" class="form-control form-control-sm" id="txtEmail" name="email" value="<?php echo $user["email"];?>"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                            <label>CNPJ</label>
+                                            <input type="email" class="form-control form-control-sm" id="txtCNPJ" name="cnpj" value="<?php echo $user["cnpj"];?>"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Endereço</label>
+                                                <input type="text" class="form-control form-control-sm" id="txtEndereco" name="endereco"  value="<?php echo $user["endereco"];?>"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Telefone</label>
+                                                <input type="text" class="form-control form-control-sm" id="nrTelefone" name="telefone"  value="<?php echo $user["telefone"];?>"/>
+                                            </div>
+
+                                            <div class="form-group mt-2">
+                                                <button type="button" class="btn btn-success mt-3" id="btnSalvarCadastro" name="btnSalvarCadastro" onclick="alterarInfoCadastro();">Salvar cadastro </button>
+                                                <a href="pag_instituicao.php">
+                                                    <button type="button" class="btn btn-danger mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

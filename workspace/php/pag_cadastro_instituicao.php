@@ -13,7 +13,6 @@
         <!-- icons font-awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
         <!-- CSS -->
-        <link rel="stylesheet" href="../css/pag_cadastro_usuario.css">
         <link rel="stylesheet" href="../css/styles.css">
         <!-- js -->
         <script lang="javascript" src="../js/pag_cadastro_instituicao.js"></script>
@@ -30,13 +29,13 @@
         ?>
         <div class="container_main">
             <div class="row justify-content-center me-0">
-                <div class="card w-75" style="background-color: #66C4A9;">
-                    <h1 class="text-center">Cadastrar Instituição</h1>
+                <div class="card w-75">
+                    <h2 class="text-center border-bottom border-1 pb-3 pt-3">Cadastrar Instituição</h2>
 
-                    <div class="card-header" id="formulario">
+                    <div class="" id="formulario">
                         <form method="post" action="pag_cadastro_instituicao.php?salvar=1" id="formCadastroInst">
 
-                        <div class="form-row" style="width:70%;margin:auto;">
+                        <div class="form" style="width:70%;margin:auto;">
                             <div class="row">
                                 <div class="mb-3">
                                     <label class="form-label">Nome</label>
@@ -75,7 +74,7 @@
 
                             <div class="mb-3">
                                 <div class="d-grid gap-2 col-6 mx-auto rounded" style="background-color: #4C79D5;">
-                                    <button type="button" class="btn text-white" id="btnCadastrar" name="btnCadastrar" onclick="validar();">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary text-white" id="btnCadastrar" name="btnCadastrar" onclick="validar();">Cadastrar</button>
                                 </div>
                             </div>
 

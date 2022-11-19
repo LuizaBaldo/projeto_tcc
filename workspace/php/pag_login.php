@@ -61,8 +61,9 @@
           <div class="row justify-content-around">
             <!-- CONTAINER LOGIN -->
             <div class="container_login col-4 rounded" id="jaCadastroDiv" style="background-color: #66C4A9;">
-              <p class="display-6" id="jaCadastro" style="color: white;">Login</p>
+              <p class="display-6 lead" id="jaCadastro" style="color: white;">Login</p>
                 <form method="post" action="pag_login.php?logar=1" class="needs-validation" id="formLogin">
+                  
                     <div class="mb-3" id="divEmail">
                       <label class="form-label" for=txtEmailLogin style="color: white;">E-mail</label>
                       <input type="email" class="form-control form-control-sm" id="txtEmailLogin" name="email" required />
@@ -72,22 +73,23 @@
                       <label class="form-label" for="txtSenhaLogin" style="color: white;">Senha</label>
                       <input type="password" class="form-control form-control-sm" id="txtSenhaLogin" name="senha" required />
                     </div>
+
                     <div class="d-grid gap-2 col-4 mx-auto" id="divBotaoLogar">
-                      <button type="button" class="btn mt-3" id="btnLogar" onclick="validaLogin();" style="background-color: #4C79D5; color: white;">Logar</button>
+                      <button type="button" class="btn  mt-3 btn-primary" id="btnLogar" onclick="validaLogin();">Logar</button>
                     </div>
+
                 </form>
 
-                <div class="d-grid gap-2 col-4 mx-auto">
-                    <p></p>
-                    <a href="pag_esqueci_senha.php" id="esqueciSenha" class="btn btn-link" style="background-color: #4C79D5; color: white;">Esqueci a senha</a>
+                <div class="d-grid gap-2 col-4 mt-4 mx-auto">
+                    <a href="pag_esqueci_senha.php" id="esqueciSenha" class="btn btn-link btn-danger" style="color: white;">Esqueci a senha</a>
                 </div>
             </div>
             <!-- CONTAINER CADASTRO -->
             <div class="container_cadastro col-4" id="cadastro" style="background-color: #66C4A9;">
-              <p class="display-6" id="jaCadastro" style="color: white;">Cadastro</p>
+              <p class="display-6 lead" id="jaCadastro" style="color: white;">Cadastro</p>
                 <div class="d-grid gap-2">
-                    <a href="pag_cadastro_instituicao.php" class="btn btn-lg" id="btnCadInst" style="background-color: #4C79D5;">Cadastrar Instituição</a>
-                    <a href="pag_cadastro_usuario.php" class="btn btn-lg" id="btnCadUsu" style="background-color: #4C79D5;">Cadastrar Usuário</a>
+                    <a href="pag_cadastro_instituicao.php" class="btn btn-primary" id="btnCadInst">Cadastrar Instituição</a>
+                    <a href="pag_cadastro_usuario.php" class="btn btn-primary" id="btnCadUsu">Cadastrar Usuário</a>
                 </div>
             </div>            
           </div>
