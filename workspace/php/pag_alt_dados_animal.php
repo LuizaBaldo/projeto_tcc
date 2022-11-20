@@ -11,12 +11,10 @@
         $sexo = $_POST["sexo"];
         $raca = $_POST["raca"];
         $descricao = $_POST["descricao"];
-        $con  = new mysqli("localhost", "root", "", "tcc");
         $sql  = "UPDATE animal SET tipo_animal=? , nome_animal=?, idade= ?, sexo=? ,raca=? ,descricao=? WHERE id=?";
-        $statement = mysqli_prepare($con, $sql);
+        $statement = mysqli_prepare(Database::getConnection(), $sql);
         mysqli_stmt_bind_param($statement, 'sssssss', $tipo, $nome, $idade, $sexo, $raca, $descricao, $id);
         mysqli_stmt_execute($statement);
-        mysqli_close($con);
         header("location: pag_animal.php?id=$id");
 
     }
@@ -60,12 +58,10 @@
     
             if ($arquivoValido) {
                 move_uploaded_file($arquivo["tmp_name"], $path);
-                $con  = new mysqli("localhost", "root", "", "tcc");
-                $sql = "update animal set pathImagem_animal = ? where id = {$animal['id']}";
-                $statement = mysqli_prepare($con, $sql);
+                $sql = "UPDATE animal SET pathImagem_animal = ? WHERE id = {$animal['id']}";
+                $statement = mysqli_prepare(Database::getConnection(), $sql);
                 mysqli_stmt_bind_param($statement, 's', $path);
                 mysqli_stmt_execute($statement);
-                mysqli_close($con);
                 echo "<script lang='javascript'>window.location.href='pag_alt_dados_animal.php?id=".$animal['id']."';</script>";
             }
             else{
@@ -78,7 +74,12 @@
 ?>
 
 <?php
-    if(isset($_GET["deletar"])) excluirAnimal();{}
+    if(isset($_GET["deletar"])) {
+        if(UsuarioLogadoEhDonoDoAnimal($animal)){
+            excluirAnimal($animal['id']);
+            echo "<script lang='javascript'>window.location.href='pag_instituicao.php?id=".$animal['id_usuario'].";</script>";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -117,7 +118,7 @@
                     <button name="upload" type="submit"> Enviar arquivo</button>
                 </form>
                 <br>
-                <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este animal?');" action="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>&deletar=<?php echo $animal['id'];?>&instituicaoid=<?php echo $animal['id_usuario'];?>">
+                <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este animal?');" action="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>&deletar=<?php echo $animal['id'];?>">
                     <button type="submit" class="btn btn-danger" id="btnExcluirAnimal" name="btnExcluirAnimal">Excluir Animal</button>
                 </form>
             </div>

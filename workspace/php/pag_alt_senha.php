@@ -88,16 +88,17 @@
         $email = $user['email'];
         $senhaNova = password_hash($_POST["txtSenhaNova"], PASSWORD_BCRYPT);
         $confirmaSenhaNova = $_POST['txtConfirmeSenha'];
-        $con = new mysqli("localhost", "root", "", "tcc");
-        $sql1 = "select * from usuario where email= ?";
-        $statement = mysqli_prepare($con, $sql1);
+        $sql1 = "SELECT * FROM usuario WHERE email= ?";
+        $statement = mysqli_prepare(Database::getConnection(), $sql1);
         mysqli_stmt_bind_param($statement, 's', $email);
         mysqli_stmt_execute($statement);
         $resultado = mysqli_stmt_get_result($statement);
         if($reg = mysqli_fetch_array($resultado)){
             if(password_verify($senhaAntiga, $reg['senha'])){
-                $sql = "UPDATE usuario SET senha='$senhaNova' WHERE id='$id'";
-                $resultado = mysqli_query($con, $sql);
+                $sql = "UPDATE usuario SET senha=? WHERE id=?";
+                $statement = mysqli_prepare(Database::getConnection(), $sql);
+                mysqli_stmt_bind_param($statement, 'ss', $senhaNova, $id);
+                mysqli_stmt_execute($statement);
                 echo "<script lang='javascript'>alert('Senha Alterada com sucesso');</script>";
                 echo "<script lang='javascript'>window.location.href='sair.php';</script>";
             }
@@ -105,7 +106,7 @@
                 echo "<script lang='javascript'>alert('Senha Antiga Invalida');</script>";
             }
         }
-        mysqli_close($con);
+
     }
 
 ?>

@@ -14,9 +14,8 @@
 <?php
     function getAnimal($user){
         $id = $user['id'];
-        $con = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from animal where id_usuario = '$id'";
-        $retorno = mysqli_query($con, $sql);
+        $sql = "SELECT * FROM animal WHERE id_usuario = '$id'";
+        $retorno = mysqli_query(Database::getConnection(), $sql);
         $rows = array();
         while($row = mysqli_fetch_array($retorno)) {
             $rows[] = $row;

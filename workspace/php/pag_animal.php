@@ -8,32 +8,7 @@
 ?>
 
 <?php
-    function listaComentarioDoAnimal($id_animal){
-        $con = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from comentario where id_animal = $id_animal ";
-        $rows = array();
-        $retorno = mysqli_query($con, $sql);
-        while($row = mysqli_fetch_array($retorno)) {
-            $rows[] = $row;
-        }
-        return $rows;
-    }
     $comentarios = listaComentarioDoAnimal($_GET['id']);
-?>
-
-<?php
-    function UsuarioEhinstituicaoDoAnimal(){
-        global $animal;
-        $usuarioLogado = getUserLogged();
-        if(!$usuarioLogado){
-            return false;
-        }
-        if($usuarioLogado['id'] == $animal['id_usuario']){
-            return true;
-        }
-        return false;
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +60,7 @@
                                             </a>
                                         </div>
 
-                                        <?php if(UsuarioEhinstituicaoDoAnimal()){?>  
+                                        <?php if(UsuarioLogadoEhDonoDoAnimal($animal)){?>  
                                             <a href="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>">
                                                 <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal">Alterar animal</button>
                                             </a>
@@ -157,7 +132,7 @@
                                                         echo '<p>Comentario: <span class="lead">'.$comentario['resposta'].'</span>';
                                                     echo '</div>';
                                                 }
-                                                if (UsuarioEhinstituicaoDoAnimal()){
+                                                if (UsuarioLogadoEhDonoDoAnimal($animal)){
                                                     ?>
                                                     <form method="post" action="guardar_resposta.php?id=<?= $comentario['id']?>" style="display: flexbox ">
                                                         <input type='text' name='resposta' placeholder='resposta' style='width: 22%'>

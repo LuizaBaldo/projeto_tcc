@@ -50,19 +50,19 @@
 
                                         <div class="col-md-6 mb-3">
                                             <label for="tipo">Selecione o tipo de animal</label>
-                                            <select name="tipoAnimal" id="tipoAnimal" class="form-select form-select-sm">
+                                            <SELECT name="tipoAnimal" id="tipoAnimal" class="form-SELECT form-SELECT-sm">
                                                 <option value="cachorro">Cachorro</option>
                                                 <option value="gato">Gato</option>
                                                 <option value="ave">Ave</option>
-                                            </select>
+                                            </SELECT>
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                                 <label for="sexo">Selecione o sexo do animal</label>
-                                                <select name="sexoAnimal" id="sexoAnimal" class="form-select form-select-sm" required>
+                                                <SELECT name="sexoAnimal" id="sexoAnimal" class="form-SELECT form-SELECT-sm" required>
                                                     <option value="Femea">Fêmea</option>
                                                     <option value="Macho">Macho</option>
-                                                </select>
+                                                </SELECT>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -114,11 +114,11 @@
 </html>
 <?php
     function cadastrarAnimal(){
-        $nomeAnimal   = $_POST["nomeAnimal"];
+        $nomeAnimal = $_POST["nomeAnimal"];
         $idadeAnimal = $_POST["idadeAnimal"];
         $sexoAnimal = $_POST["sexoAnimal"];
-        $racaAnimal  = $_POST["racaAnimal"];
-        $descAnimal  = $_POST["descAnimal"];
+        $racaAnimal = $_POST["racaAnimal"];
+        $descAnimal = $_POST["descAnimal"];
         $tipoAnimal = $_POST["tipoAnimal"];
         $id = $_SESSION["id"];
         $arquivo = $_FILES['foto_animal'];
@@ -152,14 +152,12 @@
     
             if ($arquivoValido) {
                 move_uploaded_file($arquivo["tmp_name"], $path);
-                $con  = new mysqli("localhost", "root", "", "tcc");
-                $sql = "insert into animal(id_usuario, tipo_animal, nome_animal, idade, sexo, raca, descricao, pathImagem_animal) values ( ?, ?, ?, ?, ?, ?, ?, ?)";
-                $statement = mysqli_prepare($con, $sql);
+                $sql = "INSERT INTO animal(id_usuario, tipo_animal, nome_animal, idade, sexo, raca, descricao, pathImagem_animal) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+                $statement = mysqli_prepare(Database::getConnection(), $sql);
                 mysqli_stmt_bind_param($statement, 'ississss', $id, $tipoAnimal, $nomeAnimal, $idadeAnimal, $sexoAnimal, $racaAnimal, $descAnimal, $path);
                 mysqli_stmt_execute($statement);
-                $idNovo = mysqli_insert_id($con);
+                $idNovo = mysqli_insert_id(Database::getConnection());
                 echo "<script lang='javascript'>window.location.href='pag_animal.php?id=".$idNovo."';</script>";
-                mysqli_close($con);
             }
             else{
                 echo "falha ao enviar arquivo";

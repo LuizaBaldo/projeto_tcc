@@ -102,19 +102,14 @@
     $senha  = password_hash($_POST["senha"], PASSWORD_BCRYPT);
     $cnpj = $_POST["cnpj"];
     $tipo = 'INSTITUICAO';
-    $emailexistente = "select count(*) as count from usuario where email = '$email'";
-    $con  = new mysqli("localhost", "root", "", "tcc");
-    $retorno = mysqli_query($con, $emailexistente);
-    $resultado = mysqli_fetch_array($retorno);
-    if($resultado['count'] > 0){
+    if(emailExiste($email)){
         echo "<script lang='javascript'>alert('email já cadastrado no sistema');</script>";
         return;
-    }   
-    $sql = "insert into usuario(nome, endereco, telefone, cnpj, email, senha, tipo) values (?, ?, ?, ?, ? ,? ,? )";
-    $statement = mysqli_prepare($con, $sql);
+    }  
+    $sql = "INSERT INTO usuario(nome, endereco, telefone, cnpj, email, senha, tipo) VALUES (?, ?, ?, ?, ? ,? ,? )";
+    $statement = mysqli_prepare(Database::getConnection(), $sql);
     mysqli_stmt_bind_param($statement, 'sssssss', $nome, $endereco, $telefone, $cnpj, $email, $senha, $tipo);
     mysqli_stmt_execute($statement);
     echo "<script lang='javascript'>window.location.href='pag_login.php';</script>";
-    mysqli_close($con);
   }
 ?>

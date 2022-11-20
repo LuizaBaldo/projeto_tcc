@@ -4,9 +4,8 @@
 
 <?php
     if(isset($_GET["codigo"])){
-        $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql = 'select * from usuario where codigo = ? ';
-        $statement = mysqli_prepare($con, $sql);
+        $sql = 'SELECT * FROM usuario WHERE codigo=? ';
+        $statement = mysqli_prepare(Database::getConnection(), $sql);
         mysqli_stmt_bind_param($statement, 's', $_GET["codigo"]);
         mysqli_stmt_execute($statement);
         $resultado = mysqli_stmt_get_result($statement);
@@ -14,7 +13,6 @@
             header('location: pag_login.php');
             die();
         }
-        mysqli_close($con);
     }
 ?>
 
@@ -22,13 +20,11 @@
     function alterarSenha(){
         $codigo = $_GET["codigo"];
         $senhaNova = password_hash($_POST["txtSenhaNova"], PASSWORD_BCRYPT);
-        $sql = "update usuario set senha= ? where codigo= ? ";
-        $con  = new mysqli("localhost", "root", "", "tcc");
-        $statement = mysqli_prepare($con, $sql);
+        $sql = "UPDATE usuario SET senha=? WHERE codigo=? ";
+        $statement = mysqli_prepare(Database::getConnection(), $sql);
         mysqli_stmt_bind_param($statement, 'ss', $senhaNova, $codigo);
         mysqli_stmt_execute($statement);
         header('location: pag_login.php');
-        mysqli_close($con);
     }
 ?>
 

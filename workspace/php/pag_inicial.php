@@ -4,9 +4,9 @@
 
 <?php
     function getInstituicoes() {
-        $con = new mysqli("localhost", "root", "", "tcc");
+ 
         $sql = "SELECT * FROM usuario u  WHERE u.tipo = 'INSTITUICAO'";
-        $retorno = mysqli_query($con, $sql);
+        $retorno = mysqli_query(Database::getConnection(), $sql);
         $rows = array();
         while($row = mysqli_fetch_array($retorno)) {
             $rows[] = $row;
@@ -18,9 +18,8 @@
 
 <?php
     function getAnimais() {
-        $con = new mysqli("localhost", "root", "", "tcc");
         $sql = "SELECT * FROM animal a";
-        $retorno = mysqli_query($con, $sql);
+        $retorno = mysqli_query(Database::getConnection(), $sql);
         $rows = array();
         while($row = mysqli_fetch_array($retorno)) {
             $rows[] = $row;

@@ -4,12 +4,11 @@
 
 <?php
     function getAnimais($filtro){
-        $con = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from animal ";
+        $sql = "SELECT * FROM animal ";
         if(!empty($filtro)){
-            $sql = $sql.'where nome_animal like "%'.$filtro.'%" or tipo_animal = "'.$filtro.'" or raca like "%'.$filtro.'%" or sexo = "'.$filtro.'"';
+            $sql = $sql.'WHERE nome_animal like "%'.$filtro.'%" or tipo_animal = "'.$filtro.'" or raca like "%'.$filtro.'%" or sexo = "'.$filtro.'"';
         }
-        $retorno = mysqli_query($con, $sql);
+        $retorno = mysqli_query(Database::getConnection(), $sql);
         $rows = array();
         while($row = mysqli_fetch_array($retorno)) {
             $rows[] = $row;

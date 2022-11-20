@@ -99,19 +99,16 @@
     $telefone = $_POST["telefone"];
     $email  = $_POST["email"];
     $senha  = password_hash($_POST["senha"], PASSWORD_BCRYPT);
-    $emailexistente = "select count(*) as count from usuario where email = '$email'";
-    $con  = new mysqli("localhost", "root", "", "tcc");
-    $retorno = mysqli_query($con, $emailexistente);
-    $resultado = mysqli_fetch_array($retorno);
-    if($resultado['count'] > 0){
+    if(emailExiste($email)){
         echo "<script lang='javascript'>alert('email já cadastrado no sistema');</script>";
         return;
-    }   
-    $sql = "insert into usuario(nome, endereco, telefone, email, senha) values (?, ?, ?, ?, ?)";
-    $statement = mysqli_prepare($con, $sql);
+    }
+    $sql = "INSERT INTO usuario(nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)";
+    $statement = mysqli_prepare(Database::getConnection(), $sql);
     mysqli_stmt_bind_param($statement, 'sssss', $nome, $endereco, $telefone, $email, $senha);
     mysqli_stmt_execute($statement);
     echo "<script lang='javascript'>window.location.href='pag_login.php';</script>";
-    mysqli_close($con);
   }
+
+  
 ?>

@@ -6,10 +6,9 @@
   function logarUsuario(){
     $email = $_POST["email"];
     $senha = $_POST["senha"];
-    $con = new mysqli("localhost", "root", "", "tcc");
-    $sql = "select * from usuario where email='$email'";
+    $sql = "SELECT * FROM usuario WHERE email='$email'";
 
-    $retorno = mysqli_query($con, $sql);
+    $retorno = mysqli_query(Database::getConnection(), $sql);
     if($reg = mysqli_fetch_array($retorno)){
       if(password_verify($senha, $reg['senha'])){
         $_SESSION["id"] = $reg["id"];
@@ -22,8 +21,7 @@
       
     } else {
       echo "<br> <center> <h3 style='margin-top:20px;'>E-mail ou senha inválidos!</h3></center>";
-    }
-    mysqli_close($con);    
+    }    
   }
 ?>
 

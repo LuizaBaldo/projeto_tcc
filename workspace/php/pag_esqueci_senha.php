@@ -41,13 +41,12 @@
 <?php
     if(isset($_GET["enviar"])){
         $email = $_POST["txtEmail"];
-        $con  = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from usuario where email='$email'";
-        $query = mysqli_query($con, $sql);
+        $sql = "SELECT * FROM usuario WHERE email='$email'";
+        $query = mysqli_query(Database::getConnection(), $sql);
         if(mysqli_fetch_array($query) > 0){
             $codigo = md5(rand(999999999, 111111111));
-            $sql = "update usuario set codigo = ? WHERE email = ?";
-            $statement = mysqli_prepare($con, $sql);
+            $sql = "UPDATE usuario SET codigo = ? WHERE email = ?";
+            $statement = mysqli_prepare(Database::getConnection(), $sql);
             mysqli_stmt_bind_param($statement, 'ss', $codigo, $email);
             $run_query = mysqli_stmt_execute($statement);
             if($run_query){
@@ -80,6 +79,5 @@
                 echo '</div>';
             echo '</div>';
         }
-        mysqli_close($con); 
     }
 ?>

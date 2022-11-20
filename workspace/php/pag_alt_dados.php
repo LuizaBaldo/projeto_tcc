@@ -49,12 +49,10 @@
 
             if ($arquivoValido) {
                 move_uploaded_file($arquivo["tmp_name"], $path);
-                $con  = new mysqli("localhost", "root", "", "tcc");
-                $sql = "update usuario set pathImagem = ? where id = $id";
-                $statement = mysqli_prepare($con, $sql);
+                $sql = "UPDATE usuario SET pathImagem = ? WHERE id = $id";
+                $statement = mysqli_prepare(Database::getConnection(), $sql);
                 mysqli_stmt_bind_param($statement, 's', $path);
                 mysqli_stmt_execute($statement);
-                mysqli_close($con);
                 //echo "<p> arquivo enviado com sucesso <a href='img/$novoNomeDoArquivo.$extensaoDoArquivo'> clique aqui </a></p>";
             }
             else{
@@ -171,12 +169,10 @@
         $email  = $_POST["email"];
         $endereco = $_POST["endereco"];
         $telefone = $_POST["telefone"];
-        $con  = new mysqli("localhost", "root", "", "tcc");
         $sql  = "UPDATE usuario SET nome=?, email=? , endereco=?, telefone=? WHERE id=?";
-        $statement = mysqli_prepare($con, $sql);
+        $statement = mysqli_prepare(Database::getConnection(), $sql);
         mysqli_stmt_bind_param($statement, 'sssss', $nome, $email, $endereco, $telefone, $id);
         mysqli_stmt_execute($statement);
-        mysqli_close($con);
         echo "<script lang='javascript'>window.location.href='pag_usuario.php';</script>";
     }
 ?>

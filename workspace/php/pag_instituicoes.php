@@ -4,9 +4,8 @@
 
 <?php
     function getInstituicoes() {
-        $con = new mysqli("localhost", "root", "", "tcc");
-        $sql = "select * from usuario where tipo = 'INSTITUICAO'";
-        $retorno = mysqli_query($con, $sql);
+        $sql = "SELECT * FROM usuario WHERE tipo = 'INSTITUICAO'";
+        $retorno = mysqli_query(Database::getConnection(), $sql);
         $rows = array();
         while($row = mysqli_fetch_array($retorno)) {
             $rows[] = $row;
