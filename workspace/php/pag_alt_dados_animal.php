@@ -77,7 +77,7 @@
     if(isset($_GET["deletar"])) {
         if(UsuarioLogadoEhDonoDoAnimal($animal)){
             excluirAnimal($animal['id']);
-            echo "<script lang='javascript'>window.location.href='pag_instituicao.php?id=".$animal['id_usuario'].";</script>";
+            echo "<script lang='javascript'>window.location.href='pag_animais_instituicao.php';</script>";
         }
     }
 ?>
