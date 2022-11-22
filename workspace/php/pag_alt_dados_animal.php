@@ -1,5 +1,17 @@
 <?php
     require_once './functions.php';
+
+    $animal = buscaAnimalPorId($_GET['id']);
+
+    if(!UsuarioLogadoEhDonoDoAnimal($animal)){
+        header("location: pag_animal.php?id=".$animal['id']);
+        exit();
+    }
+    $user = getUserLogged();
+    if($user["tipo"] == 'USUARIO'){
+        header("location: pag_inicial.php");
+        exit();
+    }
 ?>
 
 <?php
@@ -18,10 +30,6 @@
         header("location: pag_animal.php?id=$id");
 
     }
-?>
-
-<?php
-    $animal = buscaAnimalPorId($_GET['id']);
 ?>
 
 <?php 
@@ -106,7 +114,7 @@
 </head>
     <body>
         <?php
-            require_once './partials/common.php';
+             require_once './partials/common.php';
         ?>
         <div class="row rounded py-2" style="background-color: #66C4A9;">
 
