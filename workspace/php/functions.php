@@ -25,6 +25,13 @@ function buscaInstituicaoId($id){
     return $instituicao;
 }
 
+function buscaUsuarioPorId($id){
+    $sql = "SELECT * FROM usuario WHERE id=$id ";
+    $retorno = mysqli_query(Database::getConnection(), $sql);
+    $usuario = mysqli_fetch_array($retorno);
+    return $usuario;
+}
+
 function buscaInstituicaoNome($nome){
     $sql = "SELECT * FROM usuario WHERE nome=$nome ";
     $retorno = mysqli_query(Database::getConnection(), $sql);
@@ -74,6 +81,13 @@ function UsuarioLogadoEhDonoDoAnimal($animal){
         return true;
     }
     return false;
+}
+
+function usuarioEstahLogado(){
+    $usuario = getUserLogged();
+    if(!$usuario){
+        return false;
+    }
 }
 
 function listaComentarioDoAnimal($id_animal){

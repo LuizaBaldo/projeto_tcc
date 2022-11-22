@@ -54,9 +54,7 @@
                                 </div>
 
                                 <div class="container_buttons text-center mt-4">
-                                    <form class="mb-2" method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $user['id'];?>">
-                                        <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
-                                    </form>
+                                    
 
                                     <a href="pag_alt_dados_inst.php">
                                         <button type="button" class="btn btn-primary mb-2" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
@@ -66,7 +64,10 @@
 
                                     <a href="pag_alt_senha.php">
                                         <button type="button" class="btn btn-primary mb-2" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
-                                    </a>    
+                                    </a>
+                                    <form class="mb-2" method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_instituicao.php?deletar=<?php echo $user['id'];?>">
+                                        <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
+                                    </form>    
                                 </div>
                             </div>
                         </div>

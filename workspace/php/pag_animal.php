@@ -11,6 +11,10 @@
     $comentarios = listaComentarioDoAnimal($_GET['id']);
 ?>
 
+<?php
+    $usuario = getUserLogged();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,12 +104,13 @@
                                 <div class="row justify-content-center col-sm-12 pt-5" style="height: 70vh;"> 
                                     <div class="container_comentar col-4" style="margin-right: 72px; height: 50vh;">
                                         <form class="pb-3" method="post" action="guardar_comentario.php" style="display: flexbox" id="formComentario">
+                                        
                                             <div class="inputNome pb-2">
-                                                <input class="border border-2" type="text" id="nomeComentario" name="nomeComentario" placeholder="nome" style="width: 35%">
+                                                <input class="border border-2" type="text" id="nomeComentario" name="nomeComentario" <?php if($usuario != null){echo 'value="' . $usuario['nome'] . '" readonly';} ?> placeholder="nome" style="width: 60%">
                                             </div>
                                             
                                             <div class="inputEmail pb-2">
-                                                <input class="border border-2" type="text" id="emailComentario" name="emailComentario" placeholder="email" style="width: 75%">
+                                                <input class="border border-2" type="text" id="emailComentario" name="emailComentario" <?php if($usuario != null){echo 'value="'. $usuario['email'] . '" readonly';} ?> placeholder="email" style="width: 60%">
                                             </div>
 
                                             <div class="textComentario pb-2">

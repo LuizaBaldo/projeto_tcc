@@ -20,6 +20,7 @@
 
 <?php
     function getInstituicoes($filtro){
+        $sql = "SELECT * FROM usuario WHERE tipo = 'INSTITUICAO' ";
         if(!empty($filtro)){
             $sql = 'SELECT * FROM usuario WHERE tipo = "INSTITUICAO" and nome like "%'.$filtro.'%" or endereco = "'.$filtro.'" or cnpj = "'.$filtro.'"';
         }
