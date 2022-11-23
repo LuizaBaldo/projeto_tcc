@@ -57,18 +57,19 @@
         
         <div class="container_main">
           <div class="row justify-content-around">
+
             <!-- CONTAINER LOGIN -->
-            <div class="container_login col-4 rounded" id="jaCadastroDiv" style="background-color: #66C4A9;">
-              <p class="display-6 lead" id="jaCadastro" style="color: white;">Login</p>
+            <div class="card container_login col-4 rounded" id="jaCadastroDiv">
+              <p class="display-6 lead" id="jaCadastro">Login</p>
                 <form method="post" action="pag_login.php?logar=1" class="needs-validation" id="formLogin">
                   
                     <div class="mb-3" id="divEmail">
-                      <label class="form-label" for=txtEmailLogin style="color: white;">E-mail</label>
+                      <label class="form-label" for='txtEmailLogin' >E-mail</label>
                       <input type="email" class="form-control form-control-sm" id="txtEmailLogin" name="email" required />
                     </div>
 
                     <div class="mb-3" id="divSenha">
-                      <label class="form-label" for="txtSenhaLogin" style="color: white;">Senha</label>
+                      <label class="form-label" for="txtSenhaLogin">Senha</label>
                       <input type="password" class="form-control form-control-sm" id="txtSenhaLogin" name="senha" required />
                     </div>
 
@@ -79,12 +80,13 @@
                 </form>
 
                 <div class="d-grid gap-2 col-4 mt-4 mx-auto">
-                    <a href="pag_esqueci_senha.php" id="esqueciSenha" class="btn btn-link btn-danger" style="color: white;">Esqueci a senha</a>
+                    <a href="pag_esqueci_senha.php" id="esqueciSenha" class="btn btn-link btn-danger" style="color: white;" >Esqueci a senha</a>
                 </div>
             </div>
+
             <!-- CONTAINER CADASTRO -->
-            <div class="container_cadastro col-4" id="cadastro" style="background-color: #66C4A9;">
-              <p class="display-6 lead" id="jaCadastro" style="color: white;">Cadastro</p>
+            <div class="card container_cadastro col-4" id="cadastro">
+              <p class="display-6 lead" id="jaCadastro">Cadastro</p>
                 <div class="d-grid gap-2">
                     <a href="pag_cadastro_instituicao.php" class="btn btn-primary" id="btnCadInst">Cadastrar Instituição</a>
                     <a href="pag_cadastro_usuario.php" class="btn btn-primary" id="btnCadUsu">Cadastrar Usuário</a>

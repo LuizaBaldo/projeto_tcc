@@ -32,55 +32,6 @@
     }
 ?>
 
-<?php 
-    if (isset($_FILES["arquivo"])) {
-        $arquivo = $_FILES['arquivo'];
-        // Validar se o arquivo não esta vazio
-        if (!empty($arquivo["name"])) {
-            $nomeDoArquivo = $arquivo["name"];
-    
-            $arquivoValido = true;
-    
-            // validar extensao do arquivo
-            $tipoDoArquivo = array(
-                'jpg',
-                'jpeg',
-                'png'
-            );
-            $nomeDoArquivo = $arquivo['name'];
-            $novoNomeDoArquivo = uniqid();
-            $pasta = '../img/';
-            $extensaoDoArquivo = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
-            if (! in_array($extensaoDoArquivo, $tipoDoArquivo)) {
-                echo "<span>Formato de arquivo não suportado. somente upload<b>" . implode(", ", $tipoDoArquivo) . "</b> arquivos .</span>";
-                $arquivoValido = false;
-            }
-    
-            // Validate file size
-            if ($_FILES["arquivo"]["size"] > 200000) {
-                echo "<span>Arquivo muito grande Max:2MB.</span>";
-                $arquivoValido = 0;
-            }
-            
-            $path = $pasta . $novoNomeDoArquivo . "." . $extensaoDoArquivo;
-    
-            if ($arquivoValido) {
-                move_uploaded_file($arquivo["tmp_name"], $path);
-                $sql = "UPDATE animal SET pathImagem_animal = ? WHERE id = {$animal['id']}";
-                $statement = mysqli_prepare(Database::getConnection(), $sql);
-                mysqli_stmt_bind_param($statement, 's', $path);
-                mysqli_stmt_execute($statement);
-                echo "<script lang='javascript'>window.location.href='pag_alt_dados_animal.php?id=".$animal['id']."';</script>";
-            }
-            else{
-                echo "falha ao enviar arquivo";
-            }
-        } else 
-            echo "No files have been chosen.";
-    }
-    
-?>
-
 <?php
     if(isset($_GET["deletar"])) {
         if(UsuarioLogadoEhDonoDoAnimal($animal)){
@@ -116,50 +67,77 @@
         <?php
              require_once './partials/common.php';
         ?>
-        <div class="row rounded py-2" style="background-color: #66C4A9;">
 
-            <div class="col-4">
-                <img class="img_pag_alt_animal" src="<?php echo $animal['pathImagem_animal']?>">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <p><label>Selecione o arquivo:</label></p>
-                    <input name="arquivo" type="file"></p>
-                    <button name="upload" type="submit"> Enviar arquivo</button>
-                </form>
-                <br>
-                <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este animal?');" action="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>&deletar=<?php echo $animal['id'];?>">
-                    <button type="submit" class="btn btn-danger" id="btnExcluirAnimal" name="btnExcluirAnimal">Excluir Animal</button>
-                </form>
-            </div>
+        <div class="container animal_container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row rounded py-2">
 
-            <div class="col-8">              
-                <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
-                    
-                    
-                    <form method="post" action="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>&alterar=<?php echo $animal["id"];?>" id="formAlterarInfoAnimal" >
-                        <label>Tipo do Animal</label> 
-                        <input  type="text" class="form-control" id="txtTipoAnimal" name="tipoAnimal"  value="<?php echo $animal["tipo_animal"];?>"/>
+                        <div class="col-6">
+                            <div class="img_animal_alt text-center">
+                                <img class="img_pag_alt_animal" src="<?php echo $animal['pathImagem_animal']?>">
+                            </div>
 
-                        <label>Nome</label>
-                        <input type="email" class="form-control" id="txtNomeAnimal" name="nomeAnimal"  value="<?php echo $animal["nome_animal"];?>"/>
+                            <div class="animal_alt_buttons">
+                                <form class="ms-4 mt-4" action="" method="POST" enctype="multipart/form-data">
+                                    <p><label>Selecione o arquivo:</label></p>
+                                    <input name="arquivo" class="form-control" type="file">
 
-                        <label>Idade</label>
-                        <input type="text" class="form-control" id="txtIdade" name="idade"  value="<?php echo $animal["idade"];?>"/>
+                                    <button class="btn btn-block btn-success mt-3" name="upload" type="submit"> Enviar arquivo</button>
 
-                        <label>Sexo</label>
-                        <input type="text" class="form-control" id="txtSexo" name="sexo"  value="<?php echo $animal["sexo"];?>"/>
+                                </form>
+                            </div>
+                        </div>
 
-                        <label>Raça</label>
-                        <input type="text" class="form-control" id="txtRaca" name="raca"  value="<?php echo $animal["raca"];?>"/>
+                        <div class="col-6"> 
+                            <div class="animal_info">
+                                <form method="post" action="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>&alterar=<?php echo $animal["id"];?>" id="formAlterarInfoAnimal" >
+                                    <div class="form row">
 
-                        <label>Descrição</label>
-                        <textarea type="text" class="form-control" id="txtDescricao" name="descricao"><?php echo $animal["descricao"];?></textarea>
+                                        <div class="form-group">
+                                            <label>Tipo do Animal</label> 
+                                            <input  type="text" class="form-control" id="txtTipoAnimal" name="tipoAnimal"  value="<?php echo $animal["tipo_animal"];?>"/>
+                                        </div>
 
-                        <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal" onclick="alterarInfoAnimal();">Salvar alteracoes</button>
-                        <button type="button" class="btn btn-danger mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
-                    </form>
+                                        <div class="form-group">
+                                            <label>Nome</label>
+                                            <input type="email" class="form-control" id="txtNomeAnimal" name="nomeAnimal"  value="<?php echo $animal["nome_animal"];?>"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Idade</label>
+                                            <input type="text" class="form-control" id="txtIdade" name="idade"  value="<?php echo $animal["idade"];?>"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Sexo</label>
+                                            <input type="text" class="form-control" id="txtSexo" name="sexo"  value="<?php echo $animal["sexo"];?>"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Raça</label>
+                                            <input type="text" class="form-control" id="txtRaca" name="raca"  value="<?php echo $animal["raca"];?>"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Descrição</label>
+                                            <textarea type="text" class="form-control" id="txtDescricao" name="descricao"><?php echo $animal["descricao"];?></textarea>
+                                        </div>
+
+                                        <div class="form-group mt-2">
+                                            <button type="button" class="btn btn-success mt-3" id="btnAltAnimal" name="btnAltAnimal" onclick="alterarInfoAnimal();">Salvar alteracoes</button>
+                                            <button type="button" class="btn btn-danger mt-3" id="btnCancelarCadastro" name="btnCancelarCadastro" onclick="voltar()">Cancelar</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>       
                 </div>
-            </div>
-        </div>       
+            </div>            
+        </div>
+
     </body>
 </html>
 
@@ -169,3 +147,73 @@
         window.location.href='pag_animal.php?id=<?php echo $animal['id']?>';
     }
 </script>
+
+<?php 
+
+    if (isset($_FILES["arquivo"])) {
+        $arquivo = $_FILES['arquivo'];
+        // Validar se o arquivo não esta vazio
+        if (!empty($arquivo["name"])) {
+            $nomeDoArquivo = $arquivo["name"];
+    
+            $arquivoValido = true;
+    
+            // validar extensao do arquivo
+            $tipoDoArquivo = array(
+                'jpg',
+                'jpeg',
+                'png'
+            );
+            $nomeDoArquivo = $arquivo['name'];
+            $novoNomeDoArquivo = uniqid();
+            $pasta = '../img/';
+            $extensaoDoArquivo = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+            if (! in_array($extensaoDoArquivo, $tipoDoArquivo)) {
+
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show"><span>Formato de arquivo não suportado. somente upload <b>' . implode( ', ', $tipoDoArquivo) . '</b> arquivos .</span>';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
+                
+                $arquivoValido = false;
+            }
+    
+            // Validate file size
+            if ($_FILES["arquivo"]["size"] > 200000) {
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show">Arquivo muito grande Max:2MB !!!';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
+                $arquivoValido = 0;
+            }
+            
+            $path = $pasta . $novoNomeDoArquivo . "." . $extensaoDoArquivo;
+    
+            if ($arquivoValido) {
+                move_uploaded_file($arquivo["tmp_name"], $path);
+                $sql = "UPDATE animal SET pathImagem_animal = ? WHERE id = {$animal['id']}";
+                $statement = mysqli_prepare(Database::getConnection(), $sql);
+                mysqli_stmt_bind_param($statement, 's', $path);
+                mysqli_stmt_execute($statement);
+                echo "<script lang='javascript'>window.location.href='pag_alt_dados_animal.php?id=".$animal['id']."';</script>";
+            }
+            else{
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show">Falha ao enviar o arquivo!';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
+            }
+        } else {
+            echo '<div class="container mt-3 w-50 text-center">';  
+                echo '<div class="col align-self-center alert alert-info alert-dismissible fade show">Nenhum Arquivo Escolhido!';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                echo '</div>';
+            echo '</div>';
+        }
+        
+    }
+    
+?>

@@ -57,10 +57,6 @@
                             
                             <div class="container_buttoms text-center ps-5 pt-3">
 
-                                <form method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_usuario.php?deletar=<?php echo $user['id'];?>">
-                                    <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
-                                </form>
-
                                 <a href="pag_alt_dados.php">
                                     <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltCadastrar" name="btnAltCadastrar">Alterar Cadastro</button>  
                                 </a>
@@ -71,8 +67,10 @@
                                 <a href="pag_alt_senha.php">
                                     <button type="button" class="btn btn-primary mb-1" id="btnAltSenha" name="btnAltSenha">Alterar Senha</button>                        
                                 </a>         
-
-                                <p>
+                                    
+                                <form class="mb-3" method="post" onsubmit="return confirm('Você tem certeza que deseja apagar este perfil?');" action="pag_usuario.php?deletar=<?php echo $user['id'];?>">
+                                    <button type="submit" class="btn btn-danger" id="btnExcluir" name="btnExcluir">Excluir Perfil</button>
+                                </form>
                                 
                             </div>                        
                         </div>

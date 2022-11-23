@@ -13,6 +13,14 @@
         <div class="container-fluid" id="header_container">
             <a href="pag_inicial.php"><img class="img_navbar" src="../img/Novo_Projeto.png" id="logo" style="width: 100px;"/></a>
 
+                <!-- Barra de Consultas -->
+                <div class="container_barraPesquisa w-25">
+                    <form class="text-center" action="pag_resultado_pesquisa.php" method="GET">
+                        <input id="search" type="text" placeholder="Pesquise aqui" name="filtro" style="height:30px; width:100%">
+                        <input id="submit" type="submit" value="Search" style="display: none; width: 0%;">
+                    </form>                    
+                </div>  
+
                 <div class="menu fs-5">
                     <nav class="navbar navbar-expand-lg navbar-dark m-3">
                         <div class="container-fluid text-xs-center">
@@ -33,21 +41,10 @@
 
                                 </div>
                             </div>
-
-                            
-                            
                         </div>
                     </nav>
                 </div>
                 
-                <!-- Barra de Consultas -->
-                <div class="container_barraPesquisa w-25">
-                    <form class="text-center" action="pag_resultado_pesquisa.php" method="GET">
-                        <input id="search" type="text" placeholder="Pesquise aqui" name="filtro" style="height:30px; width:100%">
-                        <input id="submit" type="submit" value="Search" style="display: none; width: 0%;">
-                    </form>                    
-                </div>
-
                 <?php
                     if($has_session === false){
                         echo "<button type='button' class='btn' id='btnFazerLogin' style='background-color: #66C4A9; color: white;' onclick='redirecionaLogin();'>Logar</button>";
@@ -55,7 +52,7 @@
                         $nome = explode(" ", $user["nome"])[0];
                         echo "<div class='dropdown'>";
                         echo "<button class='btn text-white dropdown-toggle' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false' style='background-color:  #66C4A9;'>Olá, $nome</button>";
-                        echo  "<ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>";
+                        echo  "<ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1' style='min-width: 0;'>";
                         if($user["tipo"] == 'USUARIO'){
                             echo "<li><a class='dropdown-item' href='pag_usuario.php'>Meus dados</a></li>";
                             echo "<li><a class='dropdown-item' href='sair.php'>Sair</a></li>";

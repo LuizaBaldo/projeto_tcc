@@ -58,22 +58,20 @@
                                            <label for=""><b>Instituição: </b> <a href="pag_exibir_instituicao.php?id=<?= $instituicao['id']?>"><?php echo $instituicao['nome']?> </a> <!-- MOSTRA A INSTIUICAO DO ANIMAL --></label>
                                         </div>
 
-                                        <div class="text-center mt-2">
-                                            <a href="pag_inicial.php">
-                                                <button type="button" class="btn btn-danger btn-lg mt-2" id="btnVoltarAnimal" name="btnVoltarAnimal">Voltar</button>
-                                            </a>
-                                        </div>
-
                                         <?php if(UsuarioLogadoEhDonoDoAnimal($animal)){?>  
+
                                             <a href="pag_alt_dados_animal.php?id=<?php echo $animal["id"]?>">
-                                                <button type="button" class="btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal">Alterar animal</button>
+                                                <button type="button" class="w-50 btn btn-primary mt-3 mb-1" id="btnAltAnimal" name="btnAltAnimal">Alterar animal</button>
+                                            </a>
+                                            <a href="pag_inicial.php">
+                                                <button type="button" class="w-50 btn btn-danger ms-1 mt-2" id="btnVoltarAnimal" name="btnVoltarAnimal">Voltar</button>
                                             </a>
                                         <?php }?>
 
                                     </div>
 
                                     <div class="container_about col-6">               
-                                        <div class="animal_info" style="padding: 0 15px 0 15px;width: 70%">
+                                        <div class="animal_info">
 
                                             <form method="post">
                                                 <label>Tipo do Animal</label> 
@@ -140,8 +138,8 @@
                                                 if (UsuarioLogadoEhDonoDoAnimal($animal)){
                                                     ?>
                                                     <form method="post" action="guardar_resposta.php?id=<?= $comentario['id']?>" style="display: flexbox ">
-                                                        <input type='text' name='resposta' placeholder='resposta' style='width: 22%'>
-                                                        <input id="" type='submit' value="Comentar">
+                                                        <input class="border border-2 mt-3" type='text' name='resposta' placeholder='resposta' style='width: 80%'>
+                                                        <input class="mt-2" id="" type='submit' value="Comentar">
                                                         <input type="hidden" name="id_animal" value="<?php echo $animal['id']?>">
                                                     </form>
                                                 <?php

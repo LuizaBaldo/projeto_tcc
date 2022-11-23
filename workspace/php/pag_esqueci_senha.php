@@ -74,7 +74,7 @@
             }
         }else{
             echo '<div class="container mt-3 w-50 text-center">';  
-                echo '<div class="col align-self-center alert alert-info alert-dismissible fade show">E-Mail não existe!!!';
+                echo '<div class="col align-self-center alert alert-info alert-dismissible fade show">Algo deu errado! Tente Novamente';
                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
                 echo '</div>';
             echo '</div>';

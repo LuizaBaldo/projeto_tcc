@@ -41,7 +41,11 @@
     
             // Validate file size
             if ($_FILES["arquivo"]["size"] > 200000) {
-                echo "<span>File is too large to upload.</span>";
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show">Arquivo muito grande Max:2MB !!!';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
                 $arquivoValido = 0;
             }
             
@@ -56,10 +60,19 @@
                 //echo "<p> arquivo enviado com sucesso <a href='img/$novoNomeDoArquivo.$extensaoDoArquivo'> clique aqui </a></p>";
             }
             else{
-                echo "falha ao enviar arquivo";
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show">Falha ao enviar o arquivo!';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
             }
-        } else 
-            echo "No files have been chosen.";
+        } else {
+            echo '<div class="container mt-3 w-50 text-center">';  
+                echo '<div class="col align-self-center alert alert-info alert-dismissible fade show">Nenhum Arquivo Escolhido!';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                echo '</div>';
+            echo '</div>';
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -90,14 +103,14 @@
             require_once './partials/common.php';
         ?>
         
-        <div class="usuario_container container">
-            <div class="usuario_content">
+        <div class="inst_container container">
+            <div class="inst_content">
                 <div class="card">
                     <div class="card-body">
                         <div class="row rounded py-2">
 
                             <div class="col-6">
-                                <div class="usuario_img text-center">
+                                <div class="inst_img text-center">
                                     <?php
                                         if(empty($user['pathImagem'])){
                                         echo '<img class="img_pag_alt_inst" src="../img/default.png" alt="Card img" id="instituicao_foto"/>';
@@ -110,10 +123,10 @@
 
                                 <div class="img">
                                     <form  class="ms-4 mt-4" action="" method="POST" enctype="multipart/form-data">
-                                        <p><label>Selecione o arquivo:</label></p>
-                                        <input name="arquivo" class="form-control" type="file"></p>
+                                        <label>Selecione o arquivo:</label>
+                                        <input name="arquivo" class="form-control" type="file">
 
-                                        <button class="btn btn-block btn-success mb-3" name="upload" type="submit"> Enviar arquivo</button>
+                                        <button class="btn btn-block btn-success mt-2" name="upload" type="submit"> Enviar arquivo</button>
 
                                     </form>
                                 </div>

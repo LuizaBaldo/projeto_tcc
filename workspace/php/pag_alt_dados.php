@@ -41,7 +41,11 @@
     
             // Validate file size
             if ($_FILES["arquivo"]["size"] > 200000) {
-                echo "<span>File is too large to upload.</span>";
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show">Arquivo muito grande Max:2MB !!!';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
                 $arquivoValido = 0;
             }
             
@@ -56,10 +60,19 @@
                 //echo "<p> arquivo enviado com sucesso <a href='img/$novoNomeDoArquivo.$extensaoDoArquivo'> clique aqui </a></p>";
             }
             else{
-                echo "falha ao enviar arquivo";
+                echo '<div class="container mt-3 w-50 text-center">';                
+                    echo '<div class="alert alert-danger alert-dismissible fade show">Falha ao enviar o arquivo!';
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                    echo '</div>';
+                echo '</div>';
             }
-        } else 
-            echo "No files have been chosen.";
+        } else {
+            echo '<div class="container mt-3 w-50 text-center">';  
+                echo '<div class="col align-self-center alert alert-info alert-dismissible fade show">Nenhum Arquivo Escolhido!';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                echo '</div>';
+            echo '</div>';
+        }
     }
 ?>
 
