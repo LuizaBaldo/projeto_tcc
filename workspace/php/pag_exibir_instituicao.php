@@ -48,7 +48,7 @@
         <div class="container_main">
             <div class="row justify-content-center me-0"> 
                 <div class="card w-75 pt-4" style="height: 70vh;">
-                    <div class="container_body">
+                    <div class="card-body">
 
                         <div class="row">
                             <!-- CONTAINER IMG + INFO -->
@@ -109,7 +109,21 @@
 
                     </div>
                 </div> <!--FIM CARD-->
-
+                
+                <div class="card w-75 mt-4">
+                    <div class="card-body">
+                        <iframe
+                            class="w-100"
+                            height="450"
+                            style="border:0"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPBCMIKFAt8yQ765w3zcZt6mhQXLgzg7I
+                                &q=R.+das+Rosas+100+-+Mirandópolis,+São+Paulo+-+SP">
+                        </iframe>
+                    </div>
+                </div>
 
             </div>
         </div>

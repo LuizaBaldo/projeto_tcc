@@ -63,15 +63,18 @@
                     echo '<div class="container_exibir p-5">';
                         echo '<div class="row">';
                             echo '<div class="card">';
-                                if(empty($instituicao['pathImagem'])){
-                                    echo '<img class="img_pag_inicial card-img-top" src="../img/default.png" alt="Card image">';
-                                }
-                                else{echo '<img class="img_pag_inicial card-img-top pt-3" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
+                                echo '<picture>';
+                                    echo '<sourcer srcset="'.$instituicao['pathImagem'].' media="(min-width: 600px)">';
+                                    if(empty($instituicao['pathImagem'])){
+                                        echo '<img class="img_pag_inicial card-img-top" src="../img/default.png" alt="Card image">';
+                                    }
+                                    else{echo '<img class="img_pag_inicial card-img-top pt-3" src="'.$instituicao['pathImagem'].'" alt="Card image">';}
+                                echo '</picture>';
                                 echo '<div class="card-body text-center">';
                                     echo '<p class="card-title">Nome: <span class="lead">' .$instituicao['nome']. '</span></p>';
                                     echo '<p class="card-text">Endereço: <span class="lead">' .$instituicao['endereco']. '</span></p>';
-                                    echo '<p>';
-                                    echo '<div class="text-center"><a class="btn btn-primary stretched-link" href="pag_exibir_instituicao.php?id='.$instituicao['id'].'">Veja Mais</a></div>';
+                                    // echo '<p class="card-text">Região: <span class="lead">'. $Regiao[''].'</span></p>';
+                                    echo '<div class="text-center mt-3"><a class="btn btn-primary stretched-link" href="pag_exibir_instituicao.php?id='.$instituicao['id'].'">Veja Mais</a></div>';
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';
@@ -84,7 +87,10 @@
                     echo '<div class="container_exibir p-5">';
                         echo '<div class="row">';
                             echo '<div class="card">';
-                                echo '<img class="img_pag_inicial card-img-top pt-3" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
+                                echo '<picture>';
+                                    echo '<sourcer srcset="'.$instituicao['pathImagem'].' media="(min-width: 600px)">';
+                                    echo '<img class="img_pag_inicial card-img-top pt-3" src="'.$animal['pathImagem_animal'].'" alt="Card image">';
+                                echo '</picture>';
                                 echo '<div class="card-body text-center">';
                                     echo '<p class="card-title">Nome: <span class="lead">' .$animal['nome_animal']. '</span></p>';
                                     echo '<p class="card-text">Raça: <span class="lead">' .$animal['raca']; '</span></p>';
